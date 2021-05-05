@@ -7,7 +7,7 @@ describe("component renders", () => {
   test("should be empty", () => {
     render(<SearchBar />);
 
-    const searchInput = screen.getByTestId("search-input");
+    const searchInput = screen.getByTestId("search-bar__input");
 
     expect(searchInput.textContent).toBe("");
   });
@@ -19,7 +19,7 @@ describe("user types in", () => {
 
     render(<SearchBar onSubmit={onSubmit} />);
 
-    const searchInput = screen.getByTestId("search-input");
+    const searchInput = screen.getByTestId("search-bar__input");
 
     userEvent.type(searchInput, "{enter}");
     expect(onSubmit).toHaveBeenCalled();
@@ -30,7 +30,7 @@ describe("user types in", () => {
 
     render(<SearchBar onSubmit={onSubmit} />);
 
-    const searchInput = screen.getByTestId("search-input");
+    const searchInput = screen.getByTestId("search-bar__input");
 
     const searchText = "Some movie name here";
     userEvent.type(searchInput, `${searchText}{enter}`);
@@ -40,8 +40,8 @@ describe("user types in", () => {
   test("should be empty after 'clear' button click", () => {
     render(<SearchBar />);
 
-    const searchInput = screen.getByTestId("search-input");
-    const clearButton = screen.getByTestId("search-clear");
+    const searchInput = screen.getByTestId("search-bar__input");
+    const clearButton = screen.getByTestId("search-bar__clear");
 
     const searchText = "Some movie name here";
     userEvent.type(searchInput, searchText);

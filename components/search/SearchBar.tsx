@@ -22,11 +22,11 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSubmit }) => {
     <div>
       <input
         type="text"
-        data-testid="search-input"
+        data-testid="search-bar__input"
         onChange={onChange}
         onKeyDown={onKeyDown}
       />
-      <div data-testid="search-clear" onClick={onClearClick} />
+      <div data-testid="search-bar__clear" onClick={onClearClick} />
     </div>
   );
 };
