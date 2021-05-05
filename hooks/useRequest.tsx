@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 const useRequest: <T>(
   url: string,
   callback?: Function
-) => { data?: T; loading: boolean; error: boolean } = (url, callback) => {
-  const [loading, setLoading] = useState(false);
+) => { data?: T; isLoading: boolean; error: boolean } = (url, callback) => {
+  const [isLoading, setLoading] = useState(false);
   const [data, setData] = useState();
   const [error, setError] = useState(false);
 
@@ -24,7 +24,7 @@ const useRequest: <T>(
     fetch();
   }, []);
 
-  return { loading, error, data };
+  return { isLoading, error, data };
 };
 
 export default useRequest;

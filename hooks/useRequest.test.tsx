@@ -34,25 +34,25 @@ test("should correectly update state", async () => {
   await waitFor(() => expect(stateWatcher).toHaveBeenCalledTimes(4));
 
   expect(stateWatcher).toHaveBeenNthCalledWith(1, {
-    loading: false,
+    isLoading: false,
     error: false,
     data: undefined,
   });
 
   expect(stateWatcher).toHaveBeenNthCalledWith(2, {
-    loading: true,
+    isLoading: true,
     error: false,
     data: undefined,
   });
 
   expect(stateWatcher).toHaveBeenNthCalledWith(3, {
-    loading: true,
+    isLoading: true,
     error: false,
     data: movies,
   });
 
   expect(stateWatcher).toHaveBeenNthCalledWith(4, {
-    loading: false,
+    isLoading: false,
     error: false,
     data: movies,
   });

@@ -9,7 +9,7 @@ const mockedUseRequest = (useRequest as jest.Mocked<typeof useRequest>).default;
 describe("component renders", () => {
   test("should show spinner when loading movies", async () => {
     mockedUseRequest.mockReturnValue({
-      loading: true,
+      isLoading: true,
       error: false,
       data: null,
     });
@@ -22,7 +22,7 @@ describe("component renders", () => {
 
   test("should show movies list after load data", async () => {
     mockedUseRequest.mockReturnValue({
-      loading: false,
+      isLoading: false,
       error: false,
       data: movies,
     });

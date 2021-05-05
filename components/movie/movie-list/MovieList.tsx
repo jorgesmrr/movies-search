@@ -2,9 +2,9 @@ import useRequest from "../../../hooks/useRequest";
 import Movie from "../../../models/Movie";
 
 const MovieList: React.FC = () => {
-  const { data: movies, loading } = useRequest<Movie[]>("");
+  const { data: movies, isLoading } = useRequest<Movie[]>("");
 
-  if (loading) {
+  if (isLoading) {
     return <div data-testid="movie-list__spinner" />;
   }
 
