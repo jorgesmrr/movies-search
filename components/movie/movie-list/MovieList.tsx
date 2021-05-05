@@ -1,17 +1,8 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import useRequest from "../../../hooks/useRequest";
+import Movie from "../../../models/Movie";
 
 const MovieList: React.FC = () => {
-  const [movies, setMovies] = useState();
-
-  const fetchMovies = async () => {
-    const response = await axios.get("");
-    setMovies(response.data);
-  };
-
-  useEffect(() => {
-    fetchMovies();
-  }, []);
+  const { data: movies, loading } = useRequest<Movie[]>("");
 
   const renderedMovies = movies
     ? movies.map((movie) => (
@@ -21,10 +12,10 @@ const MovieList: React.FC = () => {
       ))
     : null;
 
-  return movies ? (
-    <ul aria-label="movies list">{renderedMovies}</ul>
-  ) : (
+  return loading ? (
     <div data-testid="movie-list__spinner" />
+  ) : (
+    <ul aria-label="movies list">{renderedMovies}</ul>
   );
 };
 
