@@ -2,14 +2,10 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import useRequest from "./useRequest";
 import { render, waitFor } from "@testing-library/react";
-import movies from "../fixtures/movies";
+import movies from "../network/resources/__fixtures__/movie";
 import { getMovies } from "../network/resources/movie";
 
-jest.mock("axios");
-const mockedAxios = axios as jest.Mocked<typeof axios>;
-mockedAxios.get.mockResolvedValue({ data: movies });
-
-const fakeUrl = "foo";
+jest.mock("../network/resources/movie");
 
 const FakeComponent = ({ watcher }) => {
   const useRequestState = useRequest(getMovies());
@@ -19,7 +15,7 @@ const FakeComponent = ({ watcher }) => {
   return <div />;
 };
 
-test("should correectly update state", async () => {
+test("should correctly update state", async () => {
   const stateWatcher = jest.fn();
 
   render(<FakeComponent watcher={stateWatcher} />);

@@ -1,34 +1,18 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import MovieList from "./MovieList";
-import * as useRequest from "../../../hooks/useRequest";
-import movies from "../../../fixtures/movies";
-
-jest.mock("../../../hooks/useRequest");
-const mockedUseRequest = (useRequest as jest.Mocked<typeof useRequest>).default;
+import movies from "../../../network/resources/__fixtures__/movie";
 
 describe("component renders", () => {
   test("should show spinner when loading movies", async () => {
-    mockedUseRequest.mockReturnValue({
-      isLoading: true,
-      error: false,
-      data: null,
-    });
-
-    render(<MovieList />);
-    await waitFor(() => expect(mockedUseRequest).toHaveBeenCalledTimes(1));
+    render(<MovieList isLoading={true} />);
 
     expect(screen.getByTestId("movie-list__spinner")).toBeTruthy();
   });
 
   test("should show movies list after load data", async () => {
-    mockedUseRequest.mockReturnValue({
-      isLoading: false,
-      error: false,
-      data: movies,
-    });
-
-    const { getByRole, getAllByRole } = render(<MovieList />);
-    await waitFor(() => expect(mockedUseRequest).toHaveBeenCalledTimes(1));
+    const { getByRole, getAllByRole } = render(
+      <MovieList isLoading={false} movies={movies} />
+    );
 
     expect(
       await screen.findByRole("list", { name: "movies list" })

@@ -1,4 +1,4 @@
-import Movie from "../models/Movie";
+import Movie from "../../../models/Movie";
 
 const movies: Movie[] = [
   { id: 1, title: "Foo" },
