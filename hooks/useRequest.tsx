@@ -1,10 +1,15 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
+import Endpoint from "../network/endpoint";
 
-const useRequest: <T>(
-  url: string,
-  callback?: Function
-) => { data?: T; isLoading: boolean; error: boolean } = (url, callback) => {
+interface UseRequestState<T> {
+  data?: T;
+  isLoading: boolean;
+  error: boolean;
+}
+
+const useRequest: <T>(endpoint: Endpoint<T>) => UseRequestState<T> = (
+  endpoint
+) => {
   const [isLoading, setLoading] = useState(false);
   const [data, setData] = useState();
   const [error, setError] = useState(false);
@@ -12,10 +17,10 @@ const useRequest: <T>(
   const fetch = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(url);
-      setData(response.data);
-    } catch {
-      setError(true);
+      const response = await endpoint();
+      setData(response.data as any);
+    } catch (error) {
+      setError(error);
     }
     setLoading(false);
   };

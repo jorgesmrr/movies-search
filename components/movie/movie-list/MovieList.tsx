@@ -1,8 +1,8 @@
 import useRequest from "../../../hooks/useRequest";
-import Movie from "../../../models/Movie";
+import { getMovies } from "../../../network/resources/movie";
 
 const MovieList: React.FC = () => {
-  const { data: movies, isLoading } = useRequest<Movie[]>("");
+  const { data: movies, isLoading } = useRequest(getMovies());
 
   if (isLoading) {
     return <div data-testid="movie-list__spinner" />;
