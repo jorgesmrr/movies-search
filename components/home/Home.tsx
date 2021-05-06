@@ -1,13 +1,22 @@
-import SortedMoviesList, {
-  MovieSortBy,
-} from "../movie/sorted-movies-list/SortedMoviesList";
+import { useEffect, useState } from "react";
+import MovieSort from "../../models/MovieSort";
+import SearchedMoviesList from "../movie/searched-movies-list/SearchedMoviesList";
+import SortedMoviesList from "../movie/sorted-movies-list/SortedMoviesList";
 import SearchBar from "../search/SearchBar";
 
 const Home: React.FC = () => {
+  const [searchText, setSearchText] = useState<string>();
+
+  useEffect(() => {}, [searchText]);
+
   return (
     <div>
-      <SearchBar />
-      <SortedMoviesList sort={MovieSortBy.Popular} />
+      <SearchBar onSubmit={setSearchText} />
+      {searchText ? (
+        <SearchedMoviesList search={searchText} />
+      ) : (
+        <SortedMoviesList sort={MovieSort.Popular} />
+      )}
     </div>
   );
 };

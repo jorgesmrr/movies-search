@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
-import axios from "axios";
 import useRequest from "./useRequest";
 import { render, waitFor } from "@testing-library/react";
-import movies from "../network/resources/__fixtures__/movie";
+import { popularMovies } from "../network/resources/__fixtures__/movie";
 import { getMovies } from "../network/resources/movie";
+import MovieSort from "../models/MovieSort";
 
 jest.mock("../network/resources/movie");
 
 const FakeComponent = ({ watcher }) => {
-  const useRequestState = useRequest(getMovies());
+  const useRequestState = useRequest(getMovies(MovieSort.Popular));
 
   useEffect(() => watcher(useRequestState), [useRequestState]);
 
@@ -36,12 +36,12 @@ test("should correctly update state", async () => {
   expect(stateWatcher).toHaveBeenNthCalledWith(3, {
     isLoading: true,
     error: false,
-    data: movies,
+    data: popularMovies,
   });
 
   expect(stateWatcher).toHaveBeenNthCalledWith(4, {
     isLoading: false,
     error: false,
-    data: movies,
+    data: popularMovies,
   });
 });
