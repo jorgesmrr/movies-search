@@ -22,7 +22,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSubmit }) => {
     <div>
       <input
         type="text"
-        data-testid="search-bar__input"
+        aria-label="search bar input"
         onChange={onChange}
         onKeyDown={onKeyDown}
       />
