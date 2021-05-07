@@ -1,5 +1,3 @@
-import { AxiosResponse } from "axios";
-
-type Endpoint<T> = () => Promise<AxiosResponse<T>>;
+type Endpoint<T> = () => Promise<T>;
 
 export default Endpoint;

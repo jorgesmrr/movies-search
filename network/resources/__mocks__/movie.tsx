@@ -12,12 +12,12 @@ export const getTrendingMovies = (timeWindow: TrendingTimeWindow) => () => {
     [TrendingTimeWindow.Week]: weekTrendingMovies,
   };
 
-  return Promise.resolve({ data: sortMap[timeWindow] });
+  return Promise.resolve(sortMap[timeWindow]);
 };
 
 export const getMovie = (id: number) => () =>
-  Promise.resolve({ data: allMovies.find((movie) => movie.id === id) });
+  Promise.resolve(allMovies.find((movie) => movie.id === id));
 
-export const searchMovies = (search: string) => () => {
-  return Promise.resolve({ data: searchableMovies });
+export const searchMovies = (query: string) => () => {
+  return Promise.resolve(searchableMovies);
 };

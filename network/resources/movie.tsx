@@ -1,8 +1,16 @@
 import Movie from "../../models/Movie";
 import TrendingTimeWindow from "../../models/TrendingTimeWindow";
 import apiClient from "../apiClient";
-import { API_MOVIES, API_TRENDING } from "../costants";
+import { API_MOVIES, API_SEARCH_MOVIES, API_TRENDING } from "../costants";
 import Endpoint from "../endpoint";
+
+export const getMovie = (id: number): Endpoint<Movie> => () =>
+  new Promise((resolve, reject) => {
+    apiClient
+      .get(`${API_MOVIES}/${id}`)
+      .then((response) => resolve(response.data))
+      .catch(reject);
+  });
 
 export const getTrendingMovies = (
   timeWindow: TrendingTimeWindow
@@ -12,11 +20,18 @@ export const getTrendingMovies = (
     [TrendingTimeWindow.Week]: "week",
   };
 
-  return apiClient.get(`${API_TRENDING}/movie/${timeWindowValues[timeWindow]}`);
+  return new Promise((resolve, reject) => {
+    apiClient
+      .get(`${API_TRENDING}/movie/${timeWindowValues[timeWindow]}`)
+      .then((response) => resolve(response.data.results))
+      .catch(reject);
+  });
 };
 
-export const getMovie = (id: number): Endpoint<Movie> => () =>
-  apiClient.get(`${API_MOVIES}/${id}`);
-
-export const searchMovies = (search: string): Endpoint<Movie[]> => () =>
-  apiClient.get(`${API_MOVIES}?title=${search}`);
+export const searchMovies = (query: string): Endpoint<Movie[]> => () =>
+  new Promise((resolve, reject) => {
+    apiClient
+      .get(`${API_SEARCH_MOVIES}?query=${encodeURI(query)}`)
+      .then((response) => resolve(response.data.results))
+      .catch(reject);
+  });

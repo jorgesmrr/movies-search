@@ -18,7 +18,7 @@ const useRequest: <T>(endpoint: Endpoint<T>) => UseRequestState<T> = (
     setLoading(true);
     try {
       const response = await endpoint();
-      setData(response.data as any);
+      setData(response as any);
     } catch (error) {
       setError(error);
       console.error(error);
