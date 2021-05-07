@@ -1,4 +1,5 @@
 import Movie from "../../../models/Movie";
+import MovieListItem from "../movie-list-item/MovieListItem";
 
 export interface MovieListProps {
   isLoading: boolean;
@@ -11,15 +12,13 @@ const MovieList: React.FC<MovieListProps> = ({ isLoading, movies }) => {
   }
 
   if (movies) {
-    const renderedMovies = movies
-      ? movies.map((movie) => (
-          <li key={movie.id} aria-label={movie.title}>
-            {movie.title}
-          </li>
-        ))
-      : null;
-
-    return <ul aria-label="movies list">{renderedMovies}</ul>;
+    return (
+      <ul aria-label="movies list">
+        {movies.map((movie) => (
+          <MovieListItem key={movie.id} movie={movie} />
+        ))}
+      </ul>
+    );
   }
 
   return null;
