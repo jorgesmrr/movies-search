@@ -14,3 +14,5 @@ export const searchableMovies: Movie[] = [
   { id: 5, title: "Fight Club" },
   { id: 6, title: "The Dark Knight" },
 ];
+
+export const allMovies = [...newMovies, ...popularMovies, ...searchableMovies];

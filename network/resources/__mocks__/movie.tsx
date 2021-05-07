@@ -3,6 +3,7 @@ import {
   newMovies,
   popularMovies,
   searchableMovies,
+  allMovies,
 } from "../__fixtures__/movie";
 
 export const getMovies = (sort: MovieSort) => () => {
@@ -15,7 +16,7 @@ export const getMovies = (sort: MovieSort) => () => {
 };
 
 export const getMovie = (id: number) => () =>
-  Promise.resolve({ data: searchableMovies.find((movie) => movie.id === id) });
+  Promise.resolve({ data: allMovies.find((movie) => movie.id === id) });
 
 export const searchMovies = (search: string) => () => {
   return Promise.resolve({ data: searchableMovies });

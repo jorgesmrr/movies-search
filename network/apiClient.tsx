@@ -1,7 +1,11 @@
 import axios from "axios";
+import { BASE_API_URL } from "./costants";
 
 const apiClient = axios.create({
-  baseURL: `https://api.example.com`,
+  baseURL: BASE_API_URL,
+  params: {
+    api_key: process.env.API_KEY,
+  },
 });
 
 export default apiClient;
