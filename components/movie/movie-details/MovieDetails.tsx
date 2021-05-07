@@ -1,7 +1,7 @@
 import useRequest from "../../../hooks/useRequest";
 import { getMovie } from "../../../network/resources/movie";
 
-interface MovieDetailsProps {
+export interface MovieDetailsProps {
   id: number;
 }
 

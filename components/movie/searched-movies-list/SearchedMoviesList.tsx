@@ -2,7 +2,7 @@ import useRequest from "../../../hooks/useRequest";
 import { searchMovies } from "../../../network/resources/movie";
 import MovieList from "../movie-list/MovieList";
 
-interface SearchedMoviesListProps {
+export interface SearchedMoviesListProps {
   search: string;
 }
 

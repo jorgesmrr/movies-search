@@ -1,6 +1,6 @@
 import Movie from "../../../models/Movie";
 
-interface MovieListProps {
+export interface MovieListProps {
   isLoading: boolean;
   movies?: Movie[];
 }
