@@ -7,6 +7,7 @@ import {
   dayTrendingMovies,
   searchableMovies,
 } from "./__fixtures__/movie";
+import { mockResponsePage } from "../../utils/testing";
 
 jest.mock("../apiClient");
 const mockedApiClient = apiClient as jest.Mocked<typeof apiClient>;
@@ -54,24 +55,28 @@ describe("should correctly transform received data", () => {
   });
 
   test("after getting trending movies", () => {
+    const fakeData = mockResponsePage(dayTrendingMovies);
+
     mockedApiClient.get.mockResolvedValueOnce({
-      data: { results: dayTrendingMovies },
+      data: fakeData,
     });
 
     expect.assertions(1);
     return getTrendingMovies(TrendingTimeWindow.Day)().then((result) =>
-      expect(result).toEqual(dayTrendingMovies)
+      expect(result).toEqual(fakeData)
     );
   });
 
   test("after searching movies", () => {
+    const fakeData = mockResponsePage(searchableMovies);
+
     mockedApiClient.get.mockResolvedValueOnce({
-      data: { results: searchableMovies },
+      data: fakeData,
     });
 
     expect.assertions(1);
     return searchMovies("foo")().then((result) =>
-      expect(result).toEqual(searchableMovies)
+      expect(result).toEqual(fakeData)
     );
   });
 });

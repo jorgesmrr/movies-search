@@ -24,7 +24,7 @@ export const getTrendingMovies = (
   return new Promise((resolve, reject) => {
     apiClient
       .get(`${API_TRENDING}/movie/${timeWindowValues[timeWindow]}`)
-      .then((response) => resolve(response.data.results))
+      .then((response) => resolve(response.data))
       .catch(reject);
   });
 };
@@ -35,6 +35,6 @@ export const searchMovies = (
   new Promise((resolve, reject) => {
     apiClient
       .get(`${API_SEARCH_MOVIES}?query=${encodeURI(query)}`)
-      .then((response) => resolve(response.data.results))
+      .then((response) => resolve(response.data))
       .catch(reject);
   });
