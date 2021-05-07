@@ -9,10 +9,14 @@ export interface SearchedMoviesListProps {
 const SearchedMoviesList: React.FC<SearchedMoviesListProps> = ({ search }) => {
   const { data, isLoading, error } = useRequest(searchMovies(search), [search]);
 
-  return error ? (
-    <div />
-  ) : (
-    <MovieList isLoading={isLoading} movies={data?.results} />
+  return (
+    <div data-testid="searched-movies-list">
+      {error ? (
+        <div />
+      ) : (
+        <MovieList isLoading={isLoading} movies={data?.results} />
+      )}
+    </div>
   );
 };
 

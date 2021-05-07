@@ -1,7 +1,7 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 import MovieListItem, { MovieListItemProps } from "./MovieListItem";
-import { getMovieFixture } from "../../../network/resources/__fixtures__/movie";
+import { fakeMovie } from "../../../models/__fixtures__/Movie";
 
 export default {
   title: "Movie/MovieListItem",
@@ -13,4 +13,4 @@ const Template: Story<MovieListItemProps> = (args) => (
 );
 
 export const Default = Template.bind({});
-Default.args = { movie: getMovieFixture() };
+Default.args = { movie: fakeMovie };
