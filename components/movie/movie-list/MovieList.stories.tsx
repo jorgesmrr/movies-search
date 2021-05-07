@@ -1,7 +1,7 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 import MovieList, { MovieListProps } from "./MovieList";
-import { allMovies } from "../../../network/resources/__fixtures__/movie";
+import { fakeMovies } from "../../../models/__fixtures__/Movie";
 
 export default {
   title: "Movie/MovieList",
@@ -11,4 +11,4 @@ export default {
 const Template: Story<MovieListProps> = (args) => <MovieList {...args} />;
 
 export const Default = Template.bind({});
-Default.args = { isLoading: false, movies: allMovies };
+Default.args = { isLoading: false, movies: fakeMovies };

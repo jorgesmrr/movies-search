@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
+import { fakeMovies } from "../../../models/__fixtures__/Movie";
 import MovieList from "./MovieList";
-import { dayTrendingMovies } from "../../../network/resources/__fixtures__/movie";
 
 describe("component renders", () => {
   test("should show spinner when loading movies", async () => {
@@ -11,14 +11,14 @@ describe("component renders", () => {
 
   test("should show movies list after load data", async () => {
     const { getByRole, getAllByRole } = render(
-      <MovieList isLoading={false} movies={dayTrendingMovies} />
+      <MovieList isLoading={false} movies={fakeMovies} />
     );
 
     expect(
       await screen.findByRole("list", { name: "movies list" })
     ).toBeTruthy();
 
-    expect(getByRole("listitem", { name: dayTrendingMovies[0].title }));
-    expect(getAllByRole("listitem").length).toBe(dayTrendingMovies.length);
+    expect(getByRole("listitem", { name: fakeMovies[0].title }));
+    expect(getAllByRole("listitem").length).toBe(fakeMovies.length);
   });
 });

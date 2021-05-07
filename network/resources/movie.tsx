@@ -1,3 +1,4 @@
+import parse from "date-fns/parse";
 import Movie from "../../models/Movie";
 import PagedResponse from "../../models/PagedResponse";
 import TrendingTimeWindow from "../../models/TrendingTimeWindow";
@@ -5,11 +6,32 @@ import apiClient from "../apiClient";
 import { API_MOVIES, API_SEARCH_MOVIES, API_TRENDING } from "../costants";
 import Endpoint from "../endpoint";
 
+export const movieTransformer: (responseData: any) => Movie = (
+  responseData
+) => ({
+  id: responseData.id,
+  title: responseData.title,
+
+  poster: responseData.poster_path,
+  backdrop: responseData.backdrop_path,
+
+  isAdult: responseData.adult,
+  genres: responseData.genres || [],
+  language: responseData.original_language,
+  releaseDate: parse(responseData.release_date, "yyyy-dd-MM", new Date()),
+  runtime: responseData.runtime,
+
+  tagline: responseData.tagline,
+  overview: responseData.overview,
+
+  imdbId: responseData.imdb_id,
+});
+
 export const getMovie = (id: number): Endpoint<Movie> => () =>
   new Promise((resolve, reject) => {
     apiClient
       .get(`${API_MOVIES}/${id}`)
-      .then((response) => resolve(response.data))
+      .then((response) => resolve(movieTransformer(response.data)))
       .catch(reject);
   });
 
@@ -24,7 +46,10 @@ export const getTrendingMovies = (
   return new Promise((resolve, reject) => {
     apiClient
       .get(`${API_TRENDING}/movie/${timeWindowValues[timeWindow]}`)
-      .then((response) => resolve(response.data))
+      .then((response) => {
+        response.data.results = response.data.results.map(movieTransformer);
+        resolve(response.data);
+      })
       .catch(reject);
   });
 };
@@ -35,6 +60,9 @@ export const searchMovies = (
   new Promise((resolve, reject) => {
     apiClient
       .get(`${API_SEARCH_MOVIES}?query=${encodeURI(query)}`)
-      .then((response) => resolve(response.data))
+      .then((response) => {
+        response.data.results = response.data.results.map(movieTransformer);
+        resolve(response.data);
+      })
       .catch(reject);
   });

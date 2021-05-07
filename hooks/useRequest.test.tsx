@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
 import useRequest from "./useRequest";
 import { render, waitFor } from "@testing-library/react";
-import { dayTrendingMovies } from "../network/resources/__fixtures__/movie";
 import { getTrendingMovies } from "../network/resources/movie";
 import TrendingTimeWindow from "../models/TrendingTimeWindow";
-import { mockResponsePage } from "../utils/testing";
+import { getTrendingMoviesFixture } from "../network/resources/__fixtures__/movie";
 
 jest.mock("../network/resources/movie");
 
@@ -22,7 +21,7 @@ test("should correctly update state", async () => {
   render(<FakeComponent watcher={stateWatcher} />);
   await waitFor(() => expect(stateWatcher).toHaveBeenCalledTimes(4));
 
-  const data = mockResponsePage(dayTrendingMovies);
+  const data = getTrendingMoviesFixture();
 
   expect(stateWatcher).toHaveBeenNthCalledWith(1, {
     isLoading: false,

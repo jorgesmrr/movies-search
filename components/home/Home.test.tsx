@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { searchableMovies } from "../../network/resources/__fixtures__/movie";
+import { getSearchMoviesFixture } from "../../network/resources/__fixtures__/movie";
 import Home from "./Home";
 
 jest.mock("../../network/resources/movie");
@@ -16,14 +16,14 @@ describe("component renders", () => {
 
 describe("user interact with the page", () => {
   test("user searches for a movie", async () => {
+    const movie = getSearchMoviesFixture().results[0];
+
     const { getByRole, findByRole } = render(<Home />);
 
     const searchInput = getByRole("textbox", { name: "search bar input" });
 
-    userEvent.type(searchInput, `${searchableMovies[0].title}{enter}`);
+    userEvent.type(searchInput, `${movie.title}{enter}`);
 
-    expect(
-      await findByRole("listitem", { name: searchableMovies[0].title })
-    ).toBeTruthy();
+    expect(await findByRole("listitem", { name: movie.title })).toBeTruthy();
   });
 });

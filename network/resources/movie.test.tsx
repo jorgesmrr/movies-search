@@ -1,13 +1,17 @@
 import { API_MOVIES, API_SEARCH_MOVIES, API_TRENDING } from "../costants";
 import apiClient from "../apiClient";
-import { getMovie, getTrendingMovies, searchMovies } from "./movie";
+import {
+  getMovie,
+  getTrendingMovies,
+  movieTransformer,
+  searchMovies,
+} from "./movie";
 import TrendingTimeWindow from "../../models/TrendingTimeWindow";
 import {
-  allMovies,
-  dayTrendingMovies,
-  searchableMovies,
+  getMovieFixture,
+  getSearchMoviesFixture,
+  getTrendingMoviesFixture,
 } from "./__fixtures__/movie";
-import { mockResponsePage } from "../../utils/testing";
 
 jest.mock("../apiClient");
 const mockedApiClient = apiClient as jest.Mocked<typeof apiClient>;
@@ -47,36 +51,47 @@ describe("should call correct URL", () => {
 describe("should correctly transform received data", () => {
   test("after getting movie", () => {
     mockedApiClient.get.mockResolvedValueOnce({
-      data: allMovies[0],
+      data: getMovieFixture(),
     });
 
     expect.assertions(1);
-    return getMovie(1)().then((result) => expect(result).toEqual(allMovies[0]));
+    return getMovie(1)().then((result) => {
+      const data = getMovieFixture();
+      expect(result).toEqual(movieTransformer(data));
+    });
   });
 
   test("after getting trending movies", () => {
-    const fakeData = mockResponsePage(dayTrendingMovies);
-
     mockedApiClient.get.mockResolvedValueOnce({
-      data: fakeData,
+      data: getTrendingMoviesFixture(),
     });
 
     expect.assertions(1);
-    return getTrendingMovies(TrendingTimeWindow.Day)().then((result) =>
-      expect(result).toEqual(fakeData)
-    );
+    return getTrendingMovies(TrendingTimeWindow.Day)().then((result) => {
+      const data = getTrendingMoviesFixture();
+      expect(JSON.stringify(result)).toEqual(
+        JSON.stringify({
+          ...data,
+          results: data.results.map(movieTransformer),
+        })
+      );
+    });
   });
 
   test("after searching movies", () => {
-    const fakeData = mockResponsePage(searchableMovies);
-
     mockedApiClient.get.mockResolvedValueOnce({
-      data: fakeData,
+      data: getSearchMoviesFixture(),
     });
 
     expect.assertions(1);
-    return searchMovies("foo")().then((result) =>
-      expect(result).toEqual(fakeData)
-    );
+    return searchMovies("foo")().then((result) => {
+      const data = getSearchMoviesFixture();
+      expect(JSON.stringify(result)).toEqual(
+        JSON.stringify({
+          ...data,
+          results: data.results.map(movieTransformer),
+        })
+      );
+    });
   });
 });

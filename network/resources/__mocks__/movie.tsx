@@ -1,24 +1,15 @@
-import TrendingTimeWindow from "../../../models/TrendingTimeWindow";
-import { mockResponsePage } from "../../../utils/testing";
 import {
-  weekTrendingMovies,
-  dayTrendingMovies,
-  searchableMovies,
-  allMovies,
+  getMovieFixture,
+  getSearchMoviesFixture,
+  getTrendingMoviesFixture,
 } from "../__fixtures__/movie";
 
-export const getMovie = (id: number) => () =>
-  Promise.resolve(allMovies.find((movie) => movie.id === id));
+export const getMovie = () => () => Promise.resolve(getMovieFixture);
 
-export const getTrendingMovies = (timeWindow: TrendingTimeWindow) => () => {
-  const timeWindowValues = {
-    [TrendingTimeWindow.Day]: dayTrendingMovies,
-    [TrendingTimeWindow.Week]: weekTrendingMovies,
-  };
-
-  return Promise.resolve(mockResponsePage(timeWindowValues[timeWindow]));
+export const getTrendingMovies = () => () => {
+  return Promise.resolve(getTrendingMoviesFixture);
 };
 
-export const searchMovies = (query: string) => () => {
-  return Promise.resolve(mockResponsePage(searchableMovies));
+export const searchMovies = () => () => {
+  return Promise.resolve(getSearchMoviesFixture);
 };
