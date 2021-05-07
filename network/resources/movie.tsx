@@ -1,11 +1,19 @@
 import Movie from "../../models/Movie";
-import MovieSort from "../../models/MovieSort";
+import TrendingTimeWindow from "../../models/TrendingTimeWindow";
 import apiClient from "../apiClient";
-import { API_MOVIES } from "../costants";
+import { API_MOVIES, API_TRENDING } from "../costants";
 import Endpoint from "../endpoint";
 
-export const getMovies = (sort: MovieSort): Endpoint<Movie[]> => () =>
-  apiClient.get(`${API_MOVIES}`);
+export const getTrendingMovies = (
+  timeWindow: TrendingTimeWindow
+): Endpoint<Movie[]> => () => {
+  const timeWindowValues = {
+    [TrendingTimeWindow.Day]: "day",
+    [TrendingTimeWindow.Week]: "week",
+  };
+
+  return apiClient.get(`${API_TRENDING}/movie/${timeWindowValues[timeWindow]}`);
+};
 
 export const getMovie = (id: number): Endpoint<Movie> => () =>
   apiClient.get(`${API_MOVIES}/${id}`);

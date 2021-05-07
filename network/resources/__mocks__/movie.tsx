@@ -1,18 +1,18 @@
-import MovieSort from "../../../models/MovieSort";
+import TrendingTimeWindow from "../../../models/TrendingTimeWindow";
 import {
-  newMovies,
-  popularMovies,
+  weekTrendingMovies,
+  dayTrendingMovies,
   searchableMovies,
   allMovies,
 } from "../__fixtures__/movie";
 
-export const getMovies = (sort: MovieSort) => () => {
+export const getTrendingMovies = (timeWindow: TrendingTimeWindow) => () => {
   const sortMap = {
-    [MovieSort.Popular]: popularMovies,
-    [MovieSort.New]: newMovies,
+    [TrendingTimeWindow.Day]: dayTrendingMovies,
+    [TrendingTimeWindow.Week]: weekTrendingMovies,
   };
 
-  return Promise.resolve({ data: sortMap[sort] });
+  return Promise.resolve({ data: sortMap[timeWindow] });
 };
 
 export const getMovie = (id: number) => () =>

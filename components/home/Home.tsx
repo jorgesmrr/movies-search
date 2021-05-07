@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import MovieSort from "../../models/MovieSort";
+import TrendingTimeWindow from "../../models/TrendingTimeWindow";
 import SearchedMoviesList from "../movie/searched-movies-list/SearchedMoviesList";
-import SortedMoviesList from "../movie/sorted-movies-list/SortedMoviesList";
+import TrendingMoviesList from "../movie/sorted-movies-list/TrendingMoviesList";
 import SearchBar from "../search/SearchBar";
 
 const Home: React.FC = () => {
@@ -15,7 +15,7 @@ const Home: React.FC = () => {
       {searchText ? (
         <SearchedMoviesList search={searchText} />
       ) : (
-        <SortedMoviesList sort={MovieSort.Popular} />
+        <TrendingMoviesList timeWindow={TrendingTimeWindow.Day} />
       )}
     </div>
   );

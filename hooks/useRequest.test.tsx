@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 import useRequest from "./useRequest";
 import { render, waitFor } from "@testing-library/react";
-import { popularMovies } from "../network/resources/__fixtures__/movie";
-import { getMovies } from "../network/resources/movie";
-import MovieSort from "../models/MovieSort";
+import { dayTrendingMovies } from "../network/resources/__fixtures__/movie";
+import { getTrendingMovies } from "../network/resources/movie";
+import TrendingTimeWindow from "../models/TrendingTimeWindow";
 
 jest.mock("../network/resources/movie");
 
 const FakeComponent = ({ watcher }) => {
-  const useRequestState = useRequest(getMovies(MovieSort.Popular));
+  const useRequestState = useRequest(getTrendingMovies(TrendingTimeWindow.Day));
 
   useEffect(() => watcher(useRequestState), [useRequestState]);
 
@@ -36,12 +36,12 @@ test("should correctly update state", async () => {
   expect(stateWatcher).toHaveBeenNthCalledWith(3, {
     isLoading: true,
     error: false,
-    data: popularMovies,
+    data: dayTrendingMovies,
   });
 
   expect(stateWatcher).toHaveBeenNthCalledWith(4, {
     isLoading: false,
     error: false,
-    data: popularMovies,
+    data: dayTrendingMovies,
   });
 });

@@ -1,11 +1,11 @@
 import Movie from "../../../models/Movie";
 
-export const popularMovies: Movie[] = [
+export const dayTrendingMovies: Movie[] = [
   { id: 1, title: "Arrival" },
   { id: 2, title: "Zodiac" },
 ];
 
-export const newMovies: Movie[] = [
+export const weekTrendingMovies: Movie[] = [
   { id: 3, title: "Black Widow" },
   { id: 4, title: "Soul" },
 ];
@@ -15,4 +15,8 @@ export const searchableMovies: Movie[] = [
   { id: 6, title: "The Dark Knight" },
 ];
 
-export const allMovies = [...newMovies, ...popularMovies, ...searchableMovies];
+export const allMovies = [
+  ...weekTrendingMovies,
+  ...dayTrendingMovies,
+  ...searchableMovies,
+];
