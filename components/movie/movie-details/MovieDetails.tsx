@@ -2,6 +2,7 @@ import format from "date-fns/format";
 import useRequest from "../../../hooks/useRequest";
 import { getSmallPosterPath } from "../../../network/helpers";
 import { getMovie } from "../../../network/resources/movie";
+import PosterImage from "../../image/poster-image/PosterImage";
 
 export interface MovieDetailsProps {
   id: number;
@@ -31,7 +32,7 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ id }) => {
         <p>{movie.runtime}</p>
         <p>{movie.imdbId}</p>
 
-        <img src={getSmallPosterPath(movie.poster)} />
+        <PosterImage fileName={movie.poster} tiny />
       </div>
     );
   }
