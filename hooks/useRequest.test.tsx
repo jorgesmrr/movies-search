@@ -4,6 +4,7 @@ import { render, waitFor } from "@testing-library/react";
 import { dayTrendingMovies } from "../network/resources/__fixtures__/movie";
 import { getTrendingMovies } from "../network/resources/movie";
 import TrendingTimeWindow from "../models/TrendingTimeWindow";
+import { mockResponsePage } from "../utils/testing";
 
 jest.mock("../network/resources/movie");
 
@@ -21,6 +22,8 @@ test("should correctly update state", async () => {
   render(<FakeComponent watcher={stateWatcher} />);
   await waitFor(() => expect(stateWatcher).toHaveBeenCalledTimes(4));
 
+  const data = mockResponsePage(dayTrendingMovies);
+
   expect(stateWatcher).toHaveBeenNthCalledWith(1, {
     isLoading: false,
     error: false,
@@ -36,12 +39,12 @@ test("should correctly update state", async () => {
   expect(stateWatcher).toHaveBeenNthCalledWith(3, {
     isLoading: true,
     error: false,
-    data: dayTrendingMovies,
+    data,
   });
 
   expect(stateWatcher).toHaveBeenNthCalledWith(4, {
     isLoading: false,
     error: false,
-    data: dayTrendingMovies,
+    data,
   });
 });

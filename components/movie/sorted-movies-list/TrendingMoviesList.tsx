@@ -10,11 +10,13 @@ export interface TrendingMoviesListProps {
 const TrendingMoviesList: React.FC<TrendingMoviesListProps> = ({
   timeWindow,
 }) => {
-  const { data: movies, isLoading, error } = useRequest(
-    getTrendingMovies(timeWindow)
-  );
+  const { data, isLoading, error } = useRequest(getTrendingMovies(timeWindow));
 
-  return error ? <div /> : <MovieList isLoading={isLoading} movies={movies} />;
+  return error ? (
+    <div />
+  ) : (
+    <MovieList isLoading={isLoading} movies={data?.results} />
+  );
 };
 
 export default TrendingMoviesList;

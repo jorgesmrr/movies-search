@@ -7,9 +7,13 @@ interface SearchedMoviesListProps {
 }
 
 const SearchedMoviesList: React.FC<SearchedMoviesListProps> = ({ search }) => {
-  const { data: movies, isLoading, error } = useRequest(searchMovies(search));
+  const { data, isLoading, error } = useRequest(searchMovies(search));
 
-  return error ? <div /> : <MovieList isLoading={isLoading} movies={movies} />;
+  return error ? (
+    <div />
+  ) : (
+    <MovieList isLoading={isLoading} movies={data?.results} />
+  );
 };
 
 export default SearchedMoviesList;

@@ -1,4 +1,5 @@
 import Movie from "../../models/Movie";
+import PagedResponse from "../../models/PagedResponse";
 import TrendingTimeWindow from "../../models/TrendingTimeWindow";
 import apiClient from "../apiClient";
 import { API_MOVIES, API_SEARCH_MOVIES, API_TRENDING } from "../costants";
@@ -14,7 +15,7 @@ export const getMovie = (id: number): Endpoint<Movie> => () =>
 
 export const getTrendingMovies = (
   timeWindow: TrendingTimeWindow
-): Endpoint<Movie[]> => () => {
+): Endpoint<PagedResponse<Movie>> => () => {
   const timeWindowValues = {
     [TrendingTimeWindow.Day]: "day",
     [TrendingTimeWindow.Week]: "week",
@@ -28,7 +29,9 @@ export const getTrendingMovies = (
   });
 };
 
-export const searchMovies = (query: string): Endpoint<Movie[]> => () =>
+export const searchMovies = (
+  query: string
+): Endpoint<PagedResponse<Movie>> => () =>
   new Promise((resolve, reject) => {
     apiClient
       .get(`${API_SEARCH_MOVIES}?query=${encodeURI(query)}`)
