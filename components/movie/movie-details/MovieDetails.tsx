@@ -6,7 +6,7 @@ interface MovieDetailsProps {
 }
 
 const MovieDetails: React.FC<MovieDetailsProps> = ({ id }) => {
-  const { data: movie, isLoading } = useRequest(getMovie(id));
+  const { data: movie, isLoading } = useRequest(getMovie(id), [id]);
 
   if (isLoading) {
     return <div data-testid="movie-details__spinner" />;

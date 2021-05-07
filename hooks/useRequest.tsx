@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { DependencyList, useEffect, useState } from "react";
 import Endpoint from "../network/endpoint";
 
 export interface UseRequestState<T> {
@@ -7,9 +7,10 @@ export interface UseRequestState<T> {
   error: boolean;
 }
 
-const useRequest: <T>(endpoint: Endpoint<T>) => UseRequestState<T> = (
-  endpoint
-) => {
+const useRequest: <T>(
+  endpoint: Endpoint<T>,
+  dependencies?: DependencyList
+) => UseRequestState<T> = (endpoint, dependencies = []) => {
   const [isLoading, setLoading] = useState(false);
   const [data, setData] = useState();
   const [error, setError] = useState(false);
@@ -28,7 +29,7 @@ const useRequest: <T>(endpoint: Endpoint<T>) => UseRequestState<T> = (
 
   useEffect(() => {
     fetch();
-  }, []);
+  }, dependencies);
 
   return { isLoading, error, data };
 };

@@ -7,8 +7,6 @@ import SearchBar from "../search/SearchBar";
 const Home: React.FC = () => {
   const [searchText, setSearchText] = useState<string>();
 
-  useEffect(() => {}, [searchText]);
-
   return (
     <div>
       <SearchBar onSubmit={setSearchText} />
