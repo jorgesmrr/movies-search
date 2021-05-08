@@ -18,7 +18,7 @@ export const movieTransformer: (responseData: any) => Movie = (
   isAdult: responseData.adult,
   genres: responseData.genres || [],
   language: responseData.original_language,
-  releaseDate: parse(responseData.release_date, "yyyy-dd-MM", new Date()),
+  releaseDate: parse(responseData.release_date, "yyyy-MM-dd", new Date()),
   runtime: responseData.runtime,
 
   tagline: responseData.tagline,
@@ -27,7 +27,7 @@ export const movieTransformer: (responseData: any) => Movie = (
   imdbId: responseData.imdb_id,
 });
 
-export const getMovie = (id: number): Endpoint<Movie> => () =>
+export const getMovie = (id: string): Endpoint<Movie> => () =>
   new Promise((resolve, reject) => {
     apiClient
       .get(`${API_MOVIES}/${id}`)

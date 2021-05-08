@@ -5,7 +5,7 @@ import { getMovie } from "../../../network/resources/movie";
 import PosterImage from "../../image/poster-image/PosterImage";
 
 export interface MovieDetailsProps {
-  id: number;
+  id: string;
 }
 
 const MovieDetails: React.FC<MovieDetailsProps> = ({ id }) => {

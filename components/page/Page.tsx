@@ -1,3 +1,4 @@
+import { useRouter } from "next/dist/client/router";
 import styled from "styled-components";
 import TopBar from "../top-bar/TopBar";
 
@@ -7,9 +8,15 @@ const PageWrapper = styled.div`
 `;
 
 const Page: React.FC = ({ children }) => {
+  const router = useRouter();
+
+  const onSubmitSearch = (search: string) => {
+    router.push(`/search?q=${encodeURI(search)}`);
+  };
+
   return (
     <PageWrapper>
-      <TopBar />
+      <TopBar onSubmitSearch={onSubmitSearch} />
       {children}
     </PageWrapper>
   );

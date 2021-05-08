@@ -18,15 +18,18 @@ const TopBarContents = styled(LimitedWidth)`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: ${(props) => props.theme.color.white};
 `;
 
-const TopBar: React.FC = () => {
+interface TopBarProps {
+  onSubmitSearch: (search: string) => void;
+}
+
+const TopBar: React.FC<TopBarProps> = ({ onSubmitSearch }) => {
   return (
     <TopBarWrapper>
       <TopBarContents>
         <Menu />
-        <SearchBar />
+        <SearchBar onSubmit={onSubmitSearch} />
       </TopBarContents>
     </TopBarWrapper>
   );

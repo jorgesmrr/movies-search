@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styled from "styled-components";
 import Movie from "../../../models/Movie";
 import PosterImage from "../../image/poster-image/PosterImage";
@@ -16,7 +17,11 @@ const ListItem = styled.li`
 const MovieListItem: React.FC<MovieListItemProps> = ({ movie }) => {
   return (
     <ListItem key={movie.id} aria-label={movie.title}>
-      <PosterImage fileName={movie.poster} tiny />
+      <Link href={`/movie?id=${movie.id}`}>
+        <a>
+          <PosterImage fileName={movie.poster} tiny />
+        </a>
+      </Link>
     </ListItem>
   );
 };

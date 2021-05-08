@@ -1,8 +1,9 @@
+import { useRouter } from "next/dist/client/router";
 import React, { useState } from "react";
 import styled from "styled-components";
 
 export interface SearchBarProps {
-  onSubmit?: (text: string) => void;
+  onSubmit: (text: string) => void;
 }
 
 const Bar = styled.div`
@@ -28,7 +29,8 @@ const Input = styled.input`
 `;
 
 const SearchBar: React.FC<SearchBarProps> = ({ onSubmit }) => {
-  const [text, setText] = useState("");
+  const router = useRouter();
+  const [text, setText] = useState((router?.query.q || "") as string);
 
   const onChange: React.ChangeEventHandler<HTMLInputElement> = (event) =>
     setText(event.target.value);
@@ -44,6 +46,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSubmit }) => {
   return (
     <Bar>
       <Input
+        value={text}
         type="text"
         aria-label="search bar input"
         placeholder="Search movies..."

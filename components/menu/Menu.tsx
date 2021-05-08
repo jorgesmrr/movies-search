@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styled from "styled-components";
 import { ListNone } from "../style/style";
 
@@ -8,20 +9,29 @@ const MenuList = styled(ListNone)`
   font-weight: 800;
 `;
 
+const StyledLink = styled.a`
+  color: ${(props) => props.theme.color.white};
+  cursor: pointer;
+`;
+
 const Menu: React.FC = () => {
-  const items: { label: string }[] = [
-    { label: "Home" },
-    { label: "Trending" },
-    { label: "Popular" },
-    { label: "Top Rated" },
-    { label: "In Theaters" },
+  const items: { label: string; href: string }[] = [
+    { label: "Home", href: "/" },
+    { label: "Trending", href: "/" },
+    { label: "Popular", href: "/" },
+    { label: "Top Rated", href: "/" },
+    { label: "In Theaters", href: "/" },
   ];
 
   return (
     <nav>
       <MenuList>
         {items.map((item) => (
-          <li>{item.label}</li>
+          <li>
+            <Link href={item.href}>
+              <StyledLink>{item.label}</StyledLink>
+            </Link>
+          </li>
         ))}
       </MenuList>
     </nav>

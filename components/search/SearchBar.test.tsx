@@ -6,7 +6,7 @@ import { customRender } from "../../utils/testing";
 
 describe("component renders", () => {
   test("should be empty", () => {
-    const { getByRole } = customRender(<SearchBar />);
+    const { getByRole } = customRender(<SearchBar onSubmit={jest.fn()} />);
 
     const searchInput = getByRole("textbox");
 
@@ -39,7 +39,9 @@ describe("user types in", () => {
   });
 
   test("should be empty after 'clear' button click", () => {
-    const { getByRole, getByTestId } = customRender(<SearchBar />);
+    const { getByRole, getByTestId } = customRender(
+      <SearchBar onSubmit={jest.fn()} />
+    );
 
     const searchInput = getByRole("textbox");
     const clearButton = getByTestId("search-bar__clear");
