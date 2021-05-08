@@ -1,10 +1,14 @@
 import { ThemeProvider } from "styled-components";
+import Page from "../components/page/Page";
 import theme from "../styles/theme";
+import "./../styles/index.css";
 
 function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider theme={theme}>
-      <Component {...pageProps} />
+      <Page>
+        <Component {...pageProps} />
+      </Page>
     </ThemeProvider>
   );
 }
