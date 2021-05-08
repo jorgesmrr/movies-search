@@ -1,12 +1,12 @@
-import { render } from "@testing-library/react";
 import PosterImage from "./PosterImage";
 import { getSmallPosterPath } from "../../../network/helpers";
+import { customRender } from "../../../utils/testing";
 
 const posterFileName = "/xGuOF1T3WmPsAcQEQJfnG7Ud9f8.jpg";
 
 describe("component renders", () => {
   test("should show an image", () => {
-    const { getByRole } = render(
+    const { getByRole } = customRender(
       <PosterImage fileName={posterFileName} tiny />
     );
     expect(getByRole("img")).toBeTruthy();
@@ -14,7 +14,7 @@ describe("component renders", () => {
 
   describe("should use the correct source", () => {
     test("for tiny size", () => {
-      const { getByRole } = render(
+      const { getByRole } = customRender(
         <PosterImage fileName={posterFileName} tiny />
       );
       const image = getByRole("img");

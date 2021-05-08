@@ -1,16 +1,17 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import { fakeMovies } from "../../../models/__fixtures__/Movie";
+import { customRender } from "../../../utils/testing";
 import MovieList from "./MovieList";
 
 describe("component renders", () => {
   test("should show spinner when loading movies", async () => {
-    render(<MovieList isLoading={true} />);
+    customRender(<MovieList isLoading={true} />);
 
     expect(screen.getByTestId("movie-list__spinner")).toBeTruthy();
   });
 
   test("should show movies list after load data", async () => {
-    const { getByRole, getAllByRole } = render(
+    const { getByRole, getAllByRole } = customRender(
       <MovieList isLoading={false} movies={fakeMovies} />
     );
 
