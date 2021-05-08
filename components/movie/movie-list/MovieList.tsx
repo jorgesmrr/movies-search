@@ -5,6 +5,7 @@ import MovieListItem from "../movie-list-item/MovieListItem";
 
 export interface MovieListProps {
   isLoading: boolean;
+  error: boolean;
   movies?: Movie[];
 }
 
@@ -14,9 +15,13 @@ const List = styled(ListNone)`
   flex-wrap: wrap;
 `;
 
-const MovieList: React.FC<MovieListProps> = ({ isLoading, movies }) => {
+const MovieList: React.FC<MovieListProps> = ({ isLoading, movies, error }) => {
   if (isLoading) {
     return <div data-testid="movie-list__spinner" />;
+  }
+
+  if (error) {
+    return <div>Error!</div>;
   }
 
   if (movies) {

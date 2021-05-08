@@ -5,14 +5,14 @@ import MovieList from "./MovieList";
 
 describe("component renders", () => {
   test("should show spinner when loading movies", async () => {
-    customRender(<MovieList isLoading={true} />);
+    customRender(<MovieList isLoading={true} error={false} />);
 
     expect(screen.getByTestId("movie-list__spinner")).toBeTruthy();
   });
 
   test("should show movies list after load data", async () => {
     const { getByRole, getAllByRole } = customRender(
-      <MovieList isLoading={false} movies={fakeMovies} />
+      <MovieList isLoading={false} error={false} movies={fakeMovies} />
     );
 
     expect(

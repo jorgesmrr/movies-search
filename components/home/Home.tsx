@@ -1,11 +1,19 @@
 import TrendingTimeWindow from "../../models/TrendingTimeWindow";
+import { getTrendingMovies } from "../../network/resources/movie";
+import Fetch from "../fetch/Fetch";
 import LimitedWidth from "../limited-width/LimitedWidth";
-import TrendingMoviesList from "../movie/sorted-movies-list/TrendingMoviesList";
+import MovieList from "../movie/movie-list/MovieList";
 
 const Home: React.FC = () => {
   return (
     <LimitedWidth>
-      <TrendingMoviesList timeWindow={TrendingTimeWindow.Day} />
+      <Fetch
+        endpoint={getTrendingMovies(TrendingTimeWindow.Day)}
+        dependencies={[]}
+        render={({ data, ...state }) => (
+          <MovieList movies={data?.results} {...state} />
+        )}
+      />
     </LimitedWidth>
   );
 };

@@ -1,6 +1,6 @@
 import { useRouter } from "next/dist/client/router";
 import Head from "next/head";
-import SearchedMoviesList from "../components/movie/searched-movies-list/SearchedMoviesList";
+import SearchScreen from "../components/search-screen/SearchScreen";
 
 export default function HomePage() {
   const router = useRouter();
@@ -12,7 +12,7 @@ export default function HomePage() {
         <meta name="description" content="Search results" />
       </Head>
 
-      <SearchedMoviesList search={router.query.q as string} />
+      <SearchScreen search={router.query.q as string} />
     </div>
   );
 }
