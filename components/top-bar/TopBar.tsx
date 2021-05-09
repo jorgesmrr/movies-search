@@ -5,7 +5,7 @@ import SearchBar from "../search/SearchBar";
 
 const TopBarWrapper = styled.div`
   background-color: ${(props) => props.theme.color.neutral.darkest};
-  padding: 1rem;
+  padding: 1rem 0;
   position: fixed;
   top: 0;
   left: 0;

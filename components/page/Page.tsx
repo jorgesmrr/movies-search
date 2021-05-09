@@ -5,6 +5,11 @@ import TopBar from "../top-bar/TopBar";
 const PageWrapper = styled.div`
   background-color: ${(props) => props.theme.color.neutral.darker};
   min-height: 100vh;
+  padding-top: 5rem;
+`;
+
+const PageContents = styled.div`
+  color: ${(props) => props.theme.color.white};
 `;
 
 const Page: React.FC = ({ children }) => {
@@ -17,7 +22,7 @@ const Page: React.FC = ({ children }) => {
   return (
     <PageWrapper>
       <TopBar onSubmitSearch={onSubmitSearch} />
-      {children}
+      <PageContents>{children}</PageContents>
     </PageWrapper>
   );
 };
