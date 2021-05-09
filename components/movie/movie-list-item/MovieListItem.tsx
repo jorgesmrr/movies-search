@@ -4,8 +4,8 @@ import MovieListItemFormat from "../../../models/MovieListItemFormat";
 import { BackdropSizes, PosterSizes } from "../../../network/costants";
 import BackdropImage from "../../image/backdrop-image/BackdropImage";
 import PosterImage from "../../image/poster-image/PosterImage";
-import BackdropPlaceholder from "../../placeholder/BackdropPlaceholder";
-import PosterPlaceholder from "../../placeholder/PosterPlaceholder";
+import BackdropPlaceholder from "../../layout/placeholder/BackdropPlaceholder";
+import PosterPlaceholder from "../../layout/placeholder/PosterPlaceholder";
 
 export interface MovieListItemProps {
   isLoading: boolean;

@@ -1,6 +1,6 @@
 import { useRouter } from "next/dist/client/router";
 import styled from "styled-components";
-import TopBar from "../top-bar/TopBar";
+import TopBar from "../layout/top-bar/TopBar";
 
 const PageWrapper = styled.div`
   background-color: ${(props) => props.theme.color.neutral.darker};

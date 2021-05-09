@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import LimitedWidth from "../limited-width/LimitedWidth";
-import Menu from "../menu/Menu";
-import SearchBar from "../search/SearchBar";
+import Menu from "../../menu/Menu";
+import SearchBar from "../../search/SearchBar";
 
 const TopBarWrapper = styled.div`
   background-color: ${(props) => props.theme.color.neutral.darkest};

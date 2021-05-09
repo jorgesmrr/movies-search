@@ -1,13 +1,13 @@
-import MovieListItemFormat from "../../models/MovieListItemFormat";
-import TrendingTimeWindow from "../../models/TrendingTimeWindow";
-import { getNowPlayingMovies } from "../../network/resources/movie";
-import { getTrendingMovies } from "../../network/resources/trending";
-import Fetch from "../fetch/Fetch";
-import LimitedWidth from "../limited-width/LimitedWidth";
-import MovieList from "../movie/movie-list/MovieList";
-import { Heading2 } from "../style/style";
+import MovieListItemFormat from "../../../models/MovieListItemFormat";
+import TrendingTimeWindow from "../../../models/TrendingTimeWindow";
+import { getNowPlayingMovies } from "../../../network/resources/movie";
+import { getTrendingMovies } from "../../../network/resources/trending";
+import Fetch from "../../fetch/Fetch";
+import LimitedWidth from "../../layout/limited-width/LimitedWidth";
+import MovieList from "../../movie/movie-list/MovieList";
+import { Heading2 } from "../../style/style";
 
-const Home: React.FC = () => {
+const HomeScreen: React.FC = () => {
   return (
     <LimitedWidth>
       <Heading2>Trending Today</Heading2>
@@ -49,4 +49,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;
+export default HomeScreen;

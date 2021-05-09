@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Home from "../components/home/Home";
+import HomeScreen from "../components/screen/home-screen/HomeScreen";
 
 export default function HomePage() {
   return (
@@ -9,7 +9,7 @@ export default function HomePage() {
         <meta name="description" content="Discover movies" />
       </Head>
 
-      <Home />
+      <HomeScreen />
     </div>
   );
 }

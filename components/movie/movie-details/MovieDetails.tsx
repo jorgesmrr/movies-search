@@ -3,7 +3,7 @@ import useRequest from "../../../hooks/useRequest";
 import { PosterSizes } from "../../../network/costants";
 import { getMovie } from "../../../network/resources/movie";
 import PosterImage from "../../image/poster-image/PosterImage";
-import LimitedWidth from "../../limited-width/LimitedWidth";
+import LimitedWidth from "../../layout/limited-width/LimitedWidth";
 
 export interface MovieDetailsProps {
   id: number;

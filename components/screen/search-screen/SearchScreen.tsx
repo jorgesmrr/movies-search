@@ -1,8 +1,8 @@
-import MovieListItemFormat from "../../models/MovieListItemFormat";
-import { searchMovies } from "../../network/resources/search";
-import Fetch from "../fetch/Fetch";
-import LimitedWidth from "../limited-width/LimitedWidth";
-import MovieList from "../movie/movie-list/MovieList";
+import MovieListItemFormat from "../../../models/MovieListItemFormat";
+import { searchMovies } from "../../../network/resources/search";
+import Fetch from "../../fetch/Fetch";
+import LimitedWidth from "../../layout/limited-width/LimitedWidth";
+import MovieList from "../../movie/movie-list/MovieList";
 
 export interface SearchScreenProps {
   search: string;
