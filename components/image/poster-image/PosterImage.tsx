@@ -1,9 +1,10 @@
 import styled from "styled-components";
-import { getSmallPosterPath } from "../../../network/helpers";
+import { PosterSizes } from "../../../network/costants";
+import { getPosterPath } from "../../../network/helpers";
 
 export interface PosterImageProps {
   fileName: string;
-  tiny?: boolean;
+  size: PosterSizes;
 }
 
 const RoundedImage = styled.img`
@@ -13,14 +14,8 @@ const RoundedImage = styled.img`
   overflow: hidden;
 `;
 
-const PosterImage: React.FC<PosterImageProps> = ({ fileName, tiny }) => {
-  let source = null;
-
-  if (tiny) {
-    source = getSmallPosterPath(fileName);
-  }
-
-  return source && <RoundedImage src={source} />;
+const PosterImage: React.FC<PosterImageProps> = ({ fileName, size }) => {
+  return <RoundedImage src={getPosterPath(fileName, size)} />;
 };
 
 export default PosterImage;

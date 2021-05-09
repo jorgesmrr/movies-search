@@ -6,4 +6,9 @@ export const API_TRENDING = "/trending";
 export const API_SEARCH_MOVIES = "/search/movie";
 
 export const BASE_IMAGE_URL = "http://image.tmdb.org/t/p/";
-export const IMAGE_SIZE_POSTER_1 = "w92";
+export const POSTER_SIZES = [92, 100];
+
+export enum PosterSizes {
+  Tiny,
+  Large,
+}

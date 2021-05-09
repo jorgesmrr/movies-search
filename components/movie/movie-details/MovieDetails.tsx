@@ -1,6 +1,6 @@
 import format from "date-fns/format";
 import useRequest from "../../../hooks/useRequest";
-import { getSmallPosterPath } from "../../../network/helpers";
+import { getPosterPath } from "../../../network/helpers";
 import { getMovie } from "../../../network/resources/movie";
 import PosterImage from "../../image/poster-image/PosterImage";
 

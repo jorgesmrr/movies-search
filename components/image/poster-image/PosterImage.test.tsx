@@ -1,5 +1,5 @@
 import PosterImage from "./PosterImage";
-import { getSmallPosterPath } from "../../../network/helpers";
+import { getPosterPath } from "../../../network/helpers";
 import { customRender } from "../../../utils/testing";
 
 const posterFileName = "/xGuOF1T3WmPsAcQEQJfnG7Ud9f8.jpg";
@@ -18,9 +18,7 @@ describe("component renders", () => {
         <PosterImage fileName={posterFileName} tiny />
       );
       const image = getByRole("img");
-      expect(image.getAttribute("src")).toBe(
-        getSmallPosterPath(posterFileName)
-      );
+      expect(image.getAttribute("src")).toBe(getPosterPath(posterFileName));
     });
   });
 });

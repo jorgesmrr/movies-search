@@ -11,7 +11,11 @@ const Home: React.FC = () => {
         endpoint={getTrendingMovies(TrendingTimeWindow.Day)}
         dependencies={[]}
         render={({ data, ...state }) => (
-          <MovieList movies={data?.results} {...state} />
+          <MovieList
+            movies={data?.results.slice(0, 5)}
+            rowCount={6}
+            {...state}
+          />
         )}
       />
     </LimitedWidth>
