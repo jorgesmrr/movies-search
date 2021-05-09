@@ -13,15 +13,13 @@ describe("component renders", () => {
     expect(getByRole("img")).toBeTruthy();
   });
 
-  describe("should use the correct source", () => {
-    test("for tiny size", () => {
-      const { getByRole } = customRender(
-        <PosterImage fileName={posterFileName} size={PosterSizes.Tiny} />
-      );
-      const image = getByRole("img");
-      expect(image.getAttribute("src")).toBe(
-        getPosterPath(posterFileName, PosterSizes.Tiny)
-      );
-    });
+  test("should use the correct source", () => {
+    const { getByRole } = customRender(
+      <PosterImage fileName={posterFileName} size={PosterSizes.Tiny} />
+    );
+    const image = getByRole("img");
+    expect(image.getAttribute("src")).toBe(
+      getPosterPath(posterFileName, PosterSizes.Tiny)
+    );
   });
 });
