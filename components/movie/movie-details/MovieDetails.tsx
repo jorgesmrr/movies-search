@@ -3,6 +3,7 @@ import useRequest from "../../../hooks/useRequest";
 import { PosterSizes } from "../../../network/costants";
 import { getMovie } from "../../../network/resources/movie";
 import PosterImage from "../../image/poster-image/PosterImage";
+import LimitedWidth from "../../limited-width/LimitedWidth";
 
 export interface MovieDetailsProps {
   id: number;
@@ -17,7 +18,7 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ id }) => {
 
   if (movie) {
     return (
-      <div>
+      <LimitedWidth>
         <h1>{movie.title}</h1>
         <p>{movie.tagline}</p>
         <p>{movie.overview}</p>
@@ -33,7 +34,7 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ id }) => {
         <p>{movie.imdbId}</p>
 
         <PosterImage fileName={movie.poster} size={PosterSizes.Tiny} />
-      </div>
+      </LimitedWidth>
     );
   }
 

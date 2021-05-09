@@ -7,8 +7,9 @@ export const ListNone = styled.ul`
 `;
 
 const headingRules = `
-font-weight: 900;
+  font-weight: 900;
   text-transform: uppercase;
+  font-family: "Source Sans Pro", sans-serif;
   `;
 
 export const Heading1 = styled.h1`

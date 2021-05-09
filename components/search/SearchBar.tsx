@@ -22,6 +22,7 @@ const Input = styled.input`
   background-color: transparent;
   color: ${(props) => props.theme.color.white};
   outline: none;
+  font-size: 1.125rem;
 
   &:placeholder {
     color: ${(props) => props.theme.color.neutral.lighter};
