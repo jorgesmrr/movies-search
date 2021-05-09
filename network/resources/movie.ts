@@ -5,7 +5,7 @@ import { API_MOVIES } from "../costants";
 import Endpoint from "../endpoint";
 import { movieTransformer } from "../transformers";
 
-export const getMovie = (id: string): Endpoint<Movie> => () =>
+export const getMovie = (id: number): Endpoint<Movie> => () =>
   new Promise((resolve, reject) => {
     apiClient
       .get(`${API_MOVIES}/${id}`)

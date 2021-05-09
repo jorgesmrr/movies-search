@@ -4,14 +4,17 @@ import MovieDetails from "../components/movie/movie-details/MovieDetails";
 
 export default function HomePage() {
   const router = useRouter();
+  const id = parseInt(router.query.id as string);
 
   return (
-    <div>
-      <Head>
-        <title>Movie details</title>
-      </Head>
+    !isNaN(id) && (
+      <div>
+        <Head>
+          <title>Movie details</title>
+        </Head>
 
-      <MovieDetails id={router.query.id as string} />
-    </div>
+        <MovieDetails id={id} />
+      </div>
+    )
   );
 }

@@ -1,11 +1,11 @@
 import format from "date-fns/format";
 import useRequest from "../../../hooks/useRequest";
-import { getPosterPath } from "../../../network/helpers";
+import { PosterSizes } from "../../../network/costants";
 import { getMovie } from "../../../network/resources/movie";
 import PosterImage from "../../image/poster-image/PosterImage";
 
 export interface MovieDetailsProps {
-  id: string;
+  id: number;
 }
 
 const MovieDetails: React.FC<MovieDetailsProps> = ({ id }) => {
@@ -32,7 +32,7 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ id }) => {
         <p>{movie.runtime}</p>
         <p>{movie.imdbId}</p>
 
-        <PosterImage fileName={movie.poster} tiny />
+        <PosterImage fileName={movie.poster} size={PosterSizes.Tiny} />
       </div>
     );
   }

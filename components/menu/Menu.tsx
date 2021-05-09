@@ -26,8 +26,8 @@ const Menu: React.FC = () => {
   return (
     <nav>
       <MenuList>
-        {items.map((item) => (
-          <li>
+        {items.map((item, index) => (
+          <li key={index}>
             <Link href={item.href}>
               <StyledLink>{item.label}</StyledLink>
             </Link>
