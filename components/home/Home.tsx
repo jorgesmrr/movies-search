@@ -14,13 +14,17 @@ const Home: React.FC = () => {
       <Fetch
         endpoint={getTrendingMovies(TrendingTimeWindow.Day)}
         dependencies={[]}
-        render={({ data, ...state }) => (
+        render={({ data, isLoading, error }) => (
           <MovieList
-            {...state}
+            isLoading={isLoading}
+            error={error}
             movies={data?.results}
-            count={3}
+            count={9}
             format={MovieListItemFormat.Backdrop}
-          />
+            rowCount={3}
+          >
+            <MovieList.Slider activeSlide={0} />
+          </MovieList>
         )}
       />
 
@@ -28,13 +32,17 @@ const Home: React.FC = () => {
       <Fetch
         endpoint={getNowPlayingMovies()}
         dependencies={[]}
-        render={({ data, ...state }) => (
+        render={({ data, isLoading, error }) => (
           <MovieList
-            {...state}
+            isLoading={isLoading}
+            error={error}
             movies={data?.results}
-            count={6}
+            count={12}
             format={MovieListItemFormat.Poster}
-          />
+            rowCount={6}
+          >
+            <MovieList.Slider activeSlide={0} />
+          </MovieList>
         )}
       />
     </LimitedWidth>

@@ -13,7 +13,9 @@ describe("component renders", () => {
         count={1}
         rowCount={6}
         format={MovieListItemFormat.Poster}
-      />
+      >
+        <MovieList.Slider activeSlide={0} />
+      </MovieList>
     );
 
     expect(screen.getAllByTestId("poster-placeholder").length).toBe(1);
@@ -25,9 +27,11 @@ describe("component renders", () => {
         isLoading={true}
         error={false}
         count={1}
-        rowCount={6}
+        rowCount={5}
         format={MovieListItemFormat.Backdrop}
-      />
+      >
+        <MovieList.Slider activeSlide={0} />
+      </MovieList>
     );
 
     expect(screen.getAllByTestId("backdrop-placeholder").length).toBe(1);
@@ -42,7 +46,9 @@ describe("component renders", () => {
         count={fakeMovies.length}
         rowCount={6}
         format={MovieListItemFormat.Poster}
-      />
+      >
+        <MovieList.Slider activeSlide={0} />
+      </MovieList>
     );
 
     expect(

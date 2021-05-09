@@ -10,12 +10,14 @@ import PosterPlaceholder from "../../placeholder/PosterPlaceholder";
 export interface MovieListItemProps {
   isLoading: boolean;
   format: MovieListItemFormat;
+  size: PosterSizes | BackdropSizes;
   movie?: Movie;
 }
 
 const MovieListItem: React.FC<MovieListItemProps> = ({
   isLoading,
   format,
+  size,
   movie,
 }) => {
   if (isLoading) {
@@ -34,10 +36,10 @@ const MovieListItem: React.FC<MovieListItemProps> = ({
             {format === MovieListItemFormat.Backdrop ? (
               <BackdropImage
                 fileName={movie.backdrop}
-                size={BackdropSizes.Small}
+                size={size as BackdropSizes}
               />
             ) : (
-              <PosterImage fileName={movie.poster} size={PosterSizes.Tiny} />
+              <PosterImage fileName={movie.poster} size={size as PosterSizes} />
             )}
           </a>
         </Link>

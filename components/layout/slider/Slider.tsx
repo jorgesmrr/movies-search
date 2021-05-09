@@ -26,10 +26,12 @@ const FlexItem = styled.li<{ maxWidth: number; paddingRight: number }>`
 
 export interface SliderProps<T> {
   data: T[];
+  renderChild: (child: T) => React.ReactElement;
+  "aria-label": string;
   itemsPerSlide?: number;
   activeSlide?: number;
   gap?: number;
-  renderChild: (child: T) => React.ReactElement;
+  itemLabelGetter?: (item: T) => string;
 }
 
 function Slider<T>({
@@ -38,15 +40,22 @@ function Slider<T>({
   activeSlide = 0,
   gap = 1,
   renderChild,
+  "aria-label": ariaLabel,
+  itemLabelGetter,
 }: SliderProps<T>): React.ReactElement {
   return (
     <FlexWrapper>
-      <FlexContainer translateX={activeSlide * -100} extraWidth={gap}>
+      <FlexContainer
+        aria-label={ariaLabel}
+        translateX={activeSlide * -100}
+        extraWidth={gap}
+      >
         {data.map((item, index) => (
           <FlexItem
             key={index}
             maxWidth={(1 / itemsPerSlide) * 100}
             paddingRight={gap}
+            aria-label={itemLabelGetter && itemLabelGetter(item)}
           >
             {renderChild(item)}
           </FlexItem>

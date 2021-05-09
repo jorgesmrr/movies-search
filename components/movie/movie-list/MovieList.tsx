@@ -1,66 +1,93 @@
-import styled from "styled-components";
+import React from "react";
 import Movie from "../../../models/Movie";
 import MovieListItemFormat from "../../../models/MovieListItemFormat";
-import { ListNone } from "../../style/style";
+import { BackdropSizes, PosterSizes } from "../../../network/costants";
 import MovieListItem from "../movie-list-item/MovieListItem";
+import MovieListGrid from "./MovieListGrid";
+import MovieListSlider, { MovieListSliderProps } from "./MovieListSlider";
 
-const List = styled(ListNone)`
-  display: flex;
-  gap: 0.25rem;
-  flex-wrap: wrap;
-`;
+const backdropCountSizesMap = {
+  1: BackdropSizes.Big,
+  3: BackdropSizes.Regular,
+  5: BackdropSizes.Small,
+};
 
-const ListItem = styled.li<{ maxWidth: number }>`
-  flex: 1 0 ${(props) => props.maxWidth}%;
-  min-width: 92px;
-  max-width: ${(props) => props.maxWidth}%;
-  cursor: pointer;
-`;
+const posterCountSizesMap = {
+  3: PosterSizes.Big,
+  6: PosterSizes.Small,
+};
 
 export interface MovieListProps {
   isLoading: boolean;
   error: boolean;
-  movies?: Movie[];
   format: MovieListItemFormat;
   count: number;
-  rowCount?: number;
+  rowCount: number;
+  movies?: Movie[];
 }
 
-const MovieList: React.FC<MovieListProps> = ({
+interface MovieListContextValue {
+  movies?: Movie[];
+  size: BackdropSizes | PosterSizes;
+  renderChild: (movie?: Movie) => React.ReactElement;
+  isLoading: boolean;
+  error: boolean;
+  rowCount: number;
+}
+
+interface MovieListComposition {
+  Grid: React.FC;
+  Slider: React.FC<MovieListSliderProps>;
+}
+
+export const MovieListContext = React.createContext<MovieListContextValue>(
+  undefined
+);
+
+const MovieList: MovieListComposition & React.FC<MovieListProps> = ({
   isLoading,
   movies,
-  error,
-  format,
   count,
-  rowCount = count,
+  rowCount,
+  format,
+  children,
+  error,
 }) => {
-  if (error || (!isLoading && !movies)) {
-    return <div>Error!</div>;
-  }
+  const size =
+    format === MovieListItemFormat.Backdrop
+      ? backdropCountSizesMap[rowCount]
+      : posterCountSizesMap[rowCount];
 
-  const adjustedCount = movies ? Math.min(movies.length, count) : count;
+  const adjustedMovies: Array<Movie | undefined> = movies
+    ? movies.slice(0, count)
+    : [...new Array(count).map(() => undefined)];
+
+  const renderChild = (movie?: Movie) => (
+    <MovieListItem
+      isLoading={isLoading}
+      movie={movie}
+      format={format}
+      size={size}
+    />
+  );
 
   return (
-    <List aria-label="movies list">
-      {[...new Array(adjustedCount)].map((_, index) => {
-        const movie = !isLoading ? movies[index] : null;
-
-        return (
-          <ListItem
-            key={movie?.id || index}
-            aria-label={movie?.title}
-            maxWidth={(1 / rowCount) * 100}
-          >
-            <MovieListItem
-              isLoading={isLoading}
-              movie={movie}
-              format={format}
-            />
-          </ListItem>
-        );
-      })}
-    </List>
+    <MovieListContext.Provider
+      value={{
+        size,
+        movies: adjustedMovies,
+        renderChild,
+        isLoading,
+        rowCount,
+        error,
+      }}
+    >
+      {children}
+    </MovieListContext.Provider>
   );
 };
+
+MovieList.Grid = MovieListGrid;
+MovieList.Slider = MovieListSlider;
 
 export default MovieList;
