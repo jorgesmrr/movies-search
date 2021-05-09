@@ -22,7 +22,6 @@ const useRequest: <T>(
       setData(response as any);
     } catch (error) {
       setError(error);
-      console.error(error);
     }
     setLoading(false);
   };
