@@ -1,7 +1,7 @@
 import { waitFor } from "@testing-library/react";
 import * as useRequest from "../../hooks/useRequest";
 import TrendingTimeWindow from "../../models/TrendingTimeWindow";
-import { getTrendingMovies } from "../../network/resources/movie";
+import { getTrendingMovies } from "../../network/resources/trending";
 import { customRender } from "../../utils/testing";
 import Fetch from "./Fetch";
 

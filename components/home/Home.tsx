@@ -1,5 +1,5 @@
 import TrendingTimeWindow from "../../models/TrendingTimeWindow";
-import { getTrendingMovies } from "../../network/resources/movie";
+import { getTrendingMovies } from "../../network/resources/trending";
 import Fetch from "../fetch/Fetch";
 import LimitedWidth from "../limited-width/LimitedWidth";
 import MovieList from "../movie/movie-list/MovieList";

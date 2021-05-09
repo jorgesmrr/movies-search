@@ -1,8 +1,7 @@
-import userEvent from "@testing-library/user-event";
 import { customRender } from "../../utils/testing";
 import Home from "./Home";
 
-jest.mock("../../network/resources/movie");
+jest.mock("../../network/resources/trending");
 
 describe("component renders", () => {
   test("should show content", async () => {

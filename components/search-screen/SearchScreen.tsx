@@ -1,4 +1,4 @@
-import { searchMovies } from "../../network/resources/movie";
+import { searchMovies } from "../../network/resources/search";
 import Fetch from "../fetch/Fetch";
 import MovieList from "../movie/movie-list/MovieList";
 

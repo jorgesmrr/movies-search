@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import useRequest from "./useRequest";
 import { render, waitFor } from "@testing-library/react";
-import { getTrendingMovies } from "../network/resources/movie";
 import TrendingTimeWindow from "../models/TrendingTimeWindow";
-import { getTrendingMoviesFixture } from "../network/resources/__fixtures__/movie";
+import { getTrendingMovies } from "../network/resources/trending";
+import { getTrendingMoviesFixture } from "../network/resources/__fixtures__/trending";
 
-jest.mock("../network/resources/movie");
+jest.mock("../network/resources/trending");
 
 const FakeComponent = ({ watcher }) => {
   const useRequestState = useRequest(getTrendingMovies(TrendingTimeWindow.Day));
