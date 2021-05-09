@@ -1,3 +1,4 @@
+import MovieListItemFormat from "../../models/MovieListItemFormat";
 import { searchMovies } from "../../network/resources/search";
 import Fetch from "../fetch/Fetch";
 import MovieList from "../movie/movie-list/MovieList";
@@ -12,7 +13,13 @@ const SearchScreen: React.FC<SearchScreenProps> = ({ search }) => {
       endpoint={searchMovies(search)}
       dependencies={[search]}
       render={({ data, ...state }) => (
-        <MovieList movies={data.results} {...state} />
+        <MovieList
+          {...state}
+          movies={data.results}
+          count={6}
+          rowCount={6}
+          format={MovieListItemFormat.Poster}
+        />
       )}
     />
   );

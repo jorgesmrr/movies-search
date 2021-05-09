@@ -1,18 +1,48 @@
 import { screen } from "@testing-library/react";
+import MovieListItemFormat from "../../../models/MovieListItemFormat";
 import { fakeMovies } from "../../../models/__fixtures__/Movie";
 import { customRender } from "../../../utils/testing";
 import MovieList from "./MovieList";
 
 describe("component renders", () => {
-  test("should show spinner when loading movies", async () => {
-    customRender(<MovieList isLoading={true} error={false} />);
+  test("should show poster placeholder", async () => {
+    customRender(
+      <MovieList
+        isLoading={true}
+        error={false}
+        count={1}
+        rowCount={6}
+        format={MovieListItemFormat.Poster}
+      />
+    );
 
-    expect(screen.getByTestId("movie-list__spinner")).toBeTruthy();
+    expect(screen.getAllByTestId("poster-placeholder").length).toBe(1);
+  });
+
+  test("should show backdrop placeholder", async () => {
+    customRender(
+      <MovieList
+        isLoading={true}
+        error={false}
+        count={1}
+        rowCount={6}
+        format={MovieListItemFormat.Backdrop}
+      />
+    );
+
+    expect(screen.getAllByTestId("backdrop-placeholder").length).toBe(1);
   });
 
   test("should show movies list after load data", async () => {
     const { getByRole, getAllByRole } = customRender(
-      <MovieList isLoading={false} error={false} movies={fakeMovies} />
+      <MovieList
+        isLoading={false}
+        error={false}
+        movies={fakeMovies}
+        count={fakeMovies.length}
+        rowCount={6}
+        format={MovieListItemFormat.Poster}
+      />
     );
 
     expect(

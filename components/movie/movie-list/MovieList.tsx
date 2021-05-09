@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Movie from "../../../models/Movie";
+import MovieListItemFormat from "../../../models/MovieListItemFormat";
 import { ListNone } from "../../style/style";
 import MovieListItem from "../movie-list-item/MovieListItem";
 
@@ -20,6 +21,8 @@ export interface MovieListProps {
   isLoading: boolean;
   error: boolean;
   movies?: Movie[];
+  format: MovieListItemFormat;
+  count: number;
   rowCount?: number;
 }
 
@@ -27,33 +30,37 @@ const MovieList: React.FC<MovieListProps> = ({
   isLoading,
   movies,
   error,
-  rowCount = 10,
+  format,
+  count,
+  rowCount = count,
 }) => {
-  if (isLoading) {
-    return <div data-testid="movie-list__spinner" />;
-  }
-
-  if (error) {
+  if (error || (!isLoading && !movies)) {
     return <div>Error!</div>;
   }
 
-  if (movies) {
-    return (
-      <List aria-label="movies list">
-        {movies.map((movie) => (
+  const adjustedCount = movies ? Math.min(movies.length, count) : count;
+
+  return (
+    <List aria-label="movies list">
+      {[...new Array(adjustedCount)].map((_, index) => {
+        const movie = !isLoading ? movies[index] : null;
+
+        return (
           <ListItem
-            key={movie.id}
-            aria-label={movie.title}
+            key={movie?.id || index}
+            aria-label={movie?.title}
             maxWidth={(1 / rowCount) * 100}
           >
-            <MovieListItem movie={movie} />
+            <MovieListItem
+              isLoading={isLoading}
+              movie={movie}
+              format={format}
+            />
           </ListItem>
-        ))}
-      </List>
-    );
-  }
-
-  return null;
+        );
+      })}
+    </List>
+  );
 };
 
 export default MovieList;

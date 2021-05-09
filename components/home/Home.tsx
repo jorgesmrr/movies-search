@@ -1,4 +1,6 @@
+import MovieListItemFormat from "../../models/MovieListItemFormat";
 import TrendingTimeWindow from "../../models/TrendingTimeWindow";
+import { getNowPlayingMovies } from "../../network/resources/movie";
 import { getTrendingMovies } from "../../network/resources/trending";
 import Fetch from "../fetch/Fetch";
 import LimitedWidth from "../limited-width/LimitedWidth";
@@ -14,9 +16,24 @@ const Home: React.FC = () => {
         dependencies={[]}
         render={({ data, ...state }) => (
           <MovieList
-            movies={data?.results.slice(0, 5)}
-            rowCount={6}
             {...state}
+            movies={data?.results}
+            count={3}
+            format={MovieListItemFormat.Backdrop}
+          />
+        )}
+      />
+
+      <Heading2>Now In Theaters</Heading2>
+      <Fetch
+        endpoint={getNowPlayingMovies()}
+        dependencies={[]}
+        render={({ data, ...state }) => (
+          <MovieList
+            {...state}
+            movies={data?.results}
+            count={6}
+            format={MovieListItemFormat.Poster}
           />
         )}
       />
