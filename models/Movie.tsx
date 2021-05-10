@@ -12,9 +12,10 @@ export default interface Movie {
   language: string;
   releaseDate: Date;
   runtime: number;
+  voteAverage: number;
 
   tagline: string;
   overview: string;
 
-  imdbId: number;
+  imdbId: string;
 }

@@ -29,6 +29,7 @@ const theme: DefaultTheme = {
     sm: 996,
     md: 1024,
   },
+  pageWidth: 78,
 };
 
 export default theme;

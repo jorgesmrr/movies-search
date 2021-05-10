@@ -1,6 +1,6 @@
 import { useRouter } from "next/dist/client/router";
 import Head from "next/head";
-import MovieDetails from "../components/movie/movie-details/MovieDetails";
+import MovieScreen from "../components/screen/movie-screen/MovieScreen";
 
 export default function HomePage() {
   const router = useRouter();
@@ -13,7 +13,7 @@ export default function HomePage() {
           <title>Movie details</title>
         </Head>
 
-        <MovieDetails id={id} />
+        <MovieScreen id={id} />
       </div>
     )
   );

@@ -29,3 +29,16 @@ export const Heading2 = styled.h2`
     font-size: ${(props) => props.theme.fontSize.desktop[4]}rem;
   }
 `;
+
+export interface RoundedImageProps {
+  height?: string;
+}
+
+export const RoundedImage = styled.img<RoundedImageProps>`
+  display: block;
+  border-radius: ${(props) => props.theme.radius};
+  width: 100%;
+  height: ${(props) => props.height || "auto"};
+  overflow: hidden;
+  object-fit: cover;
+`;

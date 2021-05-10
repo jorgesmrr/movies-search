@@ -1,11 +1,7 @@
 import styled from "styled-components";
 
-interface LimitedWidthProps {
-  maxWidth?: number;
-}
-
-const LimitedWidth = styled.div`
-  max-width: ${(props: LimitedWidthProps) => (props.maxWidth || 78) + "rem"};
+const LimitedWidth = styled.div<{ maxWidth?: number }>`
+  max-width: ${(props) => (props.maxWidth || props.theme.pageWidth) + "rem"};
   margin: 0 auto;
 `;
 

@@ -1,8 +1,8 @@
 import { screen, waitFor } from "@testing-library/react";
-import MovieDetails from "./MovieDetails";
 import * as useRequest from "../../../hooks/useRequest";
 import { fakeMovie } from "../../../models/__fixtures__/Movie";
 import { customRender } from "../../../utils/testing";
+import MovieScreen from "./MovieScreen";
 
 jest.mock("../../../hooks/useRequest");
 const mockedUseRequest = (useRequest as jest.Mocked<typeof useRequest>).default;
@@ -15,7 +15,7 @@ describe("component renders", () => {
       data: null,
     });
 
-    customRender(<MovieDetails id={fakeMovie.id} />);
+    customRender(<MovieScreen id={fakeMovie.id} />);
     await waitFor(() => expect(mockedUseRequest).toHaveBeenCalledTimes(1));
 
     expect(screen.getByTestId("movie-details__spinner")).toBeTruthy();
@@ -28,7 +28,7 @@ describe("component renders", () => {
       data: fakeMovie,
     });
 
-    const { getByRole } = customRender(<MovieDetails id={fakeMovie.id} />);
+    const { getByRole } = customRender(<MovieScreen id={fakeMovie.id} />);
     await waitFor(() => expect(mockedUseRequest).toHaveBeenCalledTimes(1));
 
     expect(

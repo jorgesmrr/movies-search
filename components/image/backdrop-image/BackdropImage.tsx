@@ -1,21 +1,18 @@
-import styled from "styled-components";
 import { BackdropSizes } from "../../../network/costants";
 import { getBackdropPath } from "../../../network/helpers";
+import { RoundedImage, RoundedImageProps } from "../../style/style";
 
 export interface BackdropImageProps {
   fileName: string;
   size: BackdropSizes;
 }
 
-const RoundedImage = styled.img`
-  border-radius: ${(props) => props.theme.radius};
-  width: 100%;
-  height: auto;
-  overflow: hidden;
-`;
-
-const BackdropImage: React.FC<BackdropImageProps> = ({ fileName, size }) => {
-  return <RoundedImage src={getBackdropPath(fileName, size)} />;
+const BackdropImage: React.FC<RoundedImageProps & BackdropImageProps> = ({
+  fileName,
+  size,
+  height,
+}) => {
+  return <RoundedImage src={getBackdropPath(fileName, size)} height={height} />;
 };
 
 export default BackdropImage;

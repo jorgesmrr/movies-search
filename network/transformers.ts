@@ -15,6 +15,7 @@ export const movieTransformer: (responseData: any) => Movie = (
   language: responseData.original_language,
   releaseDate: parse(responseData.release_date, "yyyy-MM-dd", new Date()),
   runtime: responseData.runtime,
+  voteAverage: responseData.vote_average,
 
   tagline: responseData.tagline,
   overview: responseData.overview,
