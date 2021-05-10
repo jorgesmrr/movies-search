@@ -7,12 +7,20 @@ export interface BackdropImageProps {
   size: BackdropSizes;
 }
 
+// TODO merge with  PosterImage
 const BackdropImage: React.FC<RoundedImageProps & BackdropImageProps> = ({
   fileName,
   size,
   height,
+  shadowLevel,
 }) => {
-  return <RoundedImage src={getBackdropPath(fileName, size)} height={height} />;
+  return (
+    <RoundedImage
+      src={getBackdropPath(fileName, size)}
+      height={height}
+      shadowLevel={shadowLevel}
+    />
+  );
 };
 
 export default BackdropImage;

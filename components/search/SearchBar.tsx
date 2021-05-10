@@ -14,6 +14,12 @@ const Bar = styled.div`
   padding: 0.5rem;
   width: 20rem;
   box-shadow: ${(props) => props.theme.shadow[0]};
+  opacity: 0.75;
+
+  &:hover,
+  &:focus {
+    opacity: 1;
+  }
 `;
 
 const Input = styled.input`

@@ -10,7 +10,7 @@ const MenuList = styled(ListNone)`
 `;
 
 const StyledLink = styled.a`
-  color: ${(props) => props.theme.color.white};
+  color: ${(props) => props.theme.color.neutral.lightest};
   cursor: pointer;
 `;
 

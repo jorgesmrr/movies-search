@@ -1,7 +1,7 @@
 import { DefaultTheme } from "styled-components";
 
 const theme: DefaultTheme = {
-  radius: "2px",
+  radius: "15px",
   color: {
     white: "white",
     neutral: {

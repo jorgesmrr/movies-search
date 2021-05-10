@@ -3,9 +3,8 @@ import styled from "styled-components";
 import TopBar from "../layout/top-bar/TopBar";
 
 const PageWrapper = styled.div`
-  background-color: ${(props) => props.theme.color.neutral.darker};
+  background-color: ${(props) => props.theme.color.neutral.darkest};
   min-height: 100vh;
-  padding-top: 5rem;
 `;
 
 const PageContents = styled.div`

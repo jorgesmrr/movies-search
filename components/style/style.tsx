@@ -30,8 +30,19 @@ export const Heading2 = styled.h2`
   }
 `;
 
+export const Subtitle = styled.p`
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: ${(props) => props.theme.fontSize.mobile[2]}rem;
+
+  @media (min-width: ${(props) => props.theme.breakpoints.sm}px) {
+    font-size: ${(props) => props.theme.fontSize.desktop[2]}rem;
+  }
+`;
+
 export interface RoundedImageProps {
   height?: string;
+  shadowLevel?: number;
 }
 
 export const RoundedImage = styled.img<RoundedImageProps>`
@@ -41,4 +52,8 @@ export const RoundedImage = styled.img<RoundedImageProps>`
   height: ${(props) => props.height || "auto"};
   overflow: hidden;
   object-fit: cover;
+  ${(props) =>
+    props.shadowLevel
+      ? `box-shadow: ${props.theme.shadow[props.shadowLevel]}`
+      : ""}
 `;

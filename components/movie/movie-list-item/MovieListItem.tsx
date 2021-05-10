@@ -37,9 +37,14 @@ const MovieListItem: React.FC<MovieListItemProps> = ({
               <BackdropImage
                 fileName={movie.backdrop}
                 size={size as BackdropSizes}
+                shadowLevel={2}
               />
             ) : (
-              <PosterImage fileName={movie.poster} size={size as PosterSizes} />
+              <PosterImage
+                fileName={movie.poster}
+                size={size as PosterSizes}
+                shadowLevel={2}
+              />
             )}
           </a>
         </Link>
