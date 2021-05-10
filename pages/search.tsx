@@ -8,8 +8,7 @@ export default function HomePage() {
   return (
     <div>
       <Head>
-        <title>Movies details</title>
-        <meta name="description" content="Search results" />
+        <title>Search results</title>
       </Head>
 
       <SearchScreen search={router.query.q as string} />

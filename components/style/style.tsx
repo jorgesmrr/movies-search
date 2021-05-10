@@ -14,7 +14,11 @@ const headingRules = `
 
 export const Heading1 = styled.h1`
   ${headingRules}
-  font-size: ${(props) => props.theme.fontSize.mobile[3]}
+  font-size: ${(props) => props.theme.fontSize.mobile[5]}rem;
+
+  @media (min-width: ${(props) => props.theme.breakpoints.sm}px) {
+    font-size: ${(props) => props.theme.fontSize.desktop[5]}rem;
+  }
 `;
 
 export const Heading2 = styled.h2`

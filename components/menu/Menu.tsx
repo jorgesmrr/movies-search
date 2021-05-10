@@ -17,10 +17,10 @@ const StyledLink = styled.a`
 const Menu: React.FC = () => {
   const items: { label: string; href: string }[] = [
     { label: "Home", href: "/" },
-    { label: "Trending", href: "/" },
-    { label: "Popular", href: "/" },
-    { label: "Top Rated", href: "/" },
-    { label: "In Theaters", href: "/" },
+    { label: "Trending", href: "/trending" },
+    { label: "Popular", href: "/popular" },
+    { label: "Top Rated", href: "/top-rated" },
+    { label: "In Theaters", href: "/in-theaters" },
   ];
 
   return (
