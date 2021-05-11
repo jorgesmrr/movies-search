@@ -20,7 +20,6 @@ const FlexItem = styled.li<{ maxWidth: number; paddingRight: number }>`
   flex: 1 0 ${(props) => props.maxWidth}%;
   width: 100%;
   max-width: ${(props) => props.maxWidth}%;
-  cursor: pointer;
   padding-right: ${(props) => props.paddingRight}rem;
 `;
 

@@ -26,7 +26,7 @@ const Aside = styled.aside`
 `;
 
 const PosterTranslation = styled.div`
-  transform: translateY(-12rem);
+  transform: translateY(-20vh);
 `;
 
 export interface MovieScreenProps {

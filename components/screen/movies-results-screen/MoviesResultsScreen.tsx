@@ -6,7 +6,7 @@ import Endpoint from "../../../network/endpoint";
 import Fetch from "../../fetch/Fetch";
 import LimitedWidth from "../../layout/limited-width/LimitedWidth";
 import MovieList from "../../movie/movie-list/MovieList";
-import { Heading1 } from "../../style/style";
+import { Heading1, RegularPageContent } from "../../style/style";
 
 export interface MoviesResultsScreenProps {
   title: string;
@@ -20,25 +20,27 @@ const MoviesResultsScreen: React.FC<MoviesResultsScreenProps> = ({
   dependencies = [],
 }) => {
   return (
-    <LimitedWidth>
-      <Heading1>{title}</Heading1>
-      <Fetch
-        endpoint={endpoint}
-        dependencies={dependencies}
-        render={({ data, isLoading, error }) => (
-          <MovieList
-            isLoading={isLoading}
-            error={error}
-            movies={data?.results}
-            count={20}
-            rowCount={6}
-            imageType={MovieImageType.Poster}
-          >
-            <MovieList.Grid />
-          </MovieList>
-        )}
-      />
-    </LimitedWidth>
+    <RegularPageContent>
+      <LimitedWidth>
+        <Heading1>{title}</Heading1>
+        <Fetch
+          endpoint={endpoint}
+          dependencies={dependencies}
+          render={({ data, isLoading, error }) => (
+            <MovieList
+              isLoading={isLoading}
+              error={error}
+              movies={data?.results}
+              count={20}
+              rowCount={6}
+              imageType={MovieImageType.Poster}
+            >
+              <MovieList.Grid />
+            </MovieList>
+          )}
+        />
+      </LimitedWidth>
+    </RegularPageContent>
   );
 };
 

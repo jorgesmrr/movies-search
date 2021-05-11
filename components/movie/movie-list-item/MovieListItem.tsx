@@ -16,6 +16,7 @@ const RoundedContainer = styled.div`
 const StyledLink = styled.a`
   position: relative;
   display: block;
+  cursor: pointer;
 `;
 
 const Title = styled.p`

@@ -58,6 +58,10 @@ export const RoundedImage = styled.img<RoundedImageProps>`
       : ""}
 `;
 
+export const RegularPageContent = styled.div`
+  margin-top: 7rem;
+`;
+
 export const easedDarkGradient: (
   direction: "top" | "right" | "bottom" | "left",
   lightness?: number
