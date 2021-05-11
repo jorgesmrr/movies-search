@@ -27,6 +27,7 @@ const TopBarBackground = styled.div`
 const TopBarContents = styled(LimitedWidth)`
   position: relative;
   z-index: 2;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;

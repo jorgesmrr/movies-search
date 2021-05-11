@@ -13,7 +13,9 @@ export const movieTransformer: (responseData: any) => Movie = (
   isAdult: responseData.adult,
   genres: responseData.genres || [],
   language: responseData.original_language,
-  releaseDate: parse(responseData.release_date, "yyyy-MM-dd", new Date()),
+  releaseDate: responseData.release_date
+    ? parse(responseData.release_date, "yyyy-MM-dd", new Date())
+    : null,
   runtime: responseData.runtime,
   voteAverage: responseData.vote_average,
 

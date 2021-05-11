@@ -6,6 +6,7 @@ import PosterImage from "../../image/poster-image/PosterImage";
 import LimitedWidth from "../../layout/limited-width/LimitedWidth";
 import MovieDetails from "../../movie/movie-details/MovieDetails";
 import MovieHero from "../../movie/movie-hero/MovieHero";
+import MovieMetadata from "../../movie/movie-metadata/MovieMetadata";
 
 const Contents = styled.div`
   box-shadow: ${(props) => props.theme.shadow[2]};
@@ -14,7 +15,7 @@ const Contents = styled.div`
 const Grid = styled(LimitedWidth)`
   display: flex;
   padding: 0 2rem;
-  gap: 2rem;
+  gap: 3rem;
 `;
 
 const Main = styled.main`
@@ -56,6 +57,7 @@ const MovieScreen: React.FC<MovieScreenProps> = ({ id }) => {
                   size={PosterSizes.Big}
                   shadowLevel={3}
                 />
+                <MovieMetadata movie={movie} />
               </PosterTranslation>
             </Aside>
           </Grid>

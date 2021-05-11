@@ -10,12 +10,10 @@ export default interface Movie {
   isAdult: boolean;
   genres: Genre[];
   language: string;
-  releaseDate: Date;
-  runtime: number;
-  voteAverage: number;
+  releaseDate?: Date;
+  runtime?: number;
+  voteAverage?: number;
 
   tagline: string;
   overview: string;
-
-  imdbId: string;
 }

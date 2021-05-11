@@ -1,9 +1,7 @@
-import styled from "styled-components";
+import styled, { DefaultTheme } from "styled-components";
 
 export const ListNone = styled.ul`
   list-style: none;
-  padding-left: 0;
-  padding-start: 0;
 `;
 
 const headingRules = `
@@ -12,32 +10,32 @@ const headingRules = `
   font-family: "Source Sans Pro", sans-serif;
   `;
 
+export const textSize = (theme: DefaultTheme, level: number): string => `
+font-size: ${theme.fontSize.mobile[level]}rem;
+
+@media (min-width: ${theme.breakpoints.sm}px) {
+  font-size: ${theme.fontSize.desktop[level]}rem;
+}
+`;
+
+export const TextSmall = styled.span`
+  ${({ theme }) => textSize(theme, 0)}
+`;
+
 export const Heading1 = styled.h1`
   ${headingRules}
-  font-size: ${(props) => props.theme.fontSize.mobile[5]}rem;
-
-  @media (min-width: ${(props) => props.theme.breakpoints.sm}px) {
-    font-size: ${(props) => props.theme.fontSize.desktop[5]}rem;
-  }
+  ${({ theme }) => textSize(theme, 5)}
 `;
 
 export const Heading2 = styled.h2`
   ${headingRules}
-  font-size: ${(props) => props.theme.fontSize.mobile[4]}rem;
-
-  @media (min-width: ${(props) => props.theme.breakpoints.sm}px) {
-    font-size: ${(props) => props.theme.fontSize.desktop[4]}rem;
-  }
+  ${({ theme }) => textSize(theme, 4)}
 `;
 
 export const Subtitle = styled.p`
   font-weight: 600;
   text-transform: uppercase;
-  font-size: ${(props) => props.theme.fontSize.mobile[2]}rem;
-
-  @media (min-width: ${(props) => props.theme.breakpoints.sm}px) {
-    font-size: ${(props) => props.theme.fontSize.desktop[2]}rem;
-  }
+  ${({ theme }) => textSize(theme, 2)}
 `;
 
 export interface RoundedImageProps {
@@ -67,6 +65,19 @@ export const FixedAspect = styled.div<{ heightWidthRatio: number }>`
   height: 0;
   padding-bottom: ${(props) => props.heightWidthRatio * 100}%;
   overflow: hidden;
+`;
+
+export const Card = styled.div`
+  padding: 0.5rem 1rem;
+  background-color: ${({ theme }) => theme.color.neutral.darker};
+  box-shadow: ${({ theme }) => theme.shadow[0]};
+  border-radius: ${({ theme }) => theme.radius};
+`;
+
+export const Badge = styled.span`
+  padding: 0.25em 0.75em;
+  border: 1px solid ${({ theme }) => theme.color.neutral.lighter};
+  border-radius: ${({ theme }) => theme.radius};
 `;
 
 export const easedDarkGradient: (
