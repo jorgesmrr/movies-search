@@ -1,6 +1,6 @@
 import { DependencyList } from "react";
 import Movie from "../../../models/Movie";
-import MovieListItemFormat from "../../../models/MovieListItemFormat";
+import MovieImageType from "../../../models/MovieImageType";
 import PagedResponse from "../../../models/PagedResponse";
 import Endpoint from "../../../network/endpoint";
 import Fetch from "../../fetch/Fetch";
@@ -32,7 +32,7 @@ const MoviesResultsScreen: React.FC<MoviesResultsScreenProps> = ({
             movies={data?.results}
             count={20}
             rowCount={6}
-            format={MovieListItemFormat.Poster}
+            imageType={MovieImageType.Poster}
           >
             <MovieList.Grid />
           </MovieList>

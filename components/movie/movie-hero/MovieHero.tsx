@@ -3,6 +3,7 @@ import styled, { ThemeContext } from "styled-components";
 import { BackdropSizes } from "../../../network/costants";
 import BackdropImage from "../../image/backdrop-image/BackdropImage";
 import LimitedWidth from "../../layout/limited-width/LimitedWidth";
+import { easedDarkGradient } from "../../style/style";
 
 const Container = styled.div`
   background: black;
@@ -24,34 +25,16 @@ const ContentContainer = styled(LimitedWidth)`
     width: 15%;
     background: black;
     z-index: 1;
-    background: linear-gradient(
-      to right,
-      hsl(0, 0%, 0%) 0%,
-      hsla(0, 0%, 0%, 0.987) 8.1%,
-      hsla(0, 0%, 0%, 0.951) 15.5%,
-      hsla(0, 0%, 0%, 0.896) 22.5%,
-      hsla(0, 0%, 0%, 0.825) 29%,
-      hsla(0, 0%, 0%, 0.741) 35.3%,
-      hsla(0, 0%, 0%, 0.648) 41.2%,
-      hsla(0, 0%, 0%, 0.55) 47.1%,
-      hsla(0, 0%, 0%, 0.45) 52.9%,
-      hsla(0, 0%, 0%, 0.352) 58.8%,
-      hsla(0, 0%, 0%, 0.259) 64.7%,
-      hsla(0, 0%, 0%, 0.175) 71%,
-      hsla(0, 0%, 0%, 0.104) 77.5%,
-      hsla(0, 0%, 0%, 0.049) 84.5%,
-      hsla(0, 0%, 0%, 0.013) 91.9%,
-      hsla(0, 0%, 0%, 0) 100%
-    );
   }
 
   &:before {
     left: 0;
+    background: ${easedDarkGradient("right")};
   }
 
   &:after {
     right: 0;
-    transform: rotate(180deg);
+    background: ${easedDarkGradient("left")};
   }
 `;
 

@@ -1,4 +1,4 @@
-import MovieListItemFormat from "../../../models/MovieListItemFormat";
+import MovieImageType from "../../../models/MovieImageType";
 import TrendingTimeWindow from "../../../models/TrendingTimeWindow";
 import { getNowPlayingMovies } from "../../../network/resources/movie";
 import { getTrendingMovies } from "../../../network/resources/trending";
@@ -20,7 +20,7 @@ const HomeScreen: React.FC = () => {
             error={error}
             movies={data?.results}
             count={9}
-            format={MovieListItemFormat.Backdrop}
+            imageType={MovieImageType.Backdrop}
             rowCount={3}
           >
             <MovieList.Slider activeSlide={0} />
@@ -38,7 +38,7 @@ const HomeScreen: React.FC = () => {
             error={error}
             movies={data?.results}
             count={12}
-            format={MovieListItemFormat.Poster}
+            imageType={MovieImageType.Poster}
             rowCount={6}
           >
             <MovieList.Slider activeSlide={0} />

@@ -7,8 +7,14 @@
 html {
   font-family: "Open Sans", sans-serif;
   font-size: 16px;
+  background-color: #141414;
 }
 
 body {
   margin: 0;
+  color: white;
+}
+
+a {
+  color: currentColor;
 }

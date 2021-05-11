@@ -1,4 +1,4 @@
-import MovieListItemFormat from "../../../models/MovieListItemFormat";
+import MovieImageType from "../../../models/MovieImageType";
 import { searchMovies } from "../../../network/resources/search";
 import Fetch from "../../fetch/Fetch";
 import LimitedWidth from "../../layout/limited-width/LimitedWidth";
@@ -21,7 +21,7 @@ const SearchScreen: React.FC<SearchScreenProps> = ({ search }) => {
             movies={data?.results}
             count={20}
             rowCount={6}
-            format={MovieListItemFormat.Poster}
+            imageType={MovieImageType.Poster}
           >
             <MovieList.Grid />
           </MovieList>

@@ -1,6 +1,6 @@
 import React from "react";
 import Movie from "../../../models/Movie";
-import MovieListItemFormat from "../../../models/MovieListItemFormat";
+import MovieImageType from "../../../models/MovieImageType";
 import { BackdropSizes, PosterSizes } from "../../../network/costants";
 import MovieListItem from "../movie-list-item/MovieListItem";
 import MovieListGrid from "./MovieListGrid";
@@ -20,7 +20,7 @@ const posterCountSizesMap = {
 export interface MovieListProps {
   isLoading: boolean;
   error: boolean;
-  format: MovieListItemFormat;
+  imageType: MovieImageType;
   count: number;
   rowCount: number;
   movies?: Movie[];
@@ -32,7 +32,7 @@ interface MovieListContextValue {
   renderChild: (movie?: Movie) => React.ReactElement;
   isLoading: boolean;
   error: boolean;
-  rowCount: number;
+  rowCount?: number;
 }
 
 interface MovieListComposition {
@@ -48,13 +48,13 @@ const MovieList: MovieListComposition & React.FC<MovieListProps> = ({
   isLoading,
   movies,
   count,
-  rowCount,
-  format,
+  rowCount = count,
+  imageType,
   children,
   error,
 }) => {
-  const size =
-    format === MovieListItemFormat.Backdrop
+  const size: BackdropSizes | PosterSizes =
+    imageType === MovieImageType.Backdrop
       ? backdropCountSizesMap[rowCount]
       : posterCountSizesMap[rowCount];
 
@@ -66,7 +66,7 @@ const MovieList: MovieListComposition & React.FC<MovieListProps> = ({
     <MovieListItem
       isLoading={isLoading}
       movie={movie}
-      format={format}
+      imageType={imageType}
       size={size}
     />
   );

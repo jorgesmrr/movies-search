@@ -1,27 +1,66 @@
 import Link from "next/link";
+import styled from "styled-components";
 import Movie from "../../../models/Movie";
-import MovieListItemFormat from "../../../models/MovieListItemFormat";
+import MovieImageType from "../../../models/MovieImageType";
 import { BackdropSizes, PosterSizes } from "../../../network/costants";
-import BackdropImage from "../../image/backdrop-image/BackdropImage";
-import PosterImage from "../../image/poster-image/PosterImage";
 import BackdropPlaceholder from "../../layout/placeholder/BackdropPlaceholder";
 import PosterPlaceholder from "../../layout/placeholder/PosterPlaceholder";
+import { easedDarkGradient } from "../../style/style";
+import MovieImage from "../movie-image/MovieImage";
+
+const RoundedContainer = styled.div`
+  border-radius: ${(props) => props.theme.radius};
+  overflow: hidden;
+`;
+
+const StyledLink = styled.a`
+  position: relative;
+  display: block;
+`;
+
+const Title = styled.p`
+  font-size: 1.125rem;
+  text-transform: uppercase;
+  padding: 0 ${(props) => props.theme.radius};
+  margin-top: 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+
+const BackdropTitle = styled(Title)`
+  position: absolute;
+  left: 0;
+  bottom: 1rem;
+  margin: 0;
+`;
+
+const BackdropOverlay = styled.div`
+  position: absolute;
+  top: 35%;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: ${easedDarkGradient("top", 3.9)};
+`;
 
 export interface MovieListItemProps {
   isLoading: boolean;
-  format: MovieListItemFormat;
+  imageType: MovieImageType;
   size: PosterSizes | BackdropSizes;
   movie?: Movie;
 }
 
 const MovieListItem: React.FC<MovieListItemProps> = ({
   isLoading,
-  format,
+  imageType,
   size,
   movie,
 }) => {
   if (isLoading) {
-    return format === MovieListItemFormat.Backdrop ? (
+    return imageType === MovieImageType.Backdrop ? (
       <BackdropPlaceholder />
     ) : (
       <PosterPlaceholder />
@@ -29,26 +68,30 @@ const MovieListItem: React.FC<MovieListItemProps> = ({
   }
 
   if (movie) {
+    const imagePath =
+      imageType === MovieImageType.Backdrop ? movie.backdrop : movie.poster;
+
     return (
-      <div key={movie.id}>
+      <RoundedContainer key={movie.id}>
         <Link href={`/movie?id=${movie.id}`}>
-          <a>
-            {format === MovieListItemFormat.Backdrop ? (
-              <BackdropImage
-                fileName={movie.backdrop}
-                size={size as BackdropSizes}
-                shadowLevel={2}
-              />
+          <StyledLink>
+            <MovieImage
+              type={imageType}
+              path={imagePath}
+              size={size}
+              shadowLevel={2}
+            />
+            {imageType === MovieImageType.Backdrop ? (
+              <>
+                <BackdropOverlay />
+                <BackdropTitle>{movie.title}</BackdropTitle>
+              </>
             ) : (
-              <PosterImage
-                fileName={movie.poster}
-                size={size as PosterSizes}
-                shadowLevel={2}
-              />
+              <Title>{movie.title}</Title>
             )}
-          </a>
+          </StyledLink>
         </Link>
-      </div>
+      </RoundedContainer>
     );
   }
 

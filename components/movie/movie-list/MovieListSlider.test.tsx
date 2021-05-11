@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
-import MovieListItemFormat from "../../../models/MovieListItemFormat";
-import { fakeMovies } from "../../../models/__fixtures__/Movie";
+import MovieImageType from "../../../models/MovieImageType";
+import { fakeMovie } from "../../../models/__fixtures__/Movie";
 import { customRender } from "../../../utils/testing";
 import MovieList from "./MovieList";
 
@@ -12,7 +12,7 @@ describe("component renders", () => {
         error={false}
         count={1}
         rowCount={6}
-        format={MovieListItemFormat.Poster}
+        imageType={MovieImageType.Poster}
       >
         <MovieList.Slider activeSlide={0} />
       </MovieList>
@@ -28,7 +28,7 @@ describe("component renders", () => {
         error={false}
         count={1}
         rowCount={5}
-        format={MovieListItemFormat.Backdrop}
+        imageType={MovieImageType.Backdrop}
       >
         <MovieList.Slider activeSlide={0} />
       </MovieList>
@@ -42,10 +42,10 @@ describe("component renders", () => {
       <MovieList
         isLoading={false}
         error={false}
-        movies={fakeMovies}
-        count={fakeMovies.length}
+        movies={[fakeMovie]}
+        count={6}
         rowCount={6}
-        format={MovieListItemFormat.Poster}
+        imageType={MovieImageType.Poster}
       >
         <MovieList.Slider activeSlide={0} />
       </MovieList>
@@ -55,7 +55,7 @@ describe("component renders", () => {
       await screen.findByRole("list", { name: "movies list" })
     ).toBeTruthy();
 
-    expect(getByRole("listitem", { name: fakeMovies[0].title }));
-    expect(getAllByRole("listitem").length).toBe(fakeMovies.length);
+    expect(getByRole("listitem", { name: fakeMovie.title }));
+    expect(getAllByRole("listitem").length).toBe(1);
   });
 });
