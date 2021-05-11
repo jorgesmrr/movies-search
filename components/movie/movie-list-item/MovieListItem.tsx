@@ -1,22 +1,28 @@
 import Link from "next/link";
+import React from "react";
 import styled from "styled-components";
 import Movie from "../../../models/Movie";
 import MovieImageType from "../../../models/MovieImageType";
 import { BackdropSizes, PosterSizes } from "../../../network/costants";
-import BackdropPlaceholder from "../../layout/placeholder/BackdropPlaceholder";
-import PosterPlaceholder from "../../layout/placeholder/PosterPlaceholder";
+import MovieImagePlaceholder from "../movie-image-placeholder/MovieImagePlaceholder";
 import { easedDarkGradient } from "../../style/style";
 import MovieImage from "../movie-image/MovieImage";
 
 const RoundedContainer = styled.div`
+  position: relative;
   border-radius: ${(props) => props.theme.radius};
+  box-shadow: ${(props) => props.theme.shadow[2]};
   overflow: hidden;
 `;
 
 const StyledLink = styled.a`
-  position: relative;
   display: block;
   cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 `;
 
 const Title = styled.p`
@@ -60,43 +66,48 @@ const MovieListItem: React.FC<MovieListItemProps> = ({
   size,
   movie,
 }) => {
-  if (isLoading) {
-    return imageType === MovieImageType.Backdrop ? (
-      <BackdropPlaceholder />
-    ) : (
-      <PosterPlaceholder />
-    );
+  if (!isLoading && !movie) {
+    return <div>Error</div>; // TODO style this
   }
 
-  if (movie) {
+  let renderedContent: React.ReactElement = null;
+
+  if (!isLoading && movie) {
     const imagePath =
       imageType === MovieImageType.Backdrop ? movie.backdrop : movie.poster;
 
-    return (
-      <RoundedContainer key={movie.id}>
-        <Link href={`/movie?id=${movie.id}`}>
-          <StyledLink>
-            <MovieImage
-              type={imageType}
-              path={imagePath}
-              size={size}
-              shadowLevel={2}
-            />
-            {imageType === MovieImageType.Backdrop ? (
-              <>
-                <BackdropOverlay />
-                <BackdropTitle>{movie.title}</BackdropTitle>
-              </>
-            ) : (
-              <Title>{movie.title}</Title>
-            )}
-          </StyledLink>
-        </Link>
-      </RoundedContainer>
+    renderedContent = (
+      <Link href={`/movie?id=${movie.id}`}>
+        <StyledLink>
+          <MovieImage
+            type={imageType}
+            path={imagePath}
+            size={size}
+            height="100%"
+          />
+          {imageType === MovieImageType.Backdrop && (
+            <>
+              <BackdropOverlay />
+              <BackdropTitle>{movie.title}</BackdropTitle>
+            </>
+          )}
+        </StyledLink>
+      </Link>
     );
   }
 
-  return <div>Error</div>; // TODO style this
+  return (
+    <div>
+      <RoundedContainer>
+        <MovieImagePlaceholder type={imageType}>
+          {renderedContent}
+        </MovieImagePlaceholder>
+      </RoundedContainer>
+      {movie && imageType === MovieImageType.Poster && (
+        <Title>{movie.title}</Title>
+      )}
+    </div>
+  );
 };
 
 export default MovieListItem;

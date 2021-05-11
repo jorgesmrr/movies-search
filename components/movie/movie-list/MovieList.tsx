@@ -14,7 +14,7 @@ const backdropCountSizesMap = {
 
 const posterCountSizesMap = {
   3: PosterSizes.Big,
-  6: PosterSizes.Small,
+  6: PosterSizes.Regular,
 };
 
 export interface MovieListProps {
@@ -60,7 +60,7 @@ const MovieList: MovieListComposition & React.FC<MovieListProps> = ({
 
   const adjustedMovies: Array<Movie | undefined> = movies
     ? movies.slice(0, count)
-    : [...new Array(count).map(() => undefined)];
+    : [...new Array(count)].map(() => undefined);
 
   const renderChild = (movie?: Movie) => (
     <MovieListItem

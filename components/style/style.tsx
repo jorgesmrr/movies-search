@@ -62,6 +62,13 @@ export const RegularPageContent = styled.div`
   margin-top: 7rem;
 `;
 
+export const FixedAspect = styled.div<{ heightWidthRatio: number }>`
+  width: 100%;
+  height: 0;
+  padding-bottom: ${(props) => props.heightWidthRatio * 100}%;
+  overflow: hidden;
+`;
+
 export const easedDarkGradient: (
   direction: "top" | "right" | "bottom" | "left",
   lightness?: number
