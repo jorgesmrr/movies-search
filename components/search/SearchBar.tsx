@@ -17,7 +17,8 @@ const Bar = styled.div`
   opacity: 0.75;
 
   &:hover,
-  &:focus {
+  &:focus,
+  &:focus-within {
     opacity: 1;
   }
 `;

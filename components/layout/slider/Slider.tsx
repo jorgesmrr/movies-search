@@ -4,7 +4,7 @@ import { ListNone } from "../../style/style";
 
 const FlexWrapper = styled.div`
   width: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
 `;
 
 const FlexContainer = styled(ListNone)<{
