@@ -41,6 +41,7 @@ export const Subtitle = styled.p`
 export interface RoundedImageProps {
   height?: string;
   shadowLevel?: number;
+  imagePosition?: string;
 }
 
 export const RoundedImage = styled.img<RoundedImageProps>`
@@ -50,10 +51,14 @@ export const RoundedImage = styled.img<RoundedImageProps>`
   height: ${(props) => props.height || "auto"};
   overflow: hidden;
   object-fit: cover;
-  ${(props) =>
-    props.shadowLevel
-      ? `box-shadow: ${props.theme.shadow[props.shadowLevel]}`
-      : ""}
+  ${(props) => `
+    ${
+      props.shadowLevel
+        ? `box-shadow: ${props.theme.shadow[props.shadowLevel]};`
+        : ""
+    }
+    ${props.imagePosition ? `object-position: ${props.imagePosition};` : ""}
+    `}
 `;
 
 export const RegularPageContent = styled.div`
@@ -104,3 +109,50 @@ linear-gradient(
   hsla(0, 0%, ${lightness}%, 0) 100%
 );
 `;
+
+export const transition = (
+  property: string | string[],
+  duration?: number
+): string => {
+  const t = (property: string, duration?: number) =>
+    `${property} ${duration || 125}ms ease-in-out`;
+
+  let value: string;
+  if (Array.isArray(property)) {
+    value = (property as string[]).map(t).join(", ");
+  } else {
+    value = t(property, duration);
+  }
+
+  return `transition: ${value};`;
+};
+
+export const scalableBorder: (
+  theme: DefaultTheme,
+  options?: { width?: string; states?: string[]; parentSelector?: string }
+) => string = (theme, options): string => {
+  const statesSelector = (options?.states || ["hover"])
+    .map((state) => `${options?.parentSelector || "&"}:${state}`)
+    .join(",");
+
+  return `
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: ${theme.radius};
+      border: 0 solid ${theme.color.accent.dark};
+      pointer-events: none;
+      ${transition("border-width")}
+    }
+
+    ${statesSelector} ${options?.parentSelector ? ` &` : ""} {
+        &:after {
+              border-width: ${options?.width || "4px"};
+        }
+      }
+  `;
+};

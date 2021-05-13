@@ -1,12 +1,14 @@
 import { useRouter } from "next/dist/client/router";
 import React, { useState } from "react";
 import styled from "styled-components";
+import { scalableBorder, transition } from "../style/style";
 
 export interface SearchBarProps {
   onSubmit: (text: string) => void;
 }
 
 const Bar = styled.div`
+  position: relative;
   display: inline-flex;
   gap: 1rem;
   background-color: ${(props) => props.theme.color.neutral.darker};
@@ -15,6 +17,13 @@ const Bar = styled.div`
   width: 20rem;
   box-shadow: ${(props) => props.theme.shadow[0]};
   opacity: 0.75;
+      }
+  ${({ theme }) =>
+    scalableBorder(theme, {
+      width: "2px",
+      states: ["hover", "focus", "focus-within"],
+    })}
+  ${transition("box-shadow")}
 
   &:hover,
   &:focus,

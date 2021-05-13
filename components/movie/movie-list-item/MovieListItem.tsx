@@ -5,17 +5,22 @@ import Movie from "../../../models/Movie";
 import MovieImageType from "../../../models/MovieImageType";
 import { BackdropSizes, PosterSizes } from "../../../network/costants";
 import MovieImagePlaceholder from "../movie-image-placeholder/MovieImagePlaceholder";
-import { easedDarkGradient } from "../../style/style";
+import {
+  easedDarkGradient,
+  scalableBorder,
+  transition,
+} from "../../style/style";
 import MovieImage from "../movie-image/MovieImage";
 
 const RoundedContainer = styled.div`
   position: relative;
-  border-radius: ${(props) => props.theme.radius};
-  box-shadow: ${(props) => props.theme.shadow[2]};
+  border-radius: ${({ theme }) => theme.radius};
+  box-shadow: ${({ theme }) => theme.shadow[2]};
   overflow: hidden;
+  ${({ theme }) => scalableBorder(theme, { parentSelector: `a` })}
 `;
 
-const StyledLink = styled.a`
+const ImageWrapper = styled.div`
   display: block;
   cursor: pointer;
   position: absolute;
@@ -70,43 +75,50 @@ const MovieListItem: React.FC<MovieListItemProps> = ({
     return <div>Error</div>; // TODO style this
   }
 
-  let renderedContent: React.ReactElement = null;
-
-  if (!isLoading && movie) {
-    const imagePath =
-      imageType === MovieImageType.Backdrop ? movie.backdrop : movie.poster;
-
-    renderedContent = (
-      <Link href={`/movie?id=${movie.id}`}>
-        <StyledLink>
-          <MovieImage
-            type={imageType}
-            path={imagePath}
-            size={size}
-            height="100%"
-          />
-          {imageType === MovieImageType.Backdrop && (
-            <>
-              <BackdropOverlay />
-              <BackdropTitle>{movie.title}</BackdropTitle>
-            </>
-          )}
-        </StyledLink>
-      </Link>
+  if (isLoading) {
+    return (
+      <div>
+        <RoundedContainer>
+          <MovieImagePlaceholder type={imageType} />
+        </RoundedContainer>
+        {imageType === MovieImageType.Poster && (
+          <Title>
+            <wbr />
+            <br />
+            <wbr />
+          </Title>
+        )}
+      </div>
     );
   }
 
+  const imagePath =
+    imageType === MovieImageType.Backdrop ? movie.backdrop : movie.poster;
+
   return (
-    <div>
-      <RoundedContainer>
-        <MovieImagePlaceholder type={imageType}>
-          {renderedContent}
-        </MovieImagePlaceholder>
-      </RoundedContainer>
-      {movie && imageType === MovieImageType.Poster && (
-        <Title>{movie.title}</Title>
-      )}
-    </div>
+    <Link href={`/movie?id=${movie.id}`}>
+      <a>
+        <RoundedContainer>
+          <MovieImagePlaceholder type={imageType}>
+            <ImageWrapper>
+              <MovieImage
+                type={imageType}
+                path={imagePath}
+                size={size}
+                height="100%"
+              />
+              {imageType === MovieImageType.Backdrop && (
+                <>
+                  <BackdropOverlay />
+                  <BackdropTitle>{movie.title}</BackdropTitle>
+                </>
+              )}
+            </ImageWrapper>
+          </MovieImagePlaceholder>
+        </RoundedContainer>
+        {imageType === MovieImageType.Poster && <Title>{movie.title}</Title>}
+      </a>
+    </Link>
   );
 };
 

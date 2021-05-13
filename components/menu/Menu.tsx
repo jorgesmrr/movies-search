@@ -1,6 +1,7 @@
+import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
 import styled from "styled-components";
-import { ListNone } from "../style/style";
+import { ListNone, transition } from "../style/style";
 
 const MenuList = styled(ListNone)`
   display: flex;
@@ -9,13 +10,31 @@ const MenuList = styled(ListNone)`
   font-weight: 800;
 `;
 
+const MenuItem = styled.li<{ selected?: boolean }>`
+  border-bottom: 4px solid transparent;
+  ${transition("border-color")}
+  ${(props) =>
+    props.selected && `border-color: ${props.theme.color.accent.dark};`}
+
+  &:hover {
+    border-color: ${({ theme }) => theme.color.accent.dark};
+  }
+
+  &:active {
+    border-color: ${({ theme }) => theme.color.accent.darker};
+  }
+`;
+
 const StyledLink = styled.a`
+  display: block;
   color: ${(props) => props.theme.color.neutral.lightest};
+  line-height: 4rem;
   cursor: pointer;
 `;
 
 const Menu: React.FC = () => {
-  const items: { label: string; href: string }[] = [
+  const router = useRouter();
+  const items: { label: string; href: string; selected?: boolean }[] = [
     { label: "Home", href: "/" },
     { label: "Trending", href: "/trending" },
     { label: "Popular", href: "/popular" },
@@ -23,15 +42,20 @@ const Menu: React.FC = () => {
     { label: "In Theaters", href: "/in-theaters" },
   ];
 
+  const selectedItem = items.find((item) => item.href === router.pathname);
+  if (selectedItem) {
+    selectedItem.selected = true;
+  }
+
   return (
     <nav>
       <MenuList>
         {items.map((item, index) => (
-          <li key={index}>
+          <MenuItem key={index} selected={item.selected}>
             <Link href={item.href}>
               <StyledLink>{item.label}</StyledLink>
             </Link>
-          </li>
+          </MenuItem>
         ))}
       </MenuList>
     </nav>

@@ -1,10 +1,17 @@
 import React from "react";
 import styled from "styled-components";
-import { ListNone } from "../../style/style";
+import { ListNone, transition } from "../../style/style";
 
-const FlexWrapper = styled.div`
-  width: 100%;
+const FlexWrapper = styled.div<{ shadowOverflow?: ShadowOverflow }>`
   overflow-x: hidden;
+  ${({ shadowOverflow }) =>
+    shadowOverflow
+      ? `
+        width: calc(100% + 2 * shadowOverflow.x);
+        padding: ${shadowOverflow.y} ${shadowOverflow.x};
+        margin: -${shadowOverflow.y} -${shadowOverflow.x};
+      `
+      : "width: 100%;"}
 `;
 
 const FlexContainer = styled(ListNone)<{
@@ -14,6 +21,7 @@ const FlexContainer = styled(ListNone)<{
   display: flex;
   width: calc(100% + ${(props) => props.extraWidth}rem);
   transform: translateX(${(props) => props.translateX}%);
+  ${transition("transform", 500)}
 `;
 
 const FlexItem = styled.li<{ maxWidth: number; paddingRight: number }>`
@@ -31,6 +39,12 @@ export interface SliderProps<T> {
   activeSlide?: number;
   gap?: number;
   itemLabelGetter?: (item: T) => string;
+  shadowOverflow?: ShadowOverflow;
+}
+
+interface ShadowOverflow {
+  x: string;
+  y: string;
 }
 
 function Slider<T>({
@@ -41,9 +55,10 @@ function Slider<T>({
   renderChild,
   "aria-label": ariaLabel,
   itemLabelGetter,
+  shadowOverflow,
 }: SliderProps<T>): React.ReactElement {
   return (
-    <FlexWrapper>
+    <FlexWrapper shadowOverflow={shadowOverflow}>
       <FlexContainer
         aria-label={ariaLabel}
         translateX={activeSlide * -100}

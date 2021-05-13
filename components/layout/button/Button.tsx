@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { transition } from "../../style/style";
 
 const StyledButton = styled.button`
   color: ${({ theme }) => theme.color.white};
@@ -7,13 +8,14 @@ const StyledButton = styled.button`
   box-shadow: ${({ theme }) => theme.shadow[1]};
   border: none;
   cursor: pointer;
+  ${transition("background-color")}
 
   &:hover {
-    background-color: ${({ theme }) => theme.color.neutral.default};
+    background-color: ${({ theme }) => theme.color.accent.dark};
   }
 
   &:active {
-    background-color: ${({ theme }) => theme.color.neutral.dark};
+    background-color: ${({ theme }) => theme.color.accent.darker};
   }
 `;
 

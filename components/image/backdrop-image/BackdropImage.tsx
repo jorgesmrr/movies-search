@@ -13,12 +13,14 @@ const BackdropImage: React.FC<RoundedImageProps & BackdropImageProps> = ({
   size,
   height,
   shadowLevel,
+  imagePosition,
 }) => {
   return (
     <RoundedImage
       src={getBackdropPath(fileName, size)}
       height={height}
       shadowLevel={shadowLevel}
+      imagePosition={imagePosition}
     />
   );
 };

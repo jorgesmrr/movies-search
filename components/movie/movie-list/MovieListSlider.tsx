@@ -32,6 +32,10 @@ const MovieListSlider: React.FC<MovieListSliderProps> = ({ activeSlide }) => {
       renderChild={renderChild}
       data={movies}
       itemLabelGetter={(movie) => movie?.title}
+      shadowOverflow={{
+        x: ".5rem",
+        y: "2rem",
+      }}
     />
   );
 };

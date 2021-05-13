@@ -61,6 +61,7 @@ const MovieHero: React.FC<MovieHeroProps> = ({ backdrop }) => {
             fileName={backdrop}
             size={BackdropSizes.Big}
             height="100%"
+            imagePosition="center top"
           />
         </ImageContainer>
       </ContentContainer>

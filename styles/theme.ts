@@ -13,6 +13,15 @@ const theme: DefaultTheme = {
       darker: "#3B3B3B",
       darkest: "#141414",
     },
+    accent: {
+      lightest: "#e0aaffff",
+      lighter: "#c77dffff",
+      light: "#9d4eddff",
+      default: "#7b2cbfff",
+      dark: "#5a189aff",
+      darker: "#3c096cff",
+      darkest: "#240046ff",
+    },
   },
   shadow: [
     "rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;",

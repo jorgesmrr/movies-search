@@ -15,10 +15,6 @@ body {
   color: white;
 }
 
-a {
-  color: currentColor;
-}
-
 h1,
 h2,
 h3 {
@@ -35,4 +31,19 @@ dt,
 dl {
   padding: 0;
   margin: 0;
+}
+
+svg {
+  display: block;
+}
+
+a {
+  color: currentColor;
+}
+
+a:hover,
+a:visited,
+a:link,
+a:active {
+  text-decoration: none;
 }
