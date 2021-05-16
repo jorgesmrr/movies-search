@@ -3,7 +3,6 @@ import useRequest from "../../../hooks/useRequest";
 import MovieImageType from "../../../models/MovieImageType";
 import { PosterSizes } from "../../../network/costants";
 import { getMovie } from "../../../network/resources/movie";
-import PosterImage from "../../image/poster-image/PosterImage";
 import LimitedWidth from "../../layout/limited-width/LimitedWidth";
 import MovieDetails from "../../movie/movie-details/MovieDetails";
 import MovieHero from "../../movie/movie-hero/MovieHero";

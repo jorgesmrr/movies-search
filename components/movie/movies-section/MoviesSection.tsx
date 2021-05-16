@@ -42,9 +42,10 @@ const MoviesSection: React.FC<MoviesSectionProps> = ({
   const count =
     imageType === MovieImageType.Backdrop ? rowCount * 3 : rowCount * 2;
 
-  // TODO validade index
-  const onPreviousSlideClick = () => setActiveSlide(activeSlide - 1);
-  const onNextSlideClick = () => setActiveSlide(activeSlide + 1);
+  const onPreviousSlideClick = () =>
+    setActiveSlide(Math.max(0, activeSlide - 1));
+  const onNextSlideClick = () =>
+    setActiveSlide(Math.min(count / rowCount - 1, activeSlide + 1));
 
   return (
     <>
