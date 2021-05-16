@@ -27,7 +27,7 @@ const MenuItem = styled.li<{ selected?: boolean }>`
 
 const StyledLink = styled.a`
   display: block;
-  color: ${(props) => props.theme.color.neutral.lightest};
+  color: ${({ theme }) => theme.color.neutral.lightest};
   line-height: 4rem;
   cursor: pointer;
 `;

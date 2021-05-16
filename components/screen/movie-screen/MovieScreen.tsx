@@ -10,7 +10,7 @@ import MovieImage from "../../movie/movie-image/MovieImage";
 import MovieMetadata from "../../movie/movie-metadata/MovieMetadata";
 
 const Contents = styled.div`
-  box-shadow: ${(props) => props.theme.shadow[2]};
+  box-shadow: ${({ theme }) => theme.shadow[2]};
 `;
 
 const Grid = styled(LimitedWidth)`

@@ -11,11 +11,11 @@ const Bar = styled.div`
   position: relative;
   display: inline-flex;
   gap: 1rem;
-  background-color: ${(props) => props.theme.color.neutral.darker};
-  border-radius: ${(props) => props.theme.radius};
+  background-color: ${({ theme }) => theme.color.neutral.darker};
+  border-radius: ${({ theme }) => theme.radius};
   padding: 0.5rem;
   width: 20rem;
-  box-shadow: ${(props) => props.theme.shadow[0]};
+  box-shadow: ${({ theme }) => theme.shadow[0]};
   opacity: 0.75;
       }
   ${({ theme }) =>
@@ -36,12 +36,12 @@ const Input = styled.input`
   flex-grow: 1;
   border: none;
   background-color: transparent;
-  color: ${(props) => props.theme.color.white};
+  color: ${({ theme }) => theme.color.white};
   outline: none;
   font-size: 1.125rem;
 
   &:placeholder {
-    color: ${(props) => props.theme.color.neutral.lighter};
+    color: ${({ theme }) => theme.color.neutral.lighter};
   }
 `;
 

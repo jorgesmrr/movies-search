@@ -3,7 +3,7 @@ import MovieImageType from "../../../models/MovieImageType";
 import { FixedAspect } from "../../style/style";
 
 const Placeholder = styled(FixedAspect)`
-  background-color: ${(props) => props.theme.color.neutral.darker};
+  background-color: ${({ theme }) => theme.color.neutral.darker};
 `;
 
 interface MoviePlaceholderProps {

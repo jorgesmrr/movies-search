@@ -7,7 +7,7 @@ const PageWrapper = styled.div`
 `;
 
 const PageContents = styled.div`
-  color: ${(props) => props.theme.color.white};
+  color: ${({ theme }) => theme.color.white};
 `;
 
 const Page: React.FC = ({ children }) => {

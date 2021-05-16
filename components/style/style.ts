@@ -46,7 +46,7 @@ export interface RoundedImageProps {
 
 export const RoundedImage = styled.img<RoundedImageProps>`
   display: block;
-  border-radius: ${(props) => props.theme.radius};
+  border-radius: ${({ theme }) => theme.radius};
   width: 100%;
   height: ${(props) => props.height || "auto"};
   overflow: hidden;

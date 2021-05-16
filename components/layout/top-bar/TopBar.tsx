@@ -9,7 +9,7 @@ const TopBarWrapper = styled.div`
   left: 0;
   width: 100%;
   z-index: 10;
-  box-shadow: ${(props) => props.theme.shadow[3]};
+  box-shadow: ${({ theme }) => theme.shadow[3]};
 `;
 
 const TopBarBackground = styled.div`
