@@ -16,7 +16,7 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
-    "@bit/jorgemoreira.headless-react.hooks": "^0.0.3",
+    "@bit/jorgemoreira.headless-react.hooks": "^0.0.4",
     "axios": "^0.21.1",
     "date-fns": "^2.21.2",
     "next": "10.2.0",
