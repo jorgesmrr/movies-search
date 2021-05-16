@@ -85,6 +85,14 @@ export const Badge = styled.span`
   border-radius: ${({ theme }) => theme.radius};
 `;
 
+export const Alert = styled.div`
+  padding: 0.5rem 1rem;
+  border: 2px solid #7f1d1d;
+  border-radius: ${({ theme }) => theme.radius};
+  background: #fca5a5;
+  color: #7f1d1d;
+`;
+
 export const easedDarkGradient: (
   direction: "top" | "right" | "bottom" | "left",
   lightness?: number

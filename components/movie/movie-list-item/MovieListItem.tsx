@@ -6,6 +6,7 @@ import MovieImageType from "../../../models/MovieImageType";
 import { BackdropSizes, PosterSizes } from "../../../network/costants";
 import MovieImagePlaceholder from "../movie-image-placeholder/MovieImagePlaceholder";
 import {
+  Alert,
   easedDarkGradient,
   scalableBorder,
   transition,
@@ -72,7 +73,7 @@ const MovieListItem: React.FC<MovieListItemProps> = ({
   movie,
 }) => {
   if (!isLoading && !movie) {
-    return <div>Error</div>; // TODO style this
+    return <Alert>Failed to load</Alert>;
   }
 
   if (isLoading) {

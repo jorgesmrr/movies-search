@@ -19,7 +19,7 @@ const TopBarBackground = styled.div`
   left: 00;
   width: 100%;
   height: 100%;
-  background-color: rgba(20, 20, 20, 0.75); // TODO put in theme
+  background-color: rgba(20, 20, 20, 0.75);
   backdrop-filter: blur(3px);
 `;
 

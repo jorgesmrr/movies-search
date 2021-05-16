@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import Slider from "../../layout/slider/Slider";
+import { Alert } from "../../style/style";
 import { MovieListContext } from "./MovieList";
+import MovieListError from "./MovieListError";
 
 export interface MovieListSliderProps {
   activeSlide: number;
@@ -21,7 +23,7 @@ const MovieListSlider: React.FC<MovieListSliderProps> = ({ activeSlide }) => {
   } = contextValue;
 
   if (error || size === undefined || (!isLoading && !movies)) {
-    return <div>Error!</div>; // TODO style
+    return <MovieListError />;
   }
 
   return (

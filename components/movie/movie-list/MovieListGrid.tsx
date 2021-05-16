@@ -1,7 +1,8 @@
 import { useContext } from "react";
 import styled from "styled-components";
-import { ListNone } from "../../style/style";
+import { Alert, ListNone } from "../../style/style";
 import { MovieListContext } from "../movie-list/MovieList";
+import MovieListError from "./MovieListError";
 
 const Grid = styled(ListNone)<{ columns: number }>`
   display: grid;
@@ -27,7 +28,7 @@ const MovieListGrid: React.FC = () => {
   } = contextValue;
 
   if (error || size === undefined || (!isLoading && !movies)) {
-    return <div>Error!</div>; // TODO style
+    return <MovieListError />;
   }
 
   return (
