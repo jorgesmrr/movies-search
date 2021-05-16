@@ -1,11 +1,13 @@
 import styled from "styled-components";
 import useRequest from "../../../hooks/useRequest";
+import MovieImageType from "../../../models/MovieImageType";
 import { PosterSizes } from "../../../network/costants";
 import { getMovie } from "../../../network/resources/movie";
 import PosterImage from "../../image/poster-image/PosterImage";
 import LimitedWidth from "../../layout/limited-width/LimitedWidth";
 import MovieDetails from "../../movie/movie-details/MovieDetails";
 import MovieHero from "../../movie/movie-hero/MovieHero";
+import MovieImage from "../../movie/movie-image/MovieImage";
 import MovieMetadata from "../../movie/movie-metadata/MovieMetadata";
 
 const Contents = styled.div`
@@ -52,8 +54,9 @@ const MovieScreen: React.FC<MovieScreenProps> = ({ id }) => {
             </Main>
             <Aside>
               <PosterTranslation>
-                <PosterImage
-                  fileName={movie.poster}
+                <MovieImage
+                  type={MovieImageType.Poster}
+                  path={movie.poster}
                   size={PosterSizes.Big}
                   shadowLevel={3}
                 />

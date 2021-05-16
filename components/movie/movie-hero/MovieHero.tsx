@@ -1,10 +1,11 @@
 import React, { useContext, useRef } from "react";
 import styled, { ThemeContext } from "styled-components";
 import { BackdropSizes } from "../../../network/costants";
-import BackdropImage from "../../image/backdrop-image/BackdropImage";
 import LimitedWidth from "../../layout/limited-width/LimitedWidth";
 import { easedDarkGradient } from "../../style/style";
 import { useScrollEffect } from "@bit/jorgemoreira.headless-react.hooks";
+import MovieImage from "../movie-image/MovieImage";
+import MovieImageType from "../../../models/MovieImageType";
 
 const Container = styled.div`
   background: black;
@@ -71,9 +72,10 @@ const MovieHero: React.FC<MovieHeroProps> = ({ backdrop }) => {
     <Container>
       <ContentContainer maxWidth={theme.pageWidth + 4}>
         <ImageContainer>
-          <BackdropImage
+          <MovieImage
             ref={imageRef}
-            fileName={backdrop}
+            type={MovieImageType.Backdrop}
+            path={backdrop}
             size={BackdropSizes.Big}
             height="100%"
             imagePosition="center top"

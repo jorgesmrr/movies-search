@@ -1,3 +1,4 @@
+import React from "react";
 import { RoundedImage, RoundedImageProps } from "../../style/style";
 import MovieImageType from "../../../models/MovieImageType";
 import { BackdropSizes, PosterSizes } from "../../../network/costants";
@@ -9,13 +10,10 @@ export interface MovieImageProps {
   size: BackdropSizes | PosterSizes;
 }
 
-const MovieImage: React.FC<RoundedImageProps & MovieImageProps> = ({
-  path,
-  type,
-  size,
-  height,
-  shadowLevel,
-}) => {
+const MovieImage = React.forwardRef<
+  HTMLImageElement,
+  RoundedImageProps & MovieImageProps
+>(({ type, path, size, ...roundedImageProps }, ref) => {
   let source;
 
   // TODO validate size + type
@@ -31,9 +29,9 @@ const MovieImage: React.FC<RoundedImageProps & MovieImageProps> = ({
       return null;
   }
 
-  return (
-    <RoundedImage src={source} height={height} shadowLevel={shadowLevel} />
-  );
-};
+  return <RoundedImage ref={ref} src={source} {...roundedImageProps} />;
+});
+
+MovieImage.displayName = "MovieImage";
 
 export default MovieImage;
