@@ -16,8 +16,6 @@ const MovieImage = React.forwardRef<
 >(({ type, path, size, ...roundedImageProps }, ref) => {
   let source;
 
-  // TODO validate size + type
-
   switch (type) {
     case MovieImageType.Backdrop:
       source = getBackdropPath(path, size as BackdropSizes);
@@ -29,7 +27,14 @@ const MovieImage = React.forwardRef<
       return null;
   }
 
-  return <RoundedImage ref={ref} src={source} {...roundedImageProps} />;
+  return (
+    <RoundedImage
+      ref={ref}
+      src={source}
+      {...roundedImageProps}
+      onError={(ev) => (ev.target.style.visibility = "hidden")}
+    />
+  );
 });
 
 MovieImage.displayName = "MovieImage";
