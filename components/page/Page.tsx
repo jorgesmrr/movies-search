@@ -1,6 +1,6 @@
 import { useRouter } from "next/dist/client/router";
 import styled from "styled-components";
-import TopBar from "../layout/top-bar/TopBar";
+import Navbar from "../layout/navbar/Navbar";
 
 const PageWrapper = styled.div`
   min-height: 100vh;
@@ -19,7 +19,7 @@ const Page: React.FC = ({ children }) => {
 
   return (
     <PageWrapper>
-      <TopBar onSubmitSearch={onSubmitSearch} />
+      <Navbar onSubmitSearch={onSubmitSearch} />
       <PageContents>{children}</PageContents>
     </PageWrapper>
   );

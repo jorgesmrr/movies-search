@@ -3,7 +3,7 @@ import LimitedWidth from "../limited-width/LimitedWidth";
 import Menu from "../../menu/Menu";
 import SearchBar from "../../search/SearchBar";
 
-const TopBarWrapper = styled.div`
+const NavbarWrapper = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -12,7 +12,7 @@ const TopBarWrapper = styled.div`
   box-shadow: ${({ theme }) => theme.shadow[3]};
 `;
 
-const TopBarBackground = styled.div`
+const NavbarBackground = styled.div`
   position: absolute;
   z-index: 1;
   top: 0;
@@ -23,7 +23,7 @@ const TopBarBackground = styled.div`
   backdrop-filter: blur(3px);
 `;
 
-const TopBarContents = styled(LimitedWidth)`
+const NavbarContents = styled(LimitedWidth)`
   position: relative;
   z-index: 2;
   height: 100%;
@@ -33,20 +33,20 @@ const TopBarContents = styled(LimitedWidth)`
   font-size: 1.125rem;
 `;
 
-interface TopBarProps {
+interface NavbarProps {
   onSubmitSearch: (search: string) => void;
 }
 
-const TopBar: React.FC<TopBarProps> = ({ onSubmitSearch }) => {
+const Navbar: React.FC<NavbarProps> = ({ onSubmitSearch }) => {
   return (
-    <TopBarWrapper>
-      <TopBarBackground />
-      <TopBarContents>
+    <NavbarWrapper>
+      <NavbarBackground />
+      <NavbarContents>
         <Menu />
         <SearchBar onSubmit={onSubmitSearch} />
-      </TopBarContents>
-    </TopBarWrapper>
+      </NavbarContents>
+    </NavbarWrapper>
   );
 };
 
-export default TopBar;
+export default Navbar;
