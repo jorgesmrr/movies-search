@@ -63,6 +63,7 @@ const MovieScreen: React.FC<MovieScreenProps> = ({ id }) => {
                 >
                   <MovieImage
                     type={MovieImageType.Poster}
+                    title={movie.title}
                     path={movie.poster}
                     size={PosterSizes.Big}
                   />

@@ -88,6 +88,7 @@ const MovieListItem: React.FC<MovieListItemProps> = ({
           <ImageWrapper>
             <MovieImage
               type={imageType}
+              title={movie.title}
               path={imagePath}
               size={size}
               height="100%"

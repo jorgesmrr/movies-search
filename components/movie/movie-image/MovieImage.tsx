@@ -21,12 +21,13 @@ const Image = styled.img<ImageProps>`
 
 export interface MovieImageProps extends ImageProps {
   type: MovieImageType;
+  title: string;
   path: string;
   size: BackdropSizes | PosterSizes;
 }
 
 const MovieImage = React.forwardRef<HTMLImageElement, MovieImageProps>(
-  ({ type, path, size, height, imagePosition }, ref) => {
+  ({ type, title, path, size, height, imagePosition }, ref) => {
     let source;
 
     switch (type) {
@@ -43,9 +44,11 @@ const MovieImage = React.forwardRef<HTMLImageElement, MovieImageProps>(
     return (
       <Image
         ref={ref}
+        alt={title}
         src={source}
         height={height}
         imagePosition={imagePosition}
+        loading="lazy"
         onError={(ev) =>
           ((ev.target as HTMLImageElement).style.visibility = "hidden")
         }
