@@ -8,7 +8,7 @@ import Fetch from "../../fetch/Fetch";
 import ChevronLeftIcon from "../../icon/ChevronLeftIcon";
 import ChevronRightIcon from "../../icon/ChevronRightIcon";
 import Button from "../../layout/button/Button";
-import { Heading2, textSize } from "../../style/style";
+import { ForLargeScreens, Heading2, textSize } from "../../style/style";
 import MovieList from "../movie-list/MovieList";
 
 const SectionHeading = styled.div`
@@ -55,12 +55,18 @@ const MoviesSection: React.FC<MoviesSectionProps> = ({
     <>
       <SectionHeading>
         <Heading2>{title}</Heading2>
-        <Button onClick={onPreviousSlideClick}>
-          <ChevronLeftIcon />
-        </Button>
-        <Button onClick={onNextSlideClick}>
-          <ChevronRightIcon />
-        </Button>
+
+        <ForLargeScreens>
+          <Button onClick={onPreviousSlideClick}>
+            <ChevronLeftIcon />
+          </Button>
+        </ForLargeScreens>
+
+        <ForLargeScreens>
+          <Button onClick={onNextSlideClick}>
+            <ChevronRightIcon />
+          </Button>
+        </ForLargeScreens>
       </SectionHeading>
 
       <Fetch

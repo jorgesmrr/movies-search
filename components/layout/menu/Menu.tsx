@@ -1,20 +1,38 @@
 import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
 import styled from "styled-components";
-import { ListNone, transition } from "../style/style";
+import { ListNone, transition } from "../../style/style";
 
 const MenuList = styled(ListNone)`
-  display: flex;
-  gap: 2rem;
-  text-transform: uppercase;
+  font-size: 1.125rem;
   font-weight: 800;
+  text-transform: uppercase;
+  padding: 1rem 1rem 0 1rem;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    display: flex;
+    padding: 0;
+    gap: 2rem;
+  }
 `;
 
 const MenuItem = styled.li<{ selected?: boolean }>`
-  border-bottom: 4px solid transparent;
+  margin: 0.5rem 0;
+  padding: 0.75rem 0 0.75rem 1rem;
+  border-bottom: none;
+  border-left: 4px solid
+    ${({ selected, theme }) =>
+      selected ? theme.color.accent.dark : "transparent"};
   ${transition("border-color")}
-  ${(props) =>
-    props.selected && `border-color: ${props.theme.color.accent.dark};`}
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 0;
+    margin: 0;
+    border-left: none;
+    border-bottom: 4px solid
+      ${({ selected, theme }) =>
+        selected ? theme.color.accent.dark : "transparent"};
+  }
 
   &:hover {
     border-color: ${({ theme }) => theme.color.accent.dark};
@@ -28,8 +46,11 @@ const MenuItem = styled.li<{ selected?: boolean }>`
 const StyledLink = styled.a`
   display: block;
   color: ${({ theme }) => theme.color.neutral.lightest};
-  line-height: 4rem;
   cursor: pointer;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    line-height: 4rem;
+  }
 `;
 
 const Menu: React.FC = () => {

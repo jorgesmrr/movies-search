@@ -2,6 +2,7 @@ import Head from "next/head";
 import { ThemeProvider } from "styled-components";
 import Page from "../components/page/Page";
 import theme from "../styles/theme";
+import "@bit/jorgemoreira.headless.styles";
 import "./../styles/index.css";
 
 function MyApp({ Component, pageProps }) {

@@ -93,6 +93,20 @@ export const Alert = styled.div`
   color: #7f1d1d;
 `;
 
+export const ForSmallScreens = styled.div`
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    display: none;
+  }
+`;
+
+export const ForLargeScreens = styled.div`
+  display: none;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    display: block;
+  }
+`;
+
 export const easedDarkGradient: (
   direction: "top" | "right" | "bottom" | "left",
   lightness?: number

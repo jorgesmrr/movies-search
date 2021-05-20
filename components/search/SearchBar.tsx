@@ -14,7 +14,7 @@ const Bar = styled.div`
   background-color: ${({ theme }) => theme.color.neutral.darker};
   border-radius: ${({ theme }) => theme.radius};
   padding: 0.5rem;
-  width: 20rem;
+  width: 70vw;
   box-shadow: ${({ theme }) => theme.shadow[0]};
   opacity: 0.75;
       }
@@ -29,6 +29,10 @@ const Bar = styled.div`
   &:focus,
   &:focus-within {
     opacity: 1;
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    width: 20rem;
   }
 `;
 
