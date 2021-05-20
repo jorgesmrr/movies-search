@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import styled from "styled-components";
-import { Alert, ListNone } from "../../style/style";
+import { ListNone } from "../../style/style";
 import { MovieListContext } from "../movie-list/MovieList";
 import MovieListError from "./MovieListError";
 
@@ -8,31 +8,28 @@ const Grid = styled(ListNone)<{ columns: number }>`
   display: grid;
   grid-template-columns: repeat(
     auto-fill,
-    minmax(min(${(props) => 70 / props.columns}rem, 100%), 1fr)
+    minmax(min(${({ columns }) => 60 / columns}rem, 100%), 1fr)
   );
   gap: 1rem;
 `;
 
-const MovieListGrid: React.FC = () => {
+export interface MovieListGridProps {
+  columns: number;
+}
+
+const MovieListGrid: React.FC<MovieListGridProps> = ({ columns }) => {
   const contextValue = useContext(MovieListContext);
 
   if (!contextValue) return null;
 
-  const {
-    isLoading,
-    error,
-    size,
-    movies,
-    renderChild,
-    rowCount,
-  } = contextValue;
+  const { isLoading, error, size, movies, renderChild } = contextValue;
 
   if (error || size === undefined || (!isLoading && !movies)) {
     return <MovieListError />;
   }
 
   return (
-    <Grid aria-label="movies list" columns={rowCount}>
+    <Grid aria-label="movies list" columns={columns}>
       {movies.map((_, index) => {
         const movie = !isLoading ? movies[index] : undefined;
 

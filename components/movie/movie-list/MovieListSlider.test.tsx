@@ -4,6 +4,8 @@ import { fakeMovie } from "../../../models/__fixtures__/Movie";
 import { customRender } from "../../../utils/testing";
 import MovieList from "./MovieList";
 
+const fakeItemsPerSlide = { xs: 3, sm: 4, md: 6 };
+
 describe("component renders", () => {
   test("should show poster placeholder", async () => {
     customRender(
@@ -11,10 +13,9 @@ describe("component renders", () => {
         isLoading={true}
         error={false}
         count={1}
-        rowCount={6}
         imageType={MovieImageType.Poster}
       >
-        <MovieList.Slider activeSlide={0} />
+        <MovieList.Slider activeSlide={0} itemsPerSlide={fakeItemsPerSlide} />
       </MovieList>
     );
 
@@ -27,10 +28,9 @@ describe("component renders", () => {
         isLoading={true}
         error={false}
         count={1}
-        rowCount={5}
         imageType={MovieImageType.Backdrop}
       >
-        <MovieList.Slider activeSlide={0} />
+        <MovieList.Slider activeSlide={0} itemsPerSlide={fakeItemsPerSlide} />
       </MovieList>
     );
 
@@ -44,10 +44,9 @@ describe("component renders", () => {
         error={false}
         movies={[fakeMovie]}
         count={6}
-        rowCount={6}
         imageType={MovieImageType.Poster}
       >
-        <MovieList.Slider activeSlide={0} />
+        <MovieList.Slider activeSlide={0} itemsPerSlide={fakeItemsPerSlide} />
       </MovieList>
     );
 

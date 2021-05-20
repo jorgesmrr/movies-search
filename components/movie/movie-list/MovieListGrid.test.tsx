@@ -11,10 +11,9 @@ describe("component renders", () => {
         isLoading={true}
         error={false}
         count={1}
-        rowCount={6}
         imageType={MovieImageType.Poster}
       >
-        <MovieList.Grid />
+        <MovieList.Grid columns={6} />
       </MovieList>
     );
 
@@ -27,10 +26,9 @@ describe("component renders", () => {
         isLoading={true}
         error={false}
         count={1}
-        rowCount={5}
         imageType={MovieImageType.Backdrop}
       >
-        <MovieList.Grid />
+        <MovieList.Grid columns={6} />
       </MovieList>
     );
 
@@ -44,10 +42,9 @@ describe("component renders", () => {
         error={false}
         movies={[fakeMovie]}
         count={6}
-        rowCount={6}
         imageType={MovieImageType.Poster}
       >
-        <MovieList.Grid />
+        <MovieList.Grid columns={6} />
       </MovieList>
     );
 

@@ -38,14 +38,18 @@ const MoviesSection: React.FC<MoviesSectionProps> = ({
 }) => {
   const [activeSlide, setActiveSlide] = useState(0);
 
-  const rowCount = imageType === MovieImageType.Backdrop ? 3 : 6;
+  const rowCount =
+    imageType === MovieImageType.Backdrop
+      ? { xs: 1, sm: 2, md: 3 }
+      : { xs: 2, sm: 3, md: 6 };
+
   const count =
-    imageType === MovieImageType.Backdrop ? rowCount * 3 : rowCount * 2;
+    imageType === MovieImageType.Backdrop ? rowCount.md * 3 : rowCount.md * 2;
 
   const onPreviousSlideClick = () =>
     setActiveSlide(Math.max(0, activeSlide - 1));
   const onNextSlideClick = () =>
-    setActiveSlide(Math.min(count / rowCount - 1, activeSlide + 1));
+    setActiveSlide(Math.min(count / rowCount.md - 1, activeSlide + 1));
 
   return (
     <>
@@ -69,9 +73,11 @@ const MoviesSection: React.FC<MoviesSectionProps> = ({
             movies={data?.results}
             count={count}
             imageType={imageType}
-            rowCount={rowCount}
           >
-            <MovieList.Slider activeSlide={activeSlide} />
+            <MovieList.Slider
+              activeSlide={activeSlide}
+              itemsPerSlide={rowCount}
+            />
           </MovieList>
         )}
       />

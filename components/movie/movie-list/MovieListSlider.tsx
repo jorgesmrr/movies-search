@@ -1,26 +1,23 @@
 import { useContext } from "react";
+import ResponsiveProperty from "../../../models/ResposiveProperty";
 import Slider from "../../layout/slider/Slider";
-import { Alert } from "../../style/style";
 import { MovieListContext } from "./MovieList";
 import MovieListError from "./MovieListError";
 
 export interface MovieListSliderProps {
   activeSlide: number;
+  itemsPerSlide: ResponsiveProperty<number>;
 }
 
-const MovieListSlider: React.FC<MovieListSliderProps> = ({ activeSlide }) => {
+const MovieListSlider: React.FC<MovieListSliderProps> = ({
+  activeSlide,
+  itemsPerSlide,
+}) => {
   const contextValue = useContext(MovieListContext);
 
   if (!contextValue) return null;
 
-  const {
-    isLoading,
-    error,
-    size,
-    movies,
-    renderChild,
-    rowCount,
-  } = contextValue;
+  const { isLoading, error, size, movies, renderChild } = contextValue;
 
   if (error || size === undefined || (!isLoading && !movies)) {
     return <MovieListError />;
@@ -29,7 +26,7 @@ const MovieListSlider: React.FC<MovieListSliderProps> = ({ activeSlide }) => {
   return (
     <Slider
       aria-label="movies list"
-      itemsPerSlide={rowCount}
+      itemsPerSlide={itemsPerSlide}
       activeSlide={activeSlide}
       renderChild={renderChild}
       data={movies}

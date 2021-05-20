@@ -35,8 +35,9 @@ const theme: DefaultTheme = {
     desktop: [0.707, 1, 1.414, 1.999, 2.827, 3.998],
   },
   breakpoints: {
-    sm: 996,
-    md: 1024,
+    sm: "576px",
+    md: "768px",
+    lg: "1024px",
   },
   pageWidth: 78,
 };

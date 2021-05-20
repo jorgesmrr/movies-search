@@ -13,7 +13,7 @@ const headingRules = `
 export const textSize = (theme: DefaultTheme, level: number): string => `
 font-size: ${theme.fontSize.mobile[level]}rem;
 
-@media (min-width: ${theme.breakpoints.sm}px) {
+@media (min-width: ${theme.breakpoints.md}) {
   font-size: ${theme.fontSize.desktop[level]}rem;
 }
 `;

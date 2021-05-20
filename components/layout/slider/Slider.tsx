@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import ResponsiveProperty from "../../../models/ResposiveProperty";
 import { ListNone, transition } from "../../style/style";
 
 const FlexWrapper = styled.div<{ shadowOverflow?: ShadowOverflow }>`
@@ -19,23 +20,56 @@ const FlexContainer = styled(ListNone)<{
   extraWidth: number;
 }>`
   display: flex;
-  width: calc(100% + ${(props) => props.extraWidth}rem);
-  transform: translateX(${(props) => props.translateX}%);
-  ${transition("transform", 500)}
+  flex-wrap: nowrap;
+  gap: 1rem;
+  overflow-x: auto;
+  padding-left: 1rem;
+  padding-bottom: 1rem;
+  margin-left: -1rem;
+  width: calc(100% + 2rem);
+
+  &::after {
+    content: "";
+    flex: 0 0 1px;
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    overflow-x: visible;
+    gap: 0;
+    padding-left: 0;
+    margin-left: 0;
+    width: calc(100% + ${(props) => props.extraWidth}rem);
+    transform: translateX(${(props) => props.translateX}%);
+    ${transition("transform", 500)}
+
+    &::after {
+      content: none;
+    }
+  }
 `;
 
-const FlexItem = styled.li<{ maxWidth: number; paddingRight: number }>`
-  flex: 1 0 ${(props) => props.maxWidth}%;
-  width: 100%;
-  max-width: ${(props) => props.maxWidth}%;
-  padding-right: ${(props) => props.paddingRight}rem;
+const FlexItem = styled.li<{
+  sizes: ResponsiveProperty<string>;
+  paddingRight: number;
+}>`
+  flex: 0 0 calc(${(props) => props.sizes.xs} - 2rem);
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
+    flex: 0 0 calc(${(props) => props.sizes.sm} - 2rem);
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    flex: 0 0 ${(props) => props.sizes.md};
+    width: 100%;
+    padding-right: ${(props) => props.paddingRight}rem;
+  }
 `;
 
 export interface SliderProps<T> {
   data: T[];
   renderChild: (child: T) => React.ReactElement;
   "aria-label": string;
-  itemsPerSlide?: number;
+  itemsPerSlide: ResponsiveProperty<number>;
   activeSlide?: number;
   gap?: number;
   itemLabelGetter?: (item: T) => string;
@@ -49,7 +83,7 @@ interface ShadowOverflow {
 
 function Slider<T>({
   data,
-  itemsPerSlide = 1,
+  itemsPerSlide,
   activeSlide = 0,
   gap = 1,
   renderChild,
@@ -57,6 +91,12 @@ function Slider<T>({
   itemLabelGetter,
   shadowOverflow,
 }: SliderProps<T>): React.ReactElement {
+  const itemSizes = {
+    xs: `${(1 / itemsPerSlide.xs) * 100}%`,
+    sm: `${(1 / itemsPerSlide.sm) * 100}%`,
+    md: `${(1 / itemsPerSlide.md) * 100}%`,
+  };
+
   return (
     <FlexWrapper shadowOverflow={shadowOverflow}>
       <FlexContainer
@@ -67,7 +107,7 @@ function Slider<T>({
         {data.map((item, index) => (
           <FlexItem
             key={index}
-            maxWidth={(1 / itemsPerSlide) * 100}
+            sizes={itemSizes}
             paddingRight={gap}
             aria-label={itemLabelGetter && itemLabelGetter(item)}
           >
