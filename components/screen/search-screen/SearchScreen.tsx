@@ -29,10 +29,9 @@ const SearchScreen: React.FC<SearchScreenProps> = ({ search }) => {
               error={error}
               movies={data?.results}
               count={20}
-              rowCount={6}
               imageType={MovieImageType.Poster}
             >
-              <MovieList.Grid />
+              <MovieList.Grid columns={6} />
             </MovieList>
           )}
         />
