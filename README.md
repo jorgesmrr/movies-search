@@ -1,4 +1,4 @@
-# react-private-messaging
+# movie-search
 
 A React app to search and discover movies. This is a work in progress.
 
