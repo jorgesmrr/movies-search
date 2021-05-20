@@ -1,17 +1,30 @@
 import styled from "styled-components";
 import MovieImageType from "../../../models/MovieImageType";
-import { FixedAspect } from "../../style/style";
+import { FixedAspect, scalableBorder } from "../../style/style";
 
-const Placeholder = styled(FixedAspect)`
+interface PlaceholderProps {
+  rounded?: boolean;
+  shadowLevel?: number;
+}
+
+const Placeholder = styled(FixedAspect)<PlaceholderProps>`
+  position: relative;
+  overflow: hidden;
+  border-radius: ${({ theme, rounded }) => rounded && theme.radius};
+  box-shadow: ${({ theme, shadowLevel }) =>
+    shadowLevel && theme.shadow[shadowLevel]};
   background-color: ${({ theme }) => theme.color.neutral.darker};
+  ${({ theme }) => scalableBorder(theme, { parentSelector: `a` })}
 `;
 
-interface MoviePlaceholderProps {
+interface MoviePlaceholderProps extends PlaceholderProps {
   type: MovieImageType;
 }
 
 const MovieImagePlaceholder: React.FC<MoviePlaceholderProps> = ({
   type,
+  rounded,
+  shadowLevel,
   children,
 }) => {
   let heightWidthRatio;
@@ -31,7 +44,12 @@ const MovieImagePlaceholder: React.FC<MoviePlaceholderProps> = ({
   }
 
   return (
-    <Placeholder data-testid={testId} heightWidthRatio={heightWidthRatio}>
+    <Placeholder
+      data-testid={testId}
+      heightWidthRatio={heightWidthRatio}
+      rounded={rounded}
+      shadowLevel={shadowLevel}
+    >
       {children}
     </Placeholder>
   );

@@ -6,6 +6,7 @@ import { getMovie } from "../../../network/resources/movie";
 import LimitedWidth from "../../layout/limited-width/LimitedWidth";
 import MovieDetails from "../../movie/movie-details/MovieDetails";
 import MovieHero from "../../movie/movie-hero/MovieHero";
+import MovieImagePlaceholder from "../../movie/movie-image-placeholder/MovieImagePlaceholder";
 import MovieImage from "../../movie/movie-image/MovieImage";
 import MovieMetadata from "../../movie/movie-metadata/MovieMetadata";
 
@@ -28,7 +29,9 @@ const Aside = styled.aside`
 `;
 
 const PosterTranslation = styled.div`
+  position: relative;
   transform: translateY(calc(-25rem + 5vh));
+  z-index: 1;
 `;
 
 export interface MovieScreenProps {
@@ -53,12 +56,17 @@ const MovieScreen: React.FC<MovieScreenProps> = ({ id }) => {
             </Main>
             <Aside>
               <PosterTranslation>
-                <MovieImage
+                <MovieImagePlaceholder
+                  rounded
                   type={MovieImageType.Poster}
-                  path={movie.poster}
-                  size={PosterSizes.Big}
                   shadowLevel={3}
-                />
+                >
+                  <MovieImage
+                    type={MovieImageType.Poster}
+                    path={movie.poster}
+                    size={PosterSizes.Big}
+                  />
+                </MovieImagePlaceholder>
                 <MovieMetadata movie={movie} />
               </PosterTranslation>
             </Aside>

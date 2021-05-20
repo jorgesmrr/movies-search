@@ -38,29 +38,6 @@ export const Subtitle = styled.p`
   ${({ theme }) => textSize(theme, 2)}
 `;
 
-export interface RoundedImageProps {
-  height?: string;
-  shadowLevel?: number;
-  imagePosition?: string;
-}
-
-export const RoundedImage = styled.img<RoundedImageProps>`
-  display: block;
-  border-radius: ${({ theme }) => theme.radius};
-  width: 100%;
-  height: ${(props) => props.height || "auto"};
-  overflow: hidden;
-  object-fit: cover;
-  ${(props) => `
-    ${
-      props.shadowLevel
-        ? `box-shadow: ${props.theme.shadow[props.shadowLevel]};`
-        : ""
-    }
-    ${props.imagePosition ? `object-position: ${props.imagePosition};` : ""}
-    `}
-`;
-
 export const RegularPageContent = styled.div`
   margin-top: 7rem;
 `;

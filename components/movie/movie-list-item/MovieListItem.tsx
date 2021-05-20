@@ -5,21 +5,8 @@ import Movie from "../../../models/Movie";
 import MovieImageType from "../../../models/MovieImageType";
 import { BackdropSizes, PosterSizes } from "../../../network/costants";
 import MovieImagePlaceholder from "../movie-image-placeholder/MovieImagePlaceholder";
-import {
-  Alert,
-  easedDarkGradient,
-  scalableBorder,
-  transition,
-} from "../../style/style";
+import { Alert, easedDarkGradient } from "../../style/style";
 import MovieImage from "../movie-image/MovieImage";
-
-const RoundedContainer = styled.div`
-  position: relative;
-  border-radius: ${({ theme }) => theme.radius};
-  box-shadow: ${({ theme }) => theme.shadow[2]};
-  overflow: hidden;
-  ${({ theme }) => scalableBorder(theme, { parentSelector: `a` })}
-`;
 
 const ImageWrapper = styled.div`
   display: block;
@@ -79,9 +66,7 @@ const MovieListItem: React.FC<MovieListItemProps> = ({
   if (isLoading) {
     return (
       <div>
-        <RoundedContainer>
-          <MovieImagePlaceholder type={imageType} />
-        </RoundedContainer>
+        <MovieImagePlaceholder rounded type={imageType} shadowLevel={2} />
         {imageType === MovieImageType.Poster && (
           <Title>
             <wbr />
@@ -99,24 +84,22 @@ const MovieListItem: React.FC<MovieListItemProps> = ({
   return (
     <Link href={`/movie?id=${movie.id}`}>
       <a>
-        <RoundedContainer>
-          <MovieImagePlaceholder type={imageType}>
-            <ImageWrapper>
-              <MovieImage
-                type={imageType}
-                path={imagePath}
-                size={size}
-                height="100%"
-              />
-              {imageType === MovieImageType.Backdrop && (
-                <>
-                  <BackdropOverlay />
-                  <BackdropTitle>{movie.title}</BackdropTitle>
-                </>
-              )}
-            </ImageWrapper>
-          </MovieImagePlaceholder>
-        </RoundedContainer>
+        <MovieImagePlaceholder rounded type={imageType} shadowLevel={2}>
+          <ImageWrapper>
+            <MovieImage
+              type={imageType}
+              path={imagePath}
+              size={size}
+              height="100%"
+            />
+            {imageType === MovieImageType.Backdrop && (
+              <>
+                <BackdropOverlay />
+                <BackdropTitle>{movie.title}</BackdropTitle>
+              </>
+            )}
+          </ImageWrapper>
+        </MovieImagePlaceholder>
         {imageType === MovieImageType.Poster && <Title>{movie.title}</Title>}
       </a>
     </Link>
