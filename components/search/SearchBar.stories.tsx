@@ -3,7 +3,7 @@ import { Meta, Story } from "@storybook/react";
 import SearchBar, { SearchBarProps } from "./SearchBar";
 
 export default {
-  title: "Input/SearchBar",
+  title: "Search/SearchBar",
   component: SearchBar,
 } as Meta;
 

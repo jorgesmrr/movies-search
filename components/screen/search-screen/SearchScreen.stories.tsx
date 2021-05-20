@@ -3,7 +3,7 @@ import { Meta, Story } from "@storybook/react";
 import SearchScreen, { SearchScreenProps } from "./SearchScreen";
 
 export default {
-  title: "Input/SearchScreen",
+  title: "Screen/SearchScreen",
   component: SearchScreen,
 } as Meta;
 
