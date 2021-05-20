@@ -3,15 +3,20 @@ import { Story, Meta } from "@storybook/react";
 import { fakeMovies } from "../../../models/__fixtures__/Movie";
 import MovieList, { MovieListProps } from "../movie-list/MovieList";
 import MovieImageType from "../../../models/MovieImageType";
+import { MovieListGridProps } from "./MovieListGrid";
+import { MovieListSliderProps } from "./MovieListSlider";
 
 export default {
   title: "Movie/MovieList",
   component: MovieList,
 } as Meta;
 
-const GridTemplate: Story<MovieListProps> = (args) => (
+const GridTemplate: Story<MovieListProps & MovieListGridProps> = ({
+  columns,
+  ...args
+}) => (
   <MovieList {...args}>
-    <MovieList.Grid />
+    <MovieList.Grid columns={columns} />
   </MovieList>
 );
 
@@ -24,9 +29,12 @@ Grid.args = {
   rowCount: 3,
 };
 
-const SliderTemplate: Story<MovieListProps> = (args) => (
+const SliderTemplate: Story<MovieListProps & MovieListSliderProps> = ({
+  itemsPerSlide,
+  ...args
+}) => (
   <MovieList {...args}>
-    <MovieList.Slider activeSlide={0} />
+    <MovieList.Slider activeSlide={0} itemsPerSlide={itemsPerSlide} />
   </MovieList>
 );
 
