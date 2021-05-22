@@ -5,14 +5,21 @@ import { ListNone, transition } from "../../style/style";
 
 const FlexWrapper = styled.div<{ shadowOverflow?: ShadowOverflow }>`
   overflow-x: hidden;
-  ${({ shadowOverflow }) =>
-    shadowOverflow
-      ? `
-        width: calc(100% + 2 * shadowOverflow.x);
+  width: calc(100% + 2rem);
+  padding: ${({ shadowOverflow }) => (shadowOverflow ? shadowOverflow.y : 0)}
+    1rem;
+  margin: -${({ shadowOverflow }) => (shadowOverflow ? shadowOverflow.y : 0)} -1rem;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    ${({ shadowOverflow }) =>
+      shadowOverflow
+        ? `
+        width: calc(100% + 2 * ${shadowOverflow.x});
         padding: ${shadowOverflow.y} ${shadowOverflow.x};
         margin: -${shadowOverflow.y} -${shadowOverflow.x};
       `
-      : "width: 100%;"}
+        : "padding: 0; margin: 0; width: 100%;"}
+  }
 `;
 
 const FlexContainer = styled(ListNone)<{
