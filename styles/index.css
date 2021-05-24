@@ -37,13 +37,15 @@ svg {
   display: block;
 }
 
-a {
-  color: currentColor;
-}
-
+a,
 a:hover,
 a:visited,
 a:link,
 a:active {
+  color: currentColor;
   text-decoration: none;
+}
+
+img {
+  color: transparent;
 }
