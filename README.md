@@ -15,6 +15,7 @@ A React app to search and discover movies. This is a work in progress.
 - [Styled Components](https://styled-components.com/)
 - [Jest](https://jestjs.io/)
 - [Testing Library](https://testing-library.com/)
+- [The Movie Database API](https://developers.themoviedb.org/)
 
 ## Local setup
 
