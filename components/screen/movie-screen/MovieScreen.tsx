@@ -48,7 +48,7 @@ const MovieScreen: React.FC<MovieScreenProps> = ({ id }) => {
   if (movie) {
     return (
       <section>
-        <MovieHero backdrop={movie.backdrop} />
+        <MovieHero title={movie.title} backdrop={movie.backdrop} />
         <Contents>
           <Grid maxWidth={70}>
             <Main>

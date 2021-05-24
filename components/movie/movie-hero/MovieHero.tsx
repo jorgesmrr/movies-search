@@ -49,10 +49,11 @@ const ImageContainer = styled.div`
 `;
 
 export interface MovieHeroProps {
+  title: string;
   backdrop: string;
 }
 
-const MovieHero: React.FC<MovieHeroProps> = ({ backdrop }) => {
+const MovieHero: React.FC<MovieHeroProps> = ({ title, backdrop }) => {
   const theme = useContext(ThemeContext);
   const imageRef = useRef<HTMLImageElement>(null);
 
@@ -74,6 +75,7 @@ const MovieHero: React.FC<MovieHeroProps> = ({ backdrop }) => {
         <ImageContainer>
           <MovieImage
             ref={imageRef}
+            title={title}
             type={MovieImageType.Backdrop}
             path={backdrop}
             size={BackdropSizes.Big}
