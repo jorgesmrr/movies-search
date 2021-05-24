@@ -4,6 +4,7 @@ A React app to search and discover movies. This is a work in progress.
 
 ## See it working
 
+- Open the [website](https://movies-search-jorgesmrr.vercel.app/).
 - Open the [Storybook](https://main--60a5bb6673aabf003b372596.chromatic.com).
 
 ## What I used?
