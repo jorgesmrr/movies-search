@@ -5,6 +5,7 @@ import MovieList, { MovieListProps } from "../movie-list/MovieList";
 import MovieImageType from "../../../models/MovieImageType";
 import { MovieListGridProps } from "./MovieListGrid";
 import { MovieListSliderProps } from "./MovieListSlider";
+import LimitedWidth from "../../layout/limited-width/LimitedWidth";
 
 export default {
   title: "Movie/MovieList",
@@ -15,9 +16,11 @@ const GridTemplate: Story<MovieListProps & MovieListGridProps> = ({
   columns,
   ...args
 }) => (
-  <MovieList {...args}>
-    <MovieList.Grid columns={columns} />
-  </MovieList>
+  <LimitedWidth>
+    <MovieList {...args}>
+      <MovieList.Grid columns={columns} />
+    </MovieList>
+  </LimitedWidth>
 );
 
 export const Grid = GridTemplate.bind({});
@@ -26,17 +29,25 @@ Grid.args = {
   movies: fakeMovies,
   imageType: MovieImageType.Poster,
   count: 6,
-  rowCount: 3,
+  columns: 3,
 };
 
 const SliderTemplate: Story<MovieListProps & MovieListSliderProps> = ({
   itemsPerSlide,
   ...args
 }) => (
-  <MovieList {...args}>
-    <MovieList.Slider activeSlide={0} itemsPerSlide={itemsPerSlide} />
-  </MovieList>
+  <LimitedWidth>
+    <MovieList {...args}>
+      <MovieList.Slider activeSlide={0} itemsPerSlide={itemsPerSlide} />
+    </MovieList>
+  </LimitedWidth>
 );
 
 export const Slider = SliderTemplate.bind({});
-Slider.args = { ...Grid.args };
+Slider.args = {
+  isLoading: false,
+  movies: fakeMovies,
+  imageType: MovieImageType.Poster,
+  count: 6,
+  itemsPerSlide: { xs: 2, sm: 3, md: 4 },
+};
