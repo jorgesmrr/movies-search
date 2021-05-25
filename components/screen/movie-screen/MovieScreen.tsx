@@ -1,14 +1,17 @@
 import styled from "styled-components";
-import useRequest from "../../../hooks/useRequest";
+import { UseRequestState } from "../../../hooks/useRequest";
 import MovieImageType from "../../../models/MovieImageType";
 import { PosterSizes } from "../../../network/costants";
-import { getMovie } from "../../../network/resources/movie";
 import LimitedWidth from "../../layout/limited-width/LimitedWidth";
 import MovieDetails from "../../movie/movie-details/MovieDetails";
 import MovieHero from "../../movie/movie-hero/MovieHero";
 import MovieImagePlaceholder from "../../movie/movie-image-placeholder/MovieImagePlaceholder";
 import MovieImage from "../../movie/movie-image/MovieImage";
 import MovieMetadata from "../../movie/movie-metadata/MovieMetadata";
+import Spinner from "@bit/jorgemoreira.headless-react.progress.spinner";
+import theme from "../../../styles/theme";
+import Movie from "../../../models/Movie";
+import { Alert } from "../../style/style";
 
 const Contents = styled.div`
   box-shadow: ${({ theme }) => theme.shadow[2]};
@@ -34,15 +37,19 @@ const PosterTranslation = styled.div`
   z-index: 1;
 `;
 
-export interface MovieScreenProps {
-  id: number;
-}
+export type MovieScreenProps = UseRequestState<Movie>;
 
-const MovieScreen: React.FC<MovieScreenProps> = ({ id }) => {
-  const { data: movie, isLoading } = useRequest(getMovie(id), [id]);
-
+const MovieScreen: React.FC<MovieScreenProps> = ({
+  data: movie,
+  isLoading,
+}) => {
   if (isLoading) {
-    return <div data-testid="movie-details__spinner" />;
+    return (
+      <Spinner
+        dataTestId="movie-details__spinner"
+        primaryColor={theme.color.accent.default}
+      />
+    );
   }
 
   if (movie) {
@@ -77,7 +84,11 @@ const MovieScreen: React.FC<MovieScreenProps> = ({ id }) => {
     );
   }
 
-  return null;
+  return (
+    <LimitedWidth>
+      <Alert>Failed to load movie information. Please try again later.</Alert>
+    </LimitedWidth>
+  );
 };
 
 export default MovieScreen;
