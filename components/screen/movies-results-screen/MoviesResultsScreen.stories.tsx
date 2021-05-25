@@ -3,6 +3,7 @@ import { Meta, Story } from "@storybook/react";
 import MoviesResultsScreen, {
   MoviesResultsScreenProps,
 } from "./MoviesResultsScreen";
+import { getTopRatedMovies } from "../../../network/resources/movie";
 
 export default {
   title: "Screen/MovieResultsScreen",
@@ -14,4 +15,4 @@ const Template: Story<MoviesResultsScreenProps> = (args) => (
 );
 
 export const Default = Template.bind({});
-Default.args = { search: "Fight Club" };
+Default.args = { title: "Lorem", endpoint: getTopRatedMovies() };

@@ -20,3 +20,16 @@ Default.args = {
   size: PosterSizes.Regular,
   imageType: MovieImageType.Poster,
 };
+
+export const Loading = Template.bind({});
+Loading.args = {
+  ...Default.args,
+  isLoading: true,
+};
+
+export const Error = Template.bind({});
+Error.args = {
+  ...Default.args,
+  isLoading: false,
+  movie: null,
+};
