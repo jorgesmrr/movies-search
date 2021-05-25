@@ -15,11 +15,10 @@ export interface MovieListProps {
 }
 
 interface MovieListContextValue {
-  movies?: Movie[];
-  size: BackdropSizes | PosterSizes;
-  renderChild: (movie?: Movie) => React.ReactElement;
   isLoading: boolean;
   error: boolean;
+  movies?: Movie[];
+  renderChild: (movie?: Movie) => React.ReactElement;
 }
 
 interface MovieListComposition {
@@ -45,9 +44,13 @@ const MovieList: MovieListComposition & React.FC<MovieListProps> = ({
       ? BackdropSizes.Regular
       : PosterSizes.Regular;
 
-  const adjustedMovies: Array<Movie | undefined> = movies
-    ? movies.slice(0, count)
-    : [...new Array(count)].map(() => undefined);
+  let adjustedMovies: Array<Movie | undefined> = null;
+
+  if (isLoading) {
+    adjustedMovies = [...new Array(count)].map(() => undefined);
+  } else if (movies) {
+    adjustedMovies = movies.slice(0, count);
+  }
 
   const renderChild = (movie?: Movie) => (
     <MovieListItem
@@ -61,11 +64,10 @@ const MovieList: MovieListComposition & React.FC<MovieListProps> = ({
   return (
     <MovieListContext.Provider
       value={{
-        size,
+        isLoading,
+        error: error || size === undefined,
         movies: adjustedMovies,
         renderChild,
-        isLoading,
-        error,
       }}
     >
       {children}

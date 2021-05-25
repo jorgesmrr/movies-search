@@ -6,4 +6,4 @@ const getFakeMovie: () => Movie = () => movieTransformer(getMovieFixture());
 
 export const fakeMovie: Movie = getFakeMovie();
 
-export const fakeMovies: Movie[] = [...new Array(9)].map(getFakeMovie);
+export const fakeMovies: Movie[] = [...new Array(12)].map(getFakeMovie);

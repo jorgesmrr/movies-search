@@ -17,10 +17,14 @@ const MovieListSlider: React.FC<MovieListSliderProps> = ({
 
   if (!contextValue) return null;
 
-  const { isLoading, error, size, movies, renderChild } = contextValue;
+  const { isLoading, error, movies, renderChild } = contextValue;
 
-  if (error || size === undefined || (!isLoading && !movies)) {
+  if (error) {
     return <MovieListError />;
+  }
+
+  if (!isLoading && !movies) {
+    return null;
   }
 
   return (
