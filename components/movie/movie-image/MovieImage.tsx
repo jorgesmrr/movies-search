@@ -5,15 +5,16 @@ import { BackdropSizes, PosterSizes } from "../../../network/costants";
 import { getBackdropPath, getPosterPath } from "../../../network/helpers";
 
 interface ImageProps {
-  height?: string;
   imagePosition?: string;
 }
 
 const Image = styled.img<ImageProps>`
   display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: ${(props) => props.height || "auto"};
-  overflow: hidden;
+  height: 100%;
   object-fit: cover;
   ${(props) =>
     props.imagePosition && `object-position: ${props.imagePosition}`};

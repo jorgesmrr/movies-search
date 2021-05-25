@@ -91,7 +91,6 @@ const MovieListItem: React.FC<MovieListItemProps> = ({
               title={movie.title}
               path={imagePath}
               size={size}
-              height="100%"
             />
             {imageType === MovieImageType.Backdrop && (
               <>
