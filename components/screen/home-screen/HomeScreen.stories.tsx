@@ -3,7 +3,7 @@ import { Story, Meta } from "@storybook/react";
 import HomeScreen from "./HomeScreen";
 
 export default {
-  title: "Screen/Home",
+  title: "Screen/HomeScreen",
   component: HomeScreen,
 } as Meta;
 

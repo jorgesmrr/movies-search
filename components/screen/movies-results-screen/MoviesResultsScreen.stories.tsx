@@ -5,7 +5,7 @@ import MoviesResultsScreen, {
 } from "./MoviesResultsScreen";
 
 export default {
-  title: "Input/SearchScreen",
+  title: "Screen/MovieResultsScreen",
   component: MoviesResultsScreen,
 } as Meta;
 
