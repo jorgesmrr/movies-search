@@ -11,20 +11,17 @@ export const API_SEARCH_MOVIES = "/search/movie";
 
 export const BASE_IMAGE_URL = "http://image.tmdb.org/t/p/";
 
-export const BACKDROP_SIZES = [300, 780, 1280];
-export const POSTER_SIZES = [92, 154, 185, 342, 500, 780];
-
 export enum BackdropSizes {
-  Small,
-  Regular,
-  Big,
+  Small = 300,
+  Regular = 780,
+  Big = 1280,
 }
 
 export enum PosterSizes {
-  Tiny,
-  Small,
-  Medium,
-  Regular,
-  Big,
-  Large,
+  Tiny = 92,
+  Small = 154,
+  Medium = 185,
+  Regular = 342,
+  Big = 500,
+  Large = 780,
 }

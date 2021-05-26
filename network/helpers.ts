@@ -1,15 +1,9 @@
-import {
-  BackdropSizes,
-  BACKDROP_SIZES,
-  BASE_IMAGE_URL,
-  PosterSizes,
-  POSTER_SIZES,
-} from "./costants";
+import { BackdropSizes, BASE_IMAGE_URL, PosterSizes } from "./costants";
 
 export const getBackdropPath = (
   fileName: string,
   size: BackdropSizes
-): string => `${BASE_IMAGE_URL}w${BACKDROP_SIZES[size]}${fileName}`;
+): string => `${BASE_IMAGE_URL}w${size}${fileName}`;
 
 export const getPosterPath = (fileName: string, size: PosterSizes): string =>
-  `${BASE_IMAGE_URL}/w${POSTER_SIZES[size]}/${fileName}`;
+  `${BASE_IMAGE_URL}/w${size}/${fileName}`;

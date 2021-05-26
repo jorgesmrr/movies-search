@@ -28,7 +28,7 @@ export interface MovieImageProps extends ImageProps {
 }
 
 const MovieImage = React.forwardRef<HTMLImageElement, MovieImageProps>(
-  ({ type, title, path, size, height, imagePosition }, ref) => {
+  ({ type, title, path, size, imagePosition }, ref) => {
     let source;
 
     switch (type) {
@@ -47,7 +47,6 @@ const MovieImage = React.forwardRef<HTMLImageElement, MovieImageProps>(
         ref={ref}
         alt={title}
         src={source}
-        height={height}
         imagePosition={imagePosition}
         loading="lazy"
         onError={(ev) =>
