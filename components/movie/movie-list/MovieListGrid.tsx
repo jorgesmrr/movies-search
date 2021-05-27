@@ -6,11 +6,18 @@ import MovieListError from "./MovieListError";
 
 const Grid = styled(ListNone)<{ columns: number }>`
   display: grid;
+  gap: 1rem;
   grid-template-columns: repeat(
     auto-fill,
-    minmax(min(${({ columns }) => 70 / columns}rem, 100%), 1fr)
+    minmax(min(${({ columns }) => 60 / columns}rem, 100%), 1fr)
   );
-  gap: 1rem;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(min(${({ columns }) => 70 / columns}rem, 100%), 1fr)
+    );
+  }
 `;
 
 export interface MovieListGridProps {
