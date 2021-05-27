@@ -9,7 +9,7 @@ export const API_MOVIES_NOW_PLAYING = `${API_MOVIES}/now_playing`;
 export const API_TRENDING = "/trending";
 export const API_SEARCH_MOVIES = "/search/movie";
 
-export const BASE_IMAGE_URL = "http://image.tmdb.org/t/p/";
+export const BASE_IMAGE_URL = "https://image.tmdb.org/t/p/";
 
 export enum BackdropSizes {
   Small = 300,
