@@ -2,26 +2,41 @@ import format from "date-fns/format";
 import React from "react";
 import styled from "styled-components";
 import Movie from "../../../models/Movie";
-import { Badge, textSize } from "../../style/style";
+import { Badge, ForLargeScreens, ForSmallScreens } from "../../style/style";
 
 const Container = styled.dl`
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-  text-align: center;
-  margin: 1.25rem 0;
+  gap: 2rem;
+  padding: 1rem;
+  border-top: 1px solid ${({ theme }) => theme.color.neutral.darker};
+  border-bottom: 1px solid ${({ theme }) => theme.color.neutral.darker};
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    justify-content: center;
+    text-align: center;
+    padding: 0;
+    border: none;
+  }
 `;
 
 const Group = styled.div`
   display: flex;
   flex-direction: column-reverse;
-  ${({ theme }) => textSize(theme, 3)}
+  font-size: ${({ theme }) => theme.fontSize.mobile[1]}rem;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: ${({ theme }) => theme.fontSize.desktop[2]}rem;
+  }
 
   dt {
     text-transform: uppercase;
     color: ${({ theme }) => theme.color.neutral.light};
-    ${({ theme }) => textSize(theme, 1)}
+    font-size: ${({ theme }) => theme.fontSize.mobile[0]}rem;
+
+    @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+      font-size: ${({ theme }) => theme.fontSize.desktop[1]}rem;
+    }
   }
 
   dd {
@@ -30,7 +45,7 @@ const Group = styled.div`
 `;
 
 const RatingBadge = styled(Badge)`
-  ${({ theme }) => textSize(theme, 3)}
+  padding: 1rem;
 `;
 
 interface MovieMetadataProps {
@@ -58,12 +73,23 @@ const MovieMetadata: React.FC<MovieMetadataProps> = ({ movie }) => {
         )}
 
         {movie.voteAverage > 0 && (
-          <RatingBadge as="div">
-            <Group>
-              <dt>Rating</dt>
-              <dd>{movie.voteAverage}</dd>
-            </Group>
-          </RatingBadge>
+          <>
+            <ForSmallScreens>
+              <Group>
+                <dt>Rating</dt>
+                <dd>{movie.voteAverage}</dd>
+              </Group>
+            </ForSmallScreens>
+
+            <ForLargeScreens>
+              <RatingBadge as="div">
+                <Group>
+                  <dt>Rating</dt>
+                  <dd>{movie.voteAverage}</dd>
+                </Group>
+              </RatingBadge>
+            </ForLargeScreens>
+          </>
         )}
 
         {formattedRuntime && (
