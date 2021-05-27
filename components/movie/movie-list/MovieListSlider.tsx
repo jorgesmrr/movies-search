@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import ResponsiveProperty from "../../../models/ResposiveProperty";
+import ResponsiveProperty from "../../../models/ResponsiveProperty";
 import Slider from "../../layout/slider/Slider";
 import { MovieListContext } from "./MovieList";
 import MovieListError from "./MovieListError";

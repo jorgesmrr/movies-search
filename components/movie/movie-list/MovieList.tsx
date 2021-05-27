@@ -1,6 +1,7 @@
 import React from "react";
 import Movie from "../../../models/Movie";
 import MovieImageType from "../../../models/MovieImageType";
+import ResponsiveProperty from "../../../models/ResponsiveProperty";
 import { BackdropSizes, PosterSizes } from "../../../network/costants";
 import MovieListItem from "../movie-list-item/MovieListItem";
 import MovieListGrid, { MovieListGridProps } from "./MovieListGrid";
@@ -11,6 +12,7 @@ export interface MovieListProps {
   error: boolean;
   imageType: MovieImageType;
   count: number;
+  sizes: ResponsiveProperty<BackdropSizes | PosterSizes>;
   movies?: Movie[];
 }
 
@@ -34,16 +36,11 @@ const MovieList: MovieListComposition & React.FC<MovieListProps> = ({
   isLoading,
   movies,
   count,
+  sizes,
   imageType,
   children,
   error,
 }) => {
-  // TODO make responsive
-  const size: BackdropSizes | PosterSizes =
-    imageType === MovieImageType.Backdrop
-      ? BackdropSizes.Regular
-      : PosterSizes.Regular;
-
   let adjustedMovies: Array<Movie | undefined> = null;
 
   if (isLoading) {
@@ -57,7 +54,7 @@ const MovieList: MovieListComposition & React.FC<MovieListProps> = ({
       isLoading={isLoading}
       movie={movie}
       imageType={imageType}
-      size={size}
+      sizes={sizes}
     />
   );
 
@@ -65,7 +62,7 @@ const MovieList: MovieListComposition & React.FC<MovieListProps> = ({
     <MovieListContext.Provider
       value={{
         isLoading,
-        error: error || size === undefined,
+        error,
         movies: adjustedMovies,
         renderChild,
       }}

@@ -69,10 +69,9 @@ const MovieScreen: React.FC<MovieScreenProps> = ({
                   shadowLevel={3}
                 >
                   <MovieImage
-                    type={MovieImageType.Poster}
                     title={movie.title}
                     path={movie.poster}
-                    size={PosterSizes.Big}
+                    sizes={{ xs: PosterSizes.Big }}
                   />
                 </MovieImagePlaceholder>
                 <MovieMetadata movie={movie} />

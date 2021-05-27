@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import ResponsiveProperty from "../../../models/ResposiveProperty";
+import ResponsiveProperty from "../../../models/ResponsiveProperty";
 import { ListNone, transition } from "../../style/style";
 
 const FlexWrapper = styled.div<{ shadowOverflow?: ShadowOverflow }>`

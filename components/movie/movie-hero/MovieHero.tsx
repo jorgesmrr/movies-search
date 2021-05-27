@@ -5,7 +5,6 @@ import LimitedWidth from "../../layout/limited-width/LimitedWidth";
 import { easedDarkGradient } from "../../style/style";
 import { useScrollEffect } from "@bit/jorgemoreira.headless-react.hooks";
 import MovieImage from "../movie-image/MovieImage";
-import MovieImageType from "../../../models/MovieImageType";
 
 const Container = styled.div`
   background: black;
@@ -72,14 +71,12 @@ const MovieHero: React.FC<MovieHeroProps> = ({ title, backdrop }) => {
   return (
     <Container>
       <ContentContainer maxWidth={theme.pageWidth + 4}>
-        <ImageContainer>
+        <ImageContainer ref={imageRef}>
           <MovieImage
-            ref={imageRef}
             title={title}
-            type={MovieImageType.Backdrop}
             path={backdrop}
-            size={BackdropSizes.Big}
-            imagePosition="center top"
+            sizes={{ xs: BackdropSizes.Big }}
+            $imagePosition="center top"
           />
         </ImageContainer>
       </ContentContainer>

@@ -2,6 +2,7 @@ import { DependencyList } from "react";
 import Movie from "../../../models/Movie";
 import MovieImageType from "../../../models/MovieImageType";
 import PagedResponse from "../../../models/PagedResponse";
+import { PosterSizes } from "../../../network/costants";
 import Endpoint from "../../../network/endpoint";
 import Fetch from "../../fetch/Fetch";
 import LimitedWidth from "../../layout/limited-width/LimitedWidth";
@@ -19,6 +20,12 @@ const MoviesResultsScreen: React.FC<MoviesResultsScreenProps> = ({
   endpoint,
   dependencies = [],
 }) => {
+  const sizes = {
+    xs: PosterSizes.Big,
+    md: PosterSizes.Medium,
+    lg: PosterSizes.Regular,
+  };
+
   return (
     <RegularPageContent>
       <LimitedWidth>
@@ -33,6 +40,7 @@ const MoviesResultsScreen: React.FC<MoviesResultsScreenProps> = ({
               movies={data?.results}
               count={20}
               imageType={MovieImageType.Poster}
+              sizes={sizes}
             >
               <MovieList.Grid columns={6} />
             </MovieList>

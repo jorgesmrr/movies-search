@@ -1,5 +1,6 @@
 export default interface ResponsiveProperty<T> {
   xs: T;
-  sm: T;
-  md: T;
+  sm?: T;
+  md?: T;
+  lg?: T;
 }

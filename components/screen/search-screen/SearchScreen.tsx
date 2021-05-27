@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import MovieImageType from "../../../models/MovieImageType";
+import { PosterSizes } from "../../../network/costants";
 import { searchMovies } from "../../../network/resources/search";
 import Fetch from "../../fetch/Fetch";
 import LimitedWidth from "../../layout/limited-width/LimitedWidth";
@@ -15,6 +16,12 @@ export interface SearchScreenProps {
 }
 
 const SearchScreen: React.FC<SearchScreenProps> = ({ search }) => {
+  const sizes = {
+    xs: PosterSizes.Big,
+    md: PosterSizes.Medium,
+    lg: PosterSizes.Regular,
+  };
+
   return (
     <RegularPageContent>
       <LimitedWidth>
@@ -30,6 +37,7 @@ const SearchScreen: React.FC<SearchScreenProps> = ({ search }) => {
               movies={data?.results}
               count={20}
               imageType={MovieImageType.Poster}
+              sizes={sizes}
             >
               <MovieList.Grid columns={6} />
             </MovieList>

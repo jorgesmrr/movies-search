@@ -1,14 +1,17 @@
 import React from "react";
 import styled from "styled-components";
-import MovieImageType from "../../../models/MovieImageType";
+import ResponsiveProperty from "../../../models/ResponsiveProperty";
 import { BackdropSizes, PosterSizes } from "../../../network/costants";
-import { getBackdropPath, getPosterPath } from "../../../network/helpers";
+import { getImagePath } from "../../../network/helpers";
+import ResponsiveImage, {
+  ImageSource,
+} from "../../layout/responsive-image/ResponsiveImage";
 
-interface ImageProps {
-  imagePosition?: string;
+interface StyledImageProps {
+  $imagePosition?: string;
 }
 
-const Image = styled.img<ImageProps>`
+const StyledResponsiveImage = styled(ResponsiveImage)<StyledImageProps>`
   display: block;
   position: absolute;
   top: 0;
@@ -16,47 +19,48 @@ const Image = styled.img<ImageProps>`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  ${(props) =>
-    props.imagePosition && `object-position: ${props.imagePosition}`};
+  ${({ $imagePosition }) =>
+    $imagePosition && `object-position: ${$imagePosition}`};
 `;
 
-export interface MovieImageProps extends ImageProps {
-  type: MovieImageType;
+export interface MovieImageProps extends StyledImageProps {
   title: string;
   path: string;
-  size: BackdropSizes | PosterSizes;
+  sizes: ResponsiveProperty<BackdropSizes | PosterSizes>;
 }
 
-const MovieImage = React.forwardRef<HTMLImageElement, MovieImageProps>(
-  ({ type, title, path, size, imagePosition }, ref) => {
-    let source;
-
-    switch (type) {
-      case MovieImageType.Backdrop:
-        source = getBackdropPath(path, size as BackdropSizes);
-        break;
-      case MovieImageType.Poster:
-        source = getPosterPath(path, size as PosterSizes);
-        break;
-      default:
-        return null;
-    }
-
-    return (
-      <Image
-        ref={ref}
-        alt={title}
-        src={source}
-        imagePosition={imagePosition}
-        loading="lazy"
-        onError={(ev) =>
-          ((ev.target as HTMLImageElement).style.visibility = "hidden")
+const MovieImage: React.FC<MovieImageProps> = ({
+  title,
+  path,
+  sizes,
+  $imagePosition,
+}) => {
+  const buildSource = (breakpoint: string) =>
+    sizes[breakpoint]
+      ? {
+          src: getImagePath(path, sizes[breakpoint]),
+          width: sizes[breakpoint],
         }
-      />
-    );
-  }
-);
+      : undefined;
 
-MovieImage.displayName = "MovieImage";
+  const sources: ResponsiveProperty<ImageSource> = {
+    xs: buildSource("xs"),
+    sm: buildSource("sm"),
+    md: buildSource("md"),
+    lg: buildSource("lg"),
+  };
+
+  return (
+    <StyledResponsiveImage
+      $imagePosition={$imagePosition}
+      alt={title}
+      sources={sources}
+      loading="lazy"
+      onError={(ev) =>
+        ((ev.target as HTMLImageElement).style.visibility = "hidden")
+      }
+    />
+  );
+};
 
 export default MovieImage;

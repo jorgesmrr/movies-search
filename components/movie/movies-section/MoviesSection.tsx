@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Movie from "../../../models/Movie";
 import MovieImageType from "../../../models/MovieImageType";
 import PagedResponse from "../../../models/PagedResponse";
+import { BackdropSizes, PosterSizes } from "../../../network/costants";
 import Endpoint from "../../../network/endpoint";
 import Fetch from "../../fetch/Fetch";
 import ChevronLeftIcon from "../../icon/ChevronLeftIcon";
@@ -37,6 +38,15 @@ const MoviesSection: React.FC<MoviesSectionProps> = ({
   imageType,
 }) => {
   const [activeSlide, setActiveSlide] = useState(0);
+
+  const sizes =
+    imageType === MovieImageType.Backdrop
+      ? { xs: BackdropSizes.Big, sm: BackdropSizes.Regular }
+      : {
+          xs: PosterSizes.Big,
+          md: PosterSizes.Medium,
+          lg: PosterSizes.Regular,
+        };
 
   const rowCount =
     imageType === MovieImageType.Backdrop
@@ -79,6 +89,7 @@ const MoviesSection: React.FC<MoviesSectionProps> = ({
             movies={data?.results}
             count={count}
             imageType={imageType}
+            sizes={sizes}
           >
             <MovieList.Slider
               activeSlide={activeSlide}

@@ -7,6 +7,7 @@ import { BackdropSizes, PosterSizes } from "../../../network/costants";
 import MovieImagePlaceholder from "../movie-image-placeholder/MovieImagePlaceholder";
 import { Alert, easedDarkGradient } from "../../style/style";
 import MovieImage from "../movie-image/MovieImage";
+import ResponsiveProperty from "../../../models/ResponsiveProperty";
 
 const ImageWrapper = styled.div`
   display: block;
@@ -49,14 +50,14 @@ const BackdropOverlay = styled.div`
 export interface MovieListItemProps {
   isLoading: boolean;
   imageType: MovieImageType;
-  size: PosterSizes | BackdropSizes;
+  sizes: ResponsiveProperty<PosterSizes | BackdropSizes>;
   movie?: Movie;
 }
 
 const MovieListItem: React.FC<MovieListItemProps> = ({
   isLoading,
   imageType,
-  size,
+  sizes,
   movie,
 }) => {
   if (!isLoading && !movie) {
@@ -86,12 +87,7 @@ const MovieListItem: React.FC<MovieListItemProps> = ({
       <a>
         <MovieImagePlaceholder rounded type={imageType} shadowLevel={2}>
           <ImageWrapper>
-            <MovieImage
-              type={imageType}
-              title={movie.title}
-              path={imagePath}
-              size={size}
-            />
+            <MovieImage title={movie.title} path={imagePath} sizes={sizes} />
             {imageType === MovieImageType.Backdrop && (
               <>
                 <BackdropOverlay />

@@ -5,6 +5,7 @@ import MovieList, { MovieListProps } from "./MovieList";
 import MovieImageType from "../../../models/MovieImageType";
 import { MovieListGridProps } from "./MovieListGrid";
 import LimitedWidth from "../../layout/limited-width/LimitedWidth";
+import { PosterSizes } from "../../../network/costants";
 
 export default {
   title: "Movie/MovieList/Grid",
@@ -29,6 +30,7 @@ Loaded.args = {
   imageType: MovieImageType.Poster,
   count: 6,
   columns: 3,
+  sizes: { xs: PosterSizes.Tiny },
 };
 
 export const Loading = Template.bind({});

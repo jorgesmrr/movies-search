@@ -5,6 +5,7 @@ import MovieList, { MovieListProps } from "./MovieList";
 import MovieImageType from "../../../models/MovieImageType";
 import { MovieListSliderProps } from "./MovieListSlider";
 import LimitedWidth from "../../layout/limited-width/LimitedWidth";
+import { PosterSizes } from "../../../network/costants";
 
 export default {
   title: "Movie/MovieList/Slider",
@@ -38,6 +39,7 @@ Loaded.args = {
   imageType: MovieImageType.Poster,
   count: 12,
   itemsPerSlide: { xs: 2, sm: 3, md: 4 },
+  sizes: { xs: PosterSizes.Tiny },
 };
 
 export const Loading = Template.bind({});
