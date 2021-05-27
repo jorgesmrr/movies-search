@@ -8,6 +8,7 @@ import MovieImage from "../movie-image/MovieImage";
 
 const Container = styled.div`
   background: black;
+  margin-top: ${({ theme }) => theme.dimensions.navbarHeight};
 `;
 
 const ContentContainer = styled(LimitedWidth)`
@@ -17,25 +18,27 @@ const ContentContainer = styled(LimitedWidth)`
   padding-bottom: min(42.85%, 30rem);
   overflow: hidden;
 
-  &:before,
-  &:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    height: 100%;
-    width: 15%;
-    background: black;
-    z-index: 1;
-  }
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: 15%;
+      background: black;
+      z-index: 1;
+    }
 
-  &:before {
-    left: 0;
-    background: ${easedDarkGradient("right")};
-  }
+    &:before {
+      left: 0;
+      background: ${easedDarkGradient("right")};
+    }
 
-  &:after {
-    right: 0;
-    background: ${easedDarkGradient("left")};
+    &:after {
+      right: 0;
+      background: ${easedDarkGradient("left")};
+    }
   }
 `;
 
@@ -70,7 +73,7 @@ const MovieHero: React.FC<MovieHeroProps> = ({ title, backdrop }) => {
 
   return (
     <Container>
-      <ContentContainer maxWidth={theme.pageWidth + 4}>
+      <ContentContainer maxWidth={theme.dimensions.pageWidth + 4}>
         <ImageContainer ref={imageRef}>
           <MovieImage
             title={title}
