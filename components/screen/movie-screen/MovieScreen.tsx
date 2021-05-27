@@ -98,6 +98,13 @@ const PosterSlot = styled.div`
   }
 `;
 
+const SpinnerWrapper = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
+
 export type MovieScreenProps = UseRequestState<Movie>;
 
 const MovieScreen: React.FC<MovieScreenProps> = ({
@@ -106,10 +113,12 @@ const MovieScreen: React.FC<MovieScreenProps> = ({
 }) => {
   if (isLoading) {
     return (
-      <Spinner
-        dataTestId="movie-details__spinner"
-        primaryColor={theme.color.accent.default}
-      />
+      <SpinnerWrapper>
+        <Spinner
+          dataTestId="movie-details__spinner"
+          primaryColor={theme.color.accent.default}
+        />
+      </SpinnerWrapper>
     );
   }
 

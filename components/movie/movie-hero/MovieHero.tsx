@@ -15,10 +15,12 @@ const ContentContainer = styled(LimitedWidth)`
   position: relative;
   width: 100%;
   height: 0;
-  padding-bottom: min(42.85%, 30rem);
+  padding-bottom: min(56.25%, 30rem);
   overflow: hidden;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding-bottom: min(42.85%, 30rem);
+
     &:before,
     &:after {
       content: "";
