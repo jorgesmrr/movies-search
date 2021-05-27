@@ -18,24 +18,24 @@ font-size: ${theme.fontSize.mobile[level]}rem;
 }
 `;
 
-export const TextSmall = styled.span`
-  ${({ theme }) => textSize(theme, 0)}
-`;
-
 export const Heading1 = styled.h1`
   ${headingRules}
-  ${({ theme }) => textSize(theme, 5)}
+  ${({ theme }) => textSize(theme, 4)}
 `;
 
 export const Heading2 = styled.h2`
   ${headingRules}
-  ${({ theme }) => textSize(theme, 4)}
+  ${({ theme }) => textSize(theme, 3)}
 `;
 
 export const Subtitle = styled.p`
   font-weight: 600;
   text-transform: uppercase;
   ${({ theme }) => textSize(theme, 2)}
+`;
+
+export const TextSmall = styled.span`
+  ${({ theme }) => textSize(theme, 0)}
 `;
 
 export const RegularPageContent = styled.div`

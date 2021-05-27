@@ -1,7 +1,7 @@
 import { DefaultTheme } from "styled-components";
 
 const theme: DefaultTheme = {
-  radius: "15px",
+  radius: "1rem",
   color: {
     white: "white",
     neutral: {
@@ -31,8 +31,8 @@ const theme: DefaultTheme = {
     "rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;",
   ],
   fontSize: {
-    mobile: [0.8, 1, 1.25, 1.563, 1.953, 2.441, 3.052],
-    desktop: [0.707, 1, 1.414, 1.999, 2.827, 3.998],
+    mobile: [0.8, 1, 1.25, 1.563, 1.953],
+    desktop: [0.707, 1, 1.414, 2.827, 3.998],
   },
   breakpoints: {
     sm: "576px",
