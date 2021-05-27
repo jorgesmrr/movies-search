@@ -53,7 +53,11 @@ const StyledLink = styled.a`
   }
 `;
 
-const Menu: React.FC = () => {
+export interface MenuProps {
+  onNavigate?: () => void;
+}
+
+const Menu: React.FC<MenuProps> = ({ onNavigate }) => {
   const router = useRouter();
   const items: { label: string; href: string; selected?: boolean }[] = [
     { label: "Home", href: "/" },
@@ -74,7 +78,7 @@ const Menu: React.FC = () => {
         {items.map((item, index) => (
           <MenuItem key={index} selected={item.selected}>
             <Link href={item.href}>
-              <StyledLink>{item.label}</StyledLink>
+              <StyledLink onClick={onNavigate}>{item.label}</StyledLink>
             </Link>
           </MenuItem>
         ))}

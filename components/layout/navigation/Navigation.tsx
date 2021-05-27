@@ -58,7 +58,7 @@ const Navigation: React.FC<NavigationProps> = ({ onSubmitSearch }) => {
         background={theme.color.neutral.darkest}
         shadow={theme.shadow[4]}
       >
-        <Menu />
+        <Menu onNavigate={() => setOpenDrawer(false)} />
       </Drawer>
 
       <NavbarWrapper transparent={isNavbarTransparent}>
