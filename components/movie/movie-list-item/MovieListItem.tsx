@@ -22,7 +22,7 @@ const ImageWrapper = styled.div`
 const Title = styled.p`
   font-size: 1.125rem;
   text-transform: uppercase;
-  padding: 0 ${({ theme }) => theme.radius};
+  padding: 0 ${({ theme }) => theme.dimensions.radius};
   margin-top: 1rem;
   display: -webkit-box;
   -webkit-line-clamp: 2;

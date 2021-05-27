@@ -12,7 +12,7 @@ const Bar = styled.div`
   display: inline-flex;
   gap: 1rem;
   background-color: ${({ theme }) => theme.color.neutral.darker};
-  border-radius: ${({ theme }) => theme.radius};
+  border-radius: ${({ theme }) => theme.dimensions.radius};
   padding: 0.5rem;
   width: 70vw;
   box-shadow: ${({ theme }) => theme.shadow[0]};

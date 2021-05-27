@@ -53,19 +53,19 @@ export const Card = styled.div`
   padding: 0.5rem 1rem;
   background-color: ${({ theme }) => theme.color.neutral.darker};
   box-shadow: ${({ theme }) => theme.shadow[0]};
-  border-radius: ${({ theme }) => theme.radius};
+  border-radius: ${({ theme }) => theme.dimensions.radius};
 `;
 
 export const Badge = styled.span`
   padding: 0.25em 0.75em;
   border: 1px solid ${({ theme }) => theme.color.neutral.lighter};
-  border-radius: ${({ theme }) => theme.radius};
+  border-radius: ${({ theme }) => theme.dimensions.radius};
 `;
 
 export const Alert = styled.div`
   padding: 0.5rem 1rem;
   border: 2px solid #7f1d1d;
-  border-radius: ${({ theme }) => theme.radius};
+  border-radius: ${({ theme }) => theme.dimensions.radius};
   background: #fca5a5;
   color: #7f1d1d;
 `;
@@ -142,7 +142,7 @@ export const scalableBorder: (
       left: 0;
       width: 100%;
       height: 100%;
-      border-radius: ${theme.radius};
+      border-radius: ${theme.dimensions.radius};
       border: 0 solid ${theme.color.accent.dark};
       pointer-events: none;
       ${transition("border-width")}

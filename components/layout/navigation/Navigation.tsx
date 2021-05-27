@@ -33,7 +33,7 @@ const NavbarWrapper = styled.div<{ transparent: boolean }>`
 const NavbarContents = styled(LimitedWidth)`
   position: relative;
   z-index: 2;
-  min-height: 4rem;
+  min-height: ${({ theme }) => theme.dimensions.navbarHeight};
   display: flex;
   align-items: center;
   justify-content: space-between;

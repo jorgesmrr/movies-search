@@ -4,7 +4,7 @@ import { transition } from "../../style/style";
 const StyledButton = styled.button`
   color: ${({ theme }) => theme.color.white};
   background-color: ${({ theme }) => theme.color.neutral.darker};
-  border-radius: ${({ theme }) => theme.radius};
+  border-radius: ${({ theme }) => theme.dimensions.radius};
   box-shadow: ${({ theme }) => theme.shadow[1]};
   border: none;
   cursor: pointer;

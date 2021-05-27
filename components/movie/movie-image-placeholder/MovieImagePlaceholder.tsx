@@ -10,7 +10,7 @@ interface PlaceholderProps {
 const Placeholder = styled(FixedAspect)<PlaceholderProps>`
   position: relative;
   overflow: hidden;
-  border-radius: ${({ theme, rounded }) => rounded && theme.radius};
+  border-radius: ${({ theme, rounded }) => rounded && theme.dimensions.radius};
   box-shadow: ${({ theme, shadowLevel }) =>
     shadowLevel && theme.shadow[shadowLevel]};
   background-color: ${({ theme }) => theme.color.neutral.darker};
