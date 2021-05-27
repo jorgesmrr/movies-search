@@ -7,7 +7,7 @@ import Drawer from "@bit/jorgemoreira.headless-react.surface.drawer";
 import { useScrollEffect } from "@bit/jorgemoreira.headless-react.hooks";
 import theme from "../../../styles/theme";
 import { useState } from "react";
-import { ForLargeScreens, ForSmallScreens } from "../../style/style";
+import { HiddenLgUp, VisibleLgUp } from "../../style/style";
 
 const NavbarWrapper = styled.div<{ transparent: boolean }>`
   position: fixed;
@@ -63,12 +63,12 @@ const Navigation: React.FC<NavigationProps> = ({ onSubmitSearch }) => {
 
       <NavbarWrapper transparent={isNavbarTransparent}>
         <NavbarContents>
-          <ForSmallScreens onClick={() => setOpenDrawer(true)}>
+          <HiddenLgUp onClick={() => setOpenDrawer(true)}>
             <MenuIcon />
-          </ForSmallScreens>
-          <ForLargeScreens>
+          </HiddenLgUp>
+          <VisibleLgUp>
             <Menu />
-          </ForLargeScreens>
+          </VisibleLgUp>
           <SearchBar onSubmit={onSubmitSearch} />
         </NavbarContents>
       </NavbarWrapper>

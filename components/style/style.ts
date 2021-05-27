@@ -70,17 +70,31 @@ export const Alert = styled.div`
   color: #7f1d1d;
 `;
 
-export const ForSmallScreens = styled.div`
+export const HiddenMdUp = styled.div`
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
     display: none;
   }
 `;
 
-export const ForLargeScreens = styled.div`
+export const VisibleMdUp = styled.div<{ display?: string }>`
   display: none;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
-    display: block;
+    display: ${({ display = "block" }) => display};
+  }
+`;
+
+export const HiddenLgUp = styled.div`
+  @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
+    display: none;
+  }
+`;
+
+export const VisibleLgUp = styled.div<{ display?: string }>`
+  display: none;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
+    display: ${({ display = "block" }) => display};
   }
 `;
 

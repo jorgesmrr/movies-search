@@ -9,7 +9,7 @@ import Fetch from "../../fetch/Fetch";
 import ChevronLeftIcon from "../../icon/ChevronLeftIcon";
 import ChevronRightIcon from "../../icon/ChevronRightIcon";
 import Button from "../../layout/button/Button";
-import { ForLargeScreens, Heading2, textSize } from "../../style/style";
+import { VisibleMdUp, Heading2, textSize } from "../../style/style";
 import MovieList from "../movie-list/MovieList";
 
 const SectionHeading = styled.div`
@@ -66,17 +66,17 @@ const MoviesSection: React.FC<MoviesSectionProps> = ({
       <SectionHeading>
         <Heading2>{title}</Heading2>
 
-        <ForLargeScreens>
+        <VisibleMdUp>
           <Button onClick={onPreviousSlideClick}>
             <ChevronLeftIcon />
           </Button>
-        </ForLargeScreens>
+        </VisibleMdUp>
 
-        <ForLargeScreens>
+        <VisibleMdUp>
           <Button onClick={onNextSlideClick}>
             <ChevronRightIcon />
           </Button>
-        </ForLargeScreens>
+        </VisibleMdUp>
       </SectionHeading>
 
       <Fetch

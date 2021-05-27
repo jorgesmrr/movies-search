@@ -2,7 +2,7 @@ import format from "date-fns/format";
 import React from "react";
 import styled from "styled-components";
 import Movie from "../../../models/Movie";
-import { Badge, ForLargeScreens, ForSmallScreens } from "../../style/style";
+import { Badge, VisibleMdUp, HiddenMdUp } from "../../style/style";
 
 const Container = styled.dl`
   display: flex;
@@ -74,21 +74,21 @@ const MovieMetadata: React.FC<MovieMetadataProps> = ({ movie }) => {
 
         {movie.voteAverage > 0 && (
           <>
-            <ForSmallScreens>
+            <HiddenMdUp>
               <Group>
                 <dt>Rating</dt>
                 <dd>{movie.voteAverage}</dd>
               </Group>
-            </ForSmallScreens>
+            </HiddenMdUp>
 
-            <ForLargeScreens>
+            <VisibleMdUp>
               <RatingBadge as="div">
                 <Group>
                   <dt>Rating</dt>
                   <dd>{movie.voteAverage}</dd>
                 </Group>
               </RatingBadge>
-            </ForLargeScreens>
+            </VisibleMdUp>
           </>
         )}
 
