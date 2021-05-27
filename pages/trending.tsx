@@ -3,17 +3,16 @@ import MoviesResultsScreen from "../components/screen/movies-results-screen/Movi
 import TrendingTimeWindow from "../models/TrendingTimeWindow";
 import { getTrendingMovies } from "../network/resources/trending";
 
-export default function TrendingPage() {
-  return (
-    <div>
-      <Head>
-        <title>Trending Movies</title>
-      </Head>
+const TrendingPage: React.FC = () => (
+  <div>
+    <Head>
+      <title>Trending Movies</title>
+    </Head>
 
-      <MoviesResultsScreen
-        title="Trending"
-        endpoint={getTrendingMovies(TrendingTimeWindow.Day)}
-      />
-    </div>
-  );
-}
+    <MoviesResultsScreen
+      title="Trending"
+      endpoint={getTrendingMovies(TrendingTimeWindow.Day)}
+    />
+  </div>
+);
+export default TrendingPage;
