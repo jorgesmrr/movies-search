@@ -1,14 +1,6 @@
 import { useRouter } from "next/dist/client/router";
-import styled from "styled-components";
 import Navigation from "../layout/navigation/Navigation";
-
-const PageWrapper = styled.div`
-  min-height: 100vh;
-`;
-
-const PageContents = styled.div`
-  color: ${({ theme }) => theme.color.white};
-`;
+import * as S from "./Page.styles";
 
 const Page: React.FC = ({ children }) => {
   const router = useRouter();
@@ -18,10 +10,10 @@ const Page: React.FC = ({ children }) => {
   };
 
   return (
-    <PageWrapper>
+    <S.Container>
       <Navigation onSubmitSearch={onSubmitSearch} />
-      <PageContents>{children}</PageContents>
-    </PageWrapper>
+      <S.Contents>{children}</S.Contents>
+    </S.Container>
   );
 };
 

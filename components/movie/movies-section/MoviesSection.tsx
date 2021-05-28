@@ -1,5 +1,4 @@
 import { useState } from "react";
-import styled from "styled-components";
 import Movie from "../../../models/Movie";
 import MovieImageType from "../../../models/MovieImageType";
 import PagedResponse from "../../../models/PagedResponse";
@@ -9,22 +8,9 @@ import Fetch from "../../fetch/Fetch";
 import ChevronLeftIcon from "../../icon/ChevronLeftIcon";
 import ChevronRightIcon from "../../icon/ChevronRightIcon";
 import Button from "../../layout/button/Button";
-import { VisibleMdUp, Heading2, textSize } from "../../style/style";
+import { VisibleMdUp, Heading2 } from "../../style/style";
 import MovieList from "../movie-list/MovieList";
-
-const SectionHeading = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin: 0.75em 0 0.25em;
-  ${({ theme }) => textSize(theme, 4)}
-
-  h2 {
-    margin-right: auto;
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-`;
+import * as S from "./MoviesSection.styles";
 
 interface MoviesSectionProps {
   title: string;
@@ -63,7 +49,7 @@ const MoviesSection: React.FC<MoviesSectionProps> = ({
 
   return (
     <>
-      <SectionHeading>
+      <S.Heading>
         <Heading2>{title}</Heading2>
 
         <VisibleMdUp>
@@ -77,7 +63,7 @@ const MoviesSection: React.FC<MoviesSectionProps> = ({
             <ChevronRightIcon />
           </Button>
         </VisibleMdUp>
-      </SectionHeading>
+      </S.Heading>
 
       <Fetch
         endpoint={endpoint}

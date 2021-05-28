@@ -1,25 +1,6 @@
-import styled from "styled-components";
 import Movie from "../../../models/Movie";
-import { Badge, Card, ListNone, Subtitle } from "../../style/style";
-
-const Badges = styled(ListNone)`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-`;
-
-const ExplicitBadge = styled(Badge)`
-  text-transform: uppercase;
-`;
-
-const GenreBadge = styled(Badge)`
-  color: ${({ theme }) => theme.color.neutral.darkest};
-  background-color: ${({ theme }) => theme.color.neutral.lighter};
-`;
-
-const AboutCard = styled(Card)`
-  margin: 1rem 0;
-`;
+import { Subtitle } from "../../style/style";
+import * as S from "./MovieDetails.styles";
 
 export interface MovieDetailsProps {
   movie: Movie;
@@ -28,18 +9,18 @@ export interface MovieDetailsProps {
 const MovieDetails: React.FC<MovieDetailsProps> = ({ movie }) => {
   return (
     <div>
-      <Badges>
-        {movie.isAdult && <ExplicitBadge>Explicit</ExplicitBadge>}
+      <S.BadgesList>
+        {movie.isAdult && <S.ExplicitBadge>Explicit</S.ExplicitBadge>}
         {movie.genres.map((genre) => (
-          <GenreBadge as="li" key={genre.id}>
+          <S.GenreBadge as="li" key={genre.id}>
             {genre.name}
-          </GenreBadge>
+          </S.GenreBadge>
         ))}
-      </Badges>
-      <AboutCard>
+      </S.BadgesList>
+      <S.AboutCard>
         {movie.tagline && <Subtitle>{movie.tagline}</Subtitle>}
         <p>{movie.overview}</p>
-      </AboutCard>
+      </S.AboutCard>
     </div>
   );
 };

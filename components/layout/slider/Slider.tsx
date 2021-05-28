@@ -1,76 +1,6 @@
 import React from "react";
-import styled from "styled-components";
 import ResponsiveProperty from "../../../models/ResponsiveProperty";
-import { ListNone, transition } from "../../style/style";
-
-const FlexWrapper = styled.div<{ shadowOverflow?: ShadowOverflow }>`
-  overflow-x: hidden;
-  width: calc(100% + 2rem);
-  padding: ${({ shadowOverflow }) => (shadowOverflow ? shadowOverflow.y : 0)}
-    1rem;
-  margin: -${({ shadowOverflow }) => (shadowOverflow ? shadowOverflow.y : 0)} -1rem;
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
-    ${({ shadowOverflow }) =>
-      shadowOverflow
-        ? `
-        width: calc(100% + 2 * ${shadowOverflow.x});
-        padding: ${shadowOverflow.y} ${shadowOverflow.x};
-        margin: -${shadowOverflow.y} -${shadowOverflow.x};
-      `
-        : "padding: 0; margin: 0; width: 100%;"}
-  }
-`;
-
-const FlexContainer = styled(ListNone)<{
-  translateX: number;
-  extraWidth: number;
-}>`
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 1rem;
-  overflow-x: auto;
-  padding-left: 1rem;
-  padding-bottom: 1rem;
-  margin-left: -1rem;
-  width: calc(100% + 2rem);
-
-  &::after {
-    content: "";
-    flex: 0 0 1px;
-  }
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
-    overflow-x: visible;
-    gap: 0;
-    padding-left: 0;
-    margin-left: 0;
-    width: calc(100% + ${(props) => props.extraWidth}rem);
-    transform: translateX(${(props) => props.translateX}%);
-    ${transition("transform", 500)}
-
-    &::after {
-      content: none;
-    }
-  }
-`;
-
-const FlexItem = styled.li<{
-  sizes: ResponsiveProperty<string>;
-  paddingRight: number;
-}>`
-  flex: 0 0 calc(${(props) => props.sizes.xs} - 2rem);
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
-    flex: 0 0 calc(${(props) => props.sizes.sm} - 2rem);
-  }
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
-    flex: 0 0 ${(props) => props.sizes.md};
-    width: 100%;
-    padding-right: ${(props) => props.paddingRight}rem;
-  }
-`;
+import * as S from "./Slider.styles";
 
 export interface SliderProps<T> {
   data: T[];
@@ -80,12 +10,7 @@ export interface SliderProps<T> {
   activeSlide?: number;
   gap?: number;
   itemLabelGetter?: (item: T) => string;
-  shadowOverflow?: ShadowOverflow;
-}
-
-interface ShadowOverflow {
-  x: string;
-  y: string;
+  shadowOverflow?: S.ShadowOverflow;
 }
 
 function Slider<T>({
@@ -105,24 +30,24 @@ function Slider<T>({
   };
 
   return (
-    <FlexWrapper shadowOverflow={shadowOverflow}>
-      <FlexContainer
+    <S.Wrapper shadowOverflow={shadowOverflow}>
+      <S.Container
         aria-label={ariaLabel}
         translateX={activeSlide * -100}
         extraWidth={gap}
       >
         {data.map((item, index) => (
-          <FlexItem
+          <S.Item
             key={index}
             sizes={itemSizes}
             paddingRight={gap}
             aria-label={itemLabelGetter && itemLabelGetter(item)}
           >
             {renderChild(item)}
-          </FlexItem>
+          </S.Item>
         ))}
-      </FlexContainer>
-    </FlexWrapper>
+      </S.Container>
+    </S.Wrapper>
   );
 }
 

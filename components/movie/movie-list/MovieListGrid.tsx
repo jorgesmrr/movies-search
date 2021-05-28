@@ -1,24 +1,7 @@
 import { useContext } from "react";
-import styled from "styled-components";
-import { ListNone } from "../../style/style";
 import { MovieListContext } from "../movie-list/MovieList";
 import MovieListError from "./MovieListError";
-
-const Grid = styled(ListNone)<{ columns: number }>`
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(min(${({ columns }) => 60 / columns}rem, 100%), 1fr)
-  );
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
-    grid-template-columns: repeat(
-      auto-fill,
-      minmax(min(${({ columns }) => 70 / columns}rem, 100%), 1fr)
-    );
-  }
-`;
+import * as S from "./MovieListGrid.styles";
 
 export interface MovieListGridProps {
   columns: number;
@@ -40,7 +23,7 @@ const MovieListGrid: React.FC<MovieListGridProps> = ({ columns }) => {
   }
 
   return (
-    <Grid aria-label="movies list" columns={columns}>
+    <S.Grid aria-label="movies list" columns={columns}>
       {movies.map((_, index) => {
         const movie = !isLoading ? movies[index] : undefined;
 
@@ -50,7 +33,7 @@ const MovieListGrid: React.FC<MovieListGridProps> = ({ columns }) => {
           </li>
         );
       })}
-    </Grid>
+    </S.Grid>
   );
 };
 

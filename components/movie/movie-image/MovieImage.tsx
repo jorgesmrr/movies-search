@@ -1,29 +1,11 @@
 import React from "react";
-import styled from "styled-components";
 import ResponsiveProperty from "../../../models/ResponsiveProperty";
 import { BackdropSizes, PosterSizes } from "../../../network/costants";
 import { getImagePath } from "../../../network/helpers";
-import ResponsiveImage, {
-  ImageSource,
-} from "../../layout/responsive-image/ResponsiveImage";
+import { ImageSource } from "../../layout/responsive-image/ResponsiveImage";
+import * as S from "./MovieImage.styles";
 
-interface StyledImageProps {
-  $imagePosition?: string;
-}
-
-const StyledResponsiveImage = styled(ResponsiveImage)<StyledImageProps>`
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  ${({ $imagePosition }) =>
-    $imagePosition && `object-position: ${$imagePosition}`};
-`;
-
-export interface MovieImageProps extends StyledImageProps {
+export interface MovieImageProps extends S.ImageProps {
   title: string;
   path: string;
   sizes: ResponsiveProperty<BackdropSizes | PosterSizes>;
@@ -51,7 +33,7 @@ const MovieImage: React.FC<MovieImageProps> = ({
   };
 
   return (
-    <StyledResponsiveImage
+    <S.ResponsiveImage
       $imagePosition={$imagePosition}
       alt={title}
       sources={sources}
