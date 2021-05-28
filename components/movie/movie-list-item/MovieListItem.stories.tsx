@@ -17,7 +17,7 @@ const Template: Story<MovieListItemProps> = (args) => (
 export const Default = Template.bind({});
 Default.args = {
   movie: fakeMovie,
-  size: PosterSizes.Regular,
+  sizes: { xs: PosterSizes.Tiny },
   imageType: MovieImageType.Poster,
 };
 
