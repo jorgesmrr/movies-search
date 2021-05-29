@@ -2,7 +2,10 @@ import Menu from "../menu/Menu";
 import SearchBar from "../search/SearchBar";
 import MenuIcon from "../icon/MenuIcon";
 import Drawer from "@bit/jorgemoreira.headless-react.surface.drawer";
-import { useScrollEffect } from "@bit/jorgemoreira.headless-react.hooks";
+import {
+  useScrollEffect,
+  useToggle,
+} from "@bit/jorgemoreira.headless-react.hooks";
 import { useState } from "react";
 import { HiddenLgUp, VisibleLgUp } from "../style/style";
 import * as S from "./Navigation.styles";
@@ -13,7 +16,12 @@ interface NavigationProps {
 }
 
 const Navigation: React.FC<NavigationProps> = ({ onSubmitSearch }) => {
-  const [openDrawer, setOpenDrawer] = useState(false);
+  const {
+    isOn: isDrawerOpen,
+    setOn: openDrawer,
+    setOff: closeDrawer,
+  } = useToggle(false);
+
   const [isNavbarTransparent, setNavbarTransparent] = useState(false);
 
   useScrollEffect(({ y }) => setNavbarTransparent(y <= 128));
@@ -21,17 +29,17 @@ const Navigation: React.FC<NavigationProps> = ({ onSubmitSearch }) => {
   return (
     <>
       <Drawer
-        open={openDrawer}
-        handleClose={() => setOpenDrawer(false)}
+        open={isDrawerOpen}
+        handleClose={closeDrawer}
         background={theme.color.neutral.darkest}
         shadow={theme.shadow[4]}
       >
-        <Menu onNavigate={() => setOpenDrawer(false)} />
+        <Menu onNavigate={closeDrawer} />
       </Drawer>
 
       <S.NavbarWrapper transparent={isNavbarTransparent}>
         <S.NavbarContents>
-          <HiddenLgUp onClick={() => setOpenDrawer(true)}>
+          <HiddenLgUp onClick={openDrawer}>
             <MenuIcon />
           </HiddenLgUp>
           <VisibleLgUp>
