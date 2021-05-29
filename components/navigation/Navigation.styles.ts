@@ -3,6 +3,7 @@ import { LimitedWidth } from "../style/style";
 
 export const NavbarWrapper = styled.div<{ transparent: boolean }>`
   position: fixed;
+  z-index: 2;
   top: 0;
   left: 0;
   width: 100%;
@@ -23,7 +24,6 @@ export const NavbarWrapper = styled.div<{ transparent: boolean }>`
 
 export const NavbarContents = styled(LimitedWidth)`
   position: relative;
-  z-index: 2;
   min-height: ${({ theme }) => theme.dimensions.navbarHeight};
   display: flex;
   align-items: center;
