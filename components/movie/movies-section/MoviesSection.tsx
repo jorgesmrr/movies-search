@@ -7,7 +7,7 @@ import { RequestEndpoint } from "@bit/jorgemoreira.headless-react.hooks";
 import Fetch from "@bit/jorgemoreira.headless-react.network.fetch";
 import ChevronLeftIcon from "../../icon/ChevronLeftIcon";
 import ChevronRightIcon from "../../icon/ChevronRightIcon";
-import Button from "../../layout/button/Button";
+import Button from "../../button/Button";
 import { VisibleMdUp, Heading2 } from "../../style/style";
 import MovieList from "../movie-list/MovieList";
 import * as S from "./MoviesSection.styles";

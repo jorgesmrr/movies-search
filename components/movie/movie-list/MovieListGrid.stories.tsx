@@ -4,8 +4,8 @@ import { fakeMovies } from "../../../models/__fixtures__/Movie";
 import MovieList, { MovieListProps } from "./MovieList";
 import MovieImageType from "../../../models/MovieImageType";
 import { MovieListGridProps } from "./MovieListGrid";
-import LimitedWidth from "../../layout/limited-width/LimitedWidth";
 import { PosterSizes } from "../../../network/costants";
+import { LimitedWidth } from "../../style/style";
 
 export default {
   title: "Movie/MovieList/Grid",

@@ -5,9 +5,8 @@ import PagedResponse from "../../../models/PagedResponse";
 import { PosterSizes } from "../../../network/costants";
 import { RequestEndpoint } from "@bit/jorgemoreira.headless-react.hooks";
 import Fetch from "@bit/jorgemoreira.headless-react.network.fetch";
-import LimitedWidth from "../../layout/limited-width/LimitedWidth";
 import MovieList from "../../movie/movie-list/MovieList";
-import { Heading1, RegularPageContent } from "../../style/style";
+import { Heading1, LimitedWidth, RegularPageContent } from "../../style/style";
 
 export interface MoviesResultsScreenProps {
   title: string;

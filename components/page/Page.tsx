@@ -1,5 +1,5 @@
 import { useRouter } from "next/dist/client/router";
-import Navigation from "../layout/navigation/Navigation";
+import Navigation from "../navigation/Navigation";
 import * as S from "./Page.styles";
 
 const Page: React.FC = ({ children }) => {

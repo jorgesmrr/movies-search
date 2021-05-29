@@ -2,9 +2,8 @@ import MovieImageType from "../../../models/MovieImageType";
 import TrendingTimeWindow from "../../../models/TrendingTimeWindow";
 import { getNowPlayingMovies } from "../../../network/resources/movie";
 import { getTrendingMovies } from "../../../network/resources/trending";
-import LimitedWidth from "../../layout/limited-width/LimitedWidth";
 import MoviesSection from "../../movie/movies-section/MoviesSection";
-import { RegularPageContent } from "../../style/style";
+import { LimitedWidth, RegularPageContent } from "../../style/style";
 
 const HomeScreen: React.FC = () => {
   return (

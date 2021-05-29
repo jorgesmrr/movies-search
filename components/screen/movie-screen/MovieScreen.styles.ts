@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import LimitedWidth from "../../layout/limited-width/LimitedWidth";
-import { Heading1 } from "../../style/style";
+import { Heading1, LimitedWidth } from "../../style/style";
 
 export const Section = styled.section`
   display: flex;

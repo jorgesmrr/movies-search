@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import LimitedWidth from "../../layout/limited-width/LimitedWidth";
-import { easedDarkGradient } from "../../style/style";
+import { easedDarkGradient, LimitedWidth } from "../../style/style";
 
 export const Wrapper = styled.div`
   background: black;

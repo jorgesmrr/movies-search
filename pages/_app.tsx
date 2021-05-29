@@ -3,7 +3,7 @@ import { AppProps } from "next/dist/next-server/lib/router/router";
 import Head from "next/head";
 import { ThemeProvider } from "styled-components";
 import Page from "../components/page/Page";
-import theme from "../styles/theme";
+import theme from "../components/style/theme";
 import "@bit/jorgemoreira.headless.styles";
 import "./../styles/index.css";
 

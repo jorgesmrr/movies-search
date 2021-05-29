@@ -1,17 +1,16 @@
 import { UseRequestState } from "@bit/jorgemoreira.headless-react.hooks";
 import MovieImageType from "../../../models/MovieImageType";
 import { PosterSizes } from "../../../network/costants";
-import LimitedWidth from "../../layout/limited-width/LimitedWidth";
 import MovieDetails from "../../movie/movie-details/MovieDetails";
 import MovieHero from "../../movie/movie-hero/MovieHero";
 import MovieImagePlaceholder from "../../movie/movie-image-placeholder/MovieImagePlaceholder";
 import MovieImage from "../../movie/movie-image/MovieImage";
 import MovieMetadata from "../../movie/movie-metadata/MovieMetadata";
 import Spinner from "@bit/jorgemoreira.headless-react.progress.spinner";
-import theme from "../../../styles/theme";
 import Movie from "../../../models/Movie";
-import { Alert } from "../../style/style";
+import { Alert, LimitedWidth } from "../../style/style";
 import * as S from "./MovieScreen.styles";
+import theme from "../../style/theme";
 
 export type MovieScreenProps = UseRequestState<Movie>;
 

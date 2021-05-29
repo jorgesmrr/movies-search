@@ -1,5 +1,5 @@
-import ResponsiveProperty from "../../../models/ResponsiveProperty";
-import theme from "../../../styles/theme";
+import ResponsiveProperty from "../../models/ResponsiveProperty";
+import theme from "../style/theme";
 
 export interface ImageSource {
   src: string;

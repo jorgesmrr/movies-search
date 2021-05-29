@@ -1,12 +1,12 @@
 import Menu from "../menu/Menu";
-import SearchBar from "../../search/SearchBar";
-import MenuIcon from "../../icon/MenuIcon";
+import SearchBar from "../search/SearchBar";
+import MenuIcon from "../icon/MenuIcon";
 import Drawer from "@bit/jorgemoreira.headless-react.surface.drawer";
 import { useScrollEffect } from "@bit/jorgemoreira.headless-react.hooks";
-import theme from "../../../styles/theme";
 import { useState } from "react";
-import { HiddenLgUp, VisibleLgUp } from "../../style/style";
+import { HiddenLgUp, VisibleLgUp } from "../style/style";
 import * as S from "./Navigation.styles";
+import theme from "../style/theme";
 
 interface NavigationProps {
   onSubmitSearch: (search: string) => void;

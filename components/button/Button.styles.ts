@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { transition } from "../../style/style";
+import { transition } from "../style/style";
 
 export const Button = styled.button`
   color: ${({ theme }) => theme.color.white};

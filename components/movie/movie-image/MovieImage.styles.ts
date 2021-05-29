@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import OriginalResponsiveImage from "../../layout/responsive-image/ResponsiveImage";
+import OriginalResponsiveImage from "../../responsive-image/ResponsiveImage";
 
 export interface ImageProps {
   $imagePosition?: string;

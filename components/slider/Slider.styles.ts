@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { ListNone, transition } from "../../style/style";
-import ResponsiveProperty from "../../../models/ResponsiveProperty";
+import ResponsiveProperty from "../../models/ResponsiveProperty";
+import { ListNone, transition } from "../style/style";
 
 export interface ShadowOverflow {
   x: string;

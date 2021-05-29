@@ -1,12 +1,11 @@
 import styled from "styled-components";
-import LimitedWidth from "../limited-width/LimitedWidth";
+import { LimitedWidth } from "../style/style";
 
 export const NavbarWrapper = styled.div<{ transparent: boolean }>`
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 10;
   background-color: rgba(
     20,
     20,

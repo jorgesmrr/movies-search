@@ -1,5 +1,5 @@
 import React from "react";
-import ResponsiveProperty from "../../../models/ResponsiveProperty";
+import ResponsiveProperty from "../../models/ResponsiveProperty";
 import * as S from "./Slider.styles";
 
 export interface SliderProps<T> {

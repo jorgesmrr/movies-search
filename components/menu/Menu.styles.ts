@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ListNone, transition } from "../../style/style";
+import { ListNone, transition } from "../style/style";
 
 export const List = styled(ListNone)`
   font-size: 1.125rem;

@@ -3,9 +3,13 @@ import MovieImageType from "../../../models/MovieImageType";
 import { PosterSizes } from "../../../network/costants";
 import { searchMovies } from "../../../network/resources/search";
 import Fetch from "@bit/jorgemoreira.headless-react.network.fetch";
-import LimitedWidth from "../../layout/limited-width/LimitedWidth";
 import MovieList from "../../movie/movie-list/MovieList";
-import { Heading1, RegularPageContent, Subtitle } from "../../style/style";
+import {
+  Heading1,
+  LimitedWidth,
+  RegularPageContent,
+  Subtitle,
+} from "../../style/style";
 
 const SearchSubtitle = styled(Subtitle)`
   margin-bottom: 1em;
