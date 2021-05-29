@@ -38,6 +38,7 @@ const MovieImage: React.FC<MovieImageProps> = ({
       alt={title}
       sources={sources}
       loading="lazy"
+      onLoad={(ev) => ((ev.target as HTMLImageElement).style.opacity = "1")}
       onError={(ev) =>
         ((ev.target as HTMLImageElement).style.visibility = "hidden")
       }

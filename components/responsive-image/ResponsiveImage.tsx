@@ -11,6 +11,7 @@ interface ImageProps {
   loading?: "eager" | "lazy";
   sources: ResponsiveProperty<ImageSource>;
   onError: (event) => void;
+  onLoad: (event) => void;
 }
 
 const ResponsiveImage: React.FC<ImageProps> = ({ sources, ...imgProps }) => {

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import OriginalResponsiveImage from "../../responsive-image/ResponsiveImage";
+import { transition } from "../../style/style";
 
 export interface ImageProps {
   $imagePosition?: string;
@@ -13,6 +14,8 @@ export const ResponsiveImage = styled(OriginalResponsiveImage)<ImageProps>`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  opacity: 0;
+  ${transition("opacity", 250)}
   ${({ $imagePosition }) =>
     $imagePosition && `object-position: ${$imagePosition}`};
 `;
