@@ -3,12 +3,12 @@ import PagedResponse from "../../models/PagedResponse";
 import TrendingTimeWindow from "../../models/TrendingTimeWindow";
 import apiClient from "../apiClient";
 import { API_TRENDING } from "../costants";
-import Endpoint from "../endpoint";
+import { RequestEndpoint } from "@bit/jorgemoreira.headless-react.hooks";
 import { movieTransformer } from "../transformers";
 
 export const getTrendingMovies = (
   timeWindow: TrendingTimeWindow
-): Endpoint<PagedResponse<Movie>> => () => {
+): RequestEndpoint<PagedResponse<Movie>> => () => {
   const timeWindowValues = {
     [TrendingTimeWindow.Day]: "day",
     [TrendingTimeWindow.Week]: "week",

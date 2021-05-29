@@ -2,7 +2,7 @@ import styled from "styled-components";
 import MovieImageType from "../../../models/MovieImageType";
 import { PosterSizes } from "../../../network/costants";
 import { searchMovies } from "../../../network/resources/search";
-import Fetch from "../../fetch/Fetch";
+import Fetch from "@bit/jorgemoreira.headless-react.network.fetch";
 import LimitedWidth from "../../layout/limited-width/LimitedWidth";
 import MovieList from "../../movie/movie-list/MovieList";
 import { Heading1, RegularPageContent, Subtitle } from "../../style/style";

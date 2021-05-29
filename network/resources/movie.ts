@@ -9,10 +9,12 @@ import {
   API_MOVIES_TOP_RATED,
   API_MOVIES_UPCOMING,
 } from "../costants";
-import Endpoint from "../endpoint";
+import { RequestEndpoint } from "@bit/jorgemoreira.headless-react.hooks";
 import { movieTransformer } from "../transformers";
 
-const movieListEndpoint = (url: string): Endpoint<PagedResponse<Movie>> => () =>
+const movieListEndpoint = (
+  url: string
+): RequestEndpoint<PagedResponse<Movie>> => () =>
   new Promise((resolve, reject) => {
     apiClient
       .get(url)
@@ -23,7 +25,7 @@ const movieListEndpoint = (url: string): Endpoint<PagedResponse<Movie>> => () =>
       .catch(reject);
   });
 
-export const getMovie = (id: number): Endpoint<Movie> => () =>
+export const getMovie = (id: number): RequestEndpoint<Movie> => () =>
   new Promise((resolve, reject) => {
     apiClient
       .get(`${API_MOVIES}/${id}`)
@@ -31,14 +33,14 @@ export const getMovie = (id: number): Endpoint<Movie> => () =>
       .catch(reject);
   });
 
-export const getPopularMovies = (): Endpoint<PagedResponse<Movie>> =>
+export const getPopularMovies = (): RequestEndpoint<PagedResponse<Movie>> =>
   movieListEndpoint(API_MOVIES_POPULAR);
 
-export const getTopRatedMovies = (): Endpoint<PagedResponse<Movie>> =>
+export const getTopRatedMovies = (): RequestEndpoint<PagedResponse<Movie>> =>
   movieListEndpoint(API_MOVIES_TOP_RATED);
 
-export const getUpcomingMovies = (): Endpoint<PagedResponse<Movie>> =>
+export const getUpcomingMovies = (): RequestEndpoint<PagedResponse<Movie>> =>
   movieListEndpoint(API_MOVIES_UPCOMING);
 
-export const getNowPlayingMovies = (): Endpoint<PagedResponse<Movie>> =>
+export const getNowPlayingMovies = (): RequestEndpoint<PagedResponse<Movie>> =>
   movieListEndpoint(API_MOVIES_NOW_PLAYING);

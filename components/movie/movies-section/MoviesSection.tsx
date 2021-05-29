@@ -3,8 +3,8 @@ import Movie from "../../../models/Movie";
 import MovieImageType from "../../../models/MovieImageType";
 import PagedResponse from "../../../models/PagedResponse";
 import { BackdropSizes, PosterSizes } from "../../../network/costants";
-import Endpoint from "../../../network/endpoint";
-import Fetch from "../../fetch/Fetch";
+import { RequestEndpoint } from "@bit/jorgemoreira.headless-react.hooks";
+import Fetch from "@bit/jorgemoreira.headless-react.network.fetch";
 import ChevronLeftIcon from "../../icon/ChevronLeftIcon";
 import ChevronRightIcon from "../../icon/ChevronRightIcon";
 import Button from "../../layout/button/Button";
@@ -14,7 +14,7 @@ import * as S from "./MoviesSection.styles";
 
 interface MoviesSectionProps {
   title: string;
-  endpoint: Endpoint<PagedResponse<Movie>>;
+  endpoint: RequestEndpoint<PagedResponse<Movie>>;
   imageType: MovieImageType;
 }
 

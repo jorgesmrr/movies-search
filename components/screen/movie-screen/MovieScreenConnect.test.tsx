@@ -1,11 +1,14 @@
 import { screen, waitFor } from "@testing-library/react";
-import * as useRequest from "../../../hooks/useRequest";
+import hooks from "@bit/jorgemoreira.headless-react.hooks";
 import { fakeMovie } from "../../../models/__fixtures__/Movie";
 import { customRender } from "../../../utils/testing";
 import MovieScreenConnect from "./MovieScreenConnect";
 
-jest.mock("../../../hooks/useRequest");
-const mockedUseRequest = (useRequest as jest.Mocked<typeof useRequest>).default;
+jest.mock("@bit/jorgemoreira.headless-react.hooks", () => ({
+  useRequestEffect: jest.fn(),
+  useScrollEffect: jest.fn(),
+}));
+const mockedUseRequest = (hooks as jest.Mocked<typeof hooks>).useRequestEffect;
 
 describe("component renders", () => {
   test("should show spinner when loading a movie", async () => {

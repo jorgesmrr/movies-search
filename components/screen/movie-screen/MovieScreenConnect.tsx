@@ -1,4 +1,4 @@
-import useRequest from "../../../hooks/useRequest";
+import { useRequestEffect } from "@bit/jorgemoreira.headless-react.hooks";
 import { getMovie } from "../../../network/resources/movie";
 import MovieScreen from "./MovieScreen";
 
@@ -7,7 +7,7 @@ export interface MovieScreenConnectProps {
 }
 
 const MovieScreenConnect: React.FC<MovieScreenConnectProps> = ({ id }) => {
-  const state = useRequest(getMovie(id), [id]);
+  const state = useRequestEffect(getMovie(id), [id]);
 
   return <MovieScreen {...state} />;
 };

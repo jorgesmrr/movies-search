@@ -1,4 +1,4 @@
-import { UseRequestState } from "../../../hooks/useRequest";
+import { UseRequestState } from "@bit/jorgemoreira.headless-react.hooks";
 import MovieImageType from "../../../models/MovieImageType";
 import { PosterSizes } from "../../../network/costants";
 import LimitedWidth from "../../layout/limited-width/LimitedWidth";

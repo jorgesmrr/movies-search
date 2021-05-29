@@ -3,15 +3,15 @@ import Movie from "../../../models/Movie";
 import MovieImageType from "../../../models/MovieImageType";
 import PagedResponse from "../../../models/PagedResponse";
 import { PosterSizes } from "../../../network/costants";
-import Endpoint from "../../../network/endpoint";
-import Fetch from "../../fetch/Fetch";
+import { RequestEndpoint } from "@bit/jorgemoreira.headless-react.hooks";
+import Fetch from "@bit/jorgemoreira.headless-react.network.fetch";
 import LimitedWidth from "../../layout/limited-width/LimitedWidth";
 import MovieList from "../../movie/movie-list/MovieList";
 import { Heading1, RegularPageContent } from "../../style/style";
 
 export interface MoviesResultsScreenProps {
   title: string;
-  endpoint: Endpoint<PagedResponse<Movie>>;
+  endpoint: RequestEndpoint<PagedResponse<Movie>>;
   dependencies?: DependencyList;
 }
 

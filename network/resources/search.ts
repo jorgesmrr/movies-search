@@ -2,12 +2,12 @@ import Movie from "../../models/Movie";
 import PagedResponse from "../../models/PagedResponse";
 import apiClient from "../apiClient";
 import { API_SEARCH_MOVIES } from "../costants";
-import Endpoint from "../endpoint";
+import { RequestEndpoint } from "@bit/jorgemoreira.headless-react.hooks";
 import { movieTransformer } from "../transformers";
 
 export const searchMovies = (
   query: string
-): Endpoint<PagedResponse<Movie>> => () =>
+): RequestEndpoint<PagedResponse<Movie>> => () =>
   new Promise((resolve, reject) => {
     apiClient
       .get(`${API_SEARCH_MOVIES}?query=${encodeURI(query)}`)
