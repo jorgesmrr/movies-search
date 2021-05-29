@@ -10,4 +10,4 @@ export default {
 const Template: Story<SearchScreenProps> = (args) => <SearchScreen {...args} />;
 
 export const Default = Template.bind({});
-Default.args = { search: "Fight Club" };
+Default.args = { search: "Marvel" };
