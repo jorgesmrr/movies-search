@@ -1,5 +1,5 @@
 import { ThemeProvider } from "styled-components";
-import theme from "../styles/theme";
+import theme from "../components/style/theme";
 import "@bit/jorgemoreira.headless.styles";
 import "./../styles/index.css";
 
