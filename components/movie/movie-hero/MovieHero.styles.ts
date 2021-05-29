@@ -4,6 +4,10 @@ import { easedDarkGradient, LimitedWidth } from "../../style/style";
 export const Wrapper = styled.div`
   background: black;
   margin-top: ${({ theme }) => theme.dimensions.navbarHeight};
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    margin-top: 0;
+  }
 `;
 
 export const ImageAspect = styled(LimitedWidth)`
