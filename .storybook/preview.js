@@ -3,10 +3,8 @@ import theme from "../components/style/theme";
 import "@bit/jorgemoreira.headless.styles";
 import "./../styles/index.css";
 
-if (typeof global.process === "undefined") {
-  const { worker } = require("../network/msw/browser");
-  worker.start();
-}
+const { worker } = require("../network/msw/browser");
+worker.start();
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
