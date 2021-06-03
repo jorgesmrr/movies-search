@@ -7,7 +7,7 @@ export const List = styled(ListNone)`
   text-transform: uppercase;
   padding: 1rem 1rem 0 1rem;
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
     display: flex;
     padding: 0;
     gap: 2rem;
@@ -23,7 +23,7 @@ export const Item = styled.li<{ selected?: boolean }>`
       selected ? theme.color.accent.dark : "transparent"};
   ${transition("border-color")}
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
     padding: 0;
     margin: 0;
     border-left: none;
@@ -46,7 +46,7 @@ export const Link = styled.a`
   color: ${({ theme }) => theme.color.neutral.lightest};
   cursor: pointer;
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
     line-height: 4rem;
   }
 `;
