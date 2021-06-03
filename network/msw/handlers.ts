@@ -1,5 +1,6 @@
 import { rest } from "msw";
 import {
+  API_MOVIES,
   API_MOVIES_NOW_PLAYING,
   API_MOVIES_POPULAR,
   API_MOVIES_TOP_RATED,
@@ -19,7 +20,10 @@ const sucessfulResolver = (data: any) => (_, res, ctx) =>
   res(ctx.status(200), ctx.json(data));
 
 export const handlers = [
-  rest.get(`${BASE_API_URL}/:id`, sucessfulResolver(getMovieFixture())),
+  rest.get(
+    `${BASE_API_URL}${API_MOVIES}/:id`,
+    sucessfulResolver(getMovieFixture())
+  ),
 
   rest.get(
     `${BASE_API_URL}${API_MOVIES_POPULAR}`,
