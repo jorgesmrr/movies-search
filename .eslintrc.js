@@ -3,6 +3,7 @@ module.exports = exports = {
     browser: true,
     es2021: true,
     node: true,
+    "cypress/globals": true,
   },
   extends: [
     "eslint:recommended",
@@ -18,7 +19,7 @@ module.exports = exports = {
     ecmaVersion: 12,
     sourceType: "module",
   },
-  plugins: ["react", "@typescript-eslint"],
+  plugins: ["react", "@typescript-eslint", "cypress"],
   rules: {
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
