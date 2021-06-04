@@ -7,10 +7,6 @@ import theme from "../components/style/theme";
 import "@bit/jorgemoreira.headless.styles";
 import "./../styles/index.css";
 
-if (process.env.NODE_ENV === "development") {
-  require("./../network/msw");
-}
-
 const App: FC<AppProps> = ({ Component, pageProps }) => (
   <ThemeProvider theme={theme}>
     <Head>
