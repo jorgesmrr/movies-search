@@ -21,11 +21,6 @@ const sucessfulResolver = (data: any) => (_, res, ctx) =>
 
 export const handlers = [
   rest.get(
-    `${BASE_API_URL}${API_MOVIES}/:id`,
-    sucessfulResolver(getMovieFixture())
-  ),
-
-  rest.get(
     `${BASE_API_URL}${API_MOVIES_POPULAR}`,
     sucessfulResolver(getMovieListFixture())
   ),
@@ -40,6 +35,11 @@ export const handlers = [
   rest.get(
     `${BASE_API_URL}${API_MOVIES_NOW_PLAYING}`,
     sucessfulResolver(getMovieListFixture())
+  ),
+
+  rest.get(
+    `${BASE_API_URL}${API_MOVIES}/:id`,
+    sucessfulResolver(getMovieFixture())
   ),
 
   rest.get(
