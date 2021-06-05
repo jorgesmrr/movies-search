@@ -10,7 +10,7 @@ describe("component renders", () => {
 
     const searchInput = getByRole("textbox");
 
-    expect(searchInput.textContent).toBe("");
+    expect(searchInput).toHaveValue("");
   });
 });
 
@@ -50,6 +50,6 @@ describe("user types in", () => {
     userEvent.type(searchInput, searchText);
     fireEvent.click(clearButton);
 
-    expect(searchInput.textContent).toBe("");
+    expect(searchInput).toHaveValue("");
   });
 });

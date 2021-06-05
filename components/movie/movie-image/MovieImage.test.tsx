@@ -14,7 +14,7 @@ describe("component renders", () => {
         sizes={{ xs: PosterSizes.Tiny }}
       />
     );
-    expect(getByRole("img")).toBeTruthy();
+    expect(getByRole("img")).toBeInTheDocument();
   });
 });
 
