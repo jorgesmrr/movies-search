@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { HiddenLgUp, LimitedWidth, transition } from "../style/style";
 
-export const NavbarWrapper = styled.div<{ transparent: boolean }>`
+export const NavbarWrapper = styled.header<{ transparent: boolean }>`
   position: fixed;
   z-index: 2;
   top: 0;
