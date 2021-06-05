@@ -12,7 +12,7 @@ import { VisibleMdUp, Heading2 } from "../../style/style";
 import MovieList from "../movie-list/MovieList";
 import * as S from "./MoviesSection.styles";
 
-interface MoviesSectionProps {
+export interface MoviesSectionProps {
   title: string;
   endpoint: RequestEndpoint<PagedResponse<Movie>>;
   imageType: MovieImageType;
