@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { LimitedWidth } from "../style/style";
+import { HiddenLgUp, LimitedWidth, transition } from "../style/style";
 
-export const NavbarWrapper = styled.div<{ transparent: boolean }>`
+export const NavbarWrapper = styled.header<{ transparent: boolean }>`
   position: fixed;
   z-index: 2;
   top: 0;
@@ -29,4 +29,24 @@ export const NavbarContents = styled(LimitedWidth)`
   align-items: center;
   justify-content: space-between;
   padding: 0 1rem;
+`;
+
+export const MenuIconWrapper = styled(HiddenLgUp)`
+  appearance: none;
+  border: none;
+  padding: 0.5rem;
+  margin: 0;
+  background-color: transparent;
+  color: currentColor;
+  cursor: pointer;
+  border-radius: ${({ theme }) => theme.dimensions.radius};
+  ${transition("background-color")}
+
+  &:hover {
+    background-color: ${({ theme }) => theme.color.neutral.darker};
+  }
+
+  &:active {
+    background-color: ${({ theme }) => theme.color.neutral.dark};
+  }
 `;

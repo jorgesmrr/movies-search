@@ -56,7 +56,7 @@ describe("component renders", () => {
 
     expect(
       await screen.findByRole("list", { name: "movies list" })
-    ).toBeTruthy();
+    ).toBeInTheDocument();
 
     expect(getByRole("listitem", { name: fakeMovie.title }));
     expect(getAllByRole("listitem").length).toBe(1);

@@ -12,7 +12,7 @@ import { VisibleMdUp, Heading2 } from "../../style/style";
 import MovieList from "../movie-list/MovieList";
 import * as S from "./MoviesSection.styles";
 
-interface MoviesSectionProps {
+export interface MoviesSectionProps {
   title: string;
   endpoint: RequestEndpoint<PagedResponse<Movie>>;
   imageType: MovieImageType;
@@ -48,18 +48,18 @@ const MoviesSection: React.FC<MoviesSectionProps> = ({
     setActiveSlide(Math.min(count / rowCount.md - 1, activeSlide + 1));
 
   return (
-    <>
+    <section aria-label={title}>
       <S.Heading>
         <Heading2>{title}</Heading2>
 
         <VisibleMdUp>
-          <Button onClick={onPreviousSlideClick}>
+          <Button ariaLabel="next movies" onClick={onPreviousSlideClick}>
             <ChevronLeftIcon />
           </Button>
         </VisibleMdUp>
 
         <VisibleMdUp>
-          <Button onClick={onNextSlideClick}>
+          <Button ariaLabel="previous movies" onClick={onNextSlideClick}>
             <ChevronRightIcon />
           </Button>
         </VisibleMdUp>
@@ -84,7 +84,7 @@ const MoviesSection: React.FC<MoviesSectionProps> = ({
           </MovieList>
         )}
       />
-    </>
+    </section>
   );
 };
 

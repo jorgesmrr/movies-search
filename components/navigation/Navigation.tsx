@@ -39,9 +39,13 @@ const Navigation: React.FC<NavigationProps> = ({ onSubmitSearch }) => {
 
       <S.NavbarWrapper transparent={isNavbarTransparent}>
         <S.NavbarContents>
-          <HiddenLgUp onClick={openDrawer}>
+          <S.MenuIconWrapper
+            as="button"
+            aria-label="navigation toggler"
+            onClick={openDrawer}
+          >
             <MenuIcon />
-          </HiddenLgUp>
+          </S.MenuIconWrapper>
           <VisibleLgUp>
             <Menu />
           </VisibleLgUp>

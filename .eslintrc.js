@@ -18,7 +18,7 @@ module.exports = exports = {
     ecmaVersion: 12,
     sourceType: "module",
   },
-  plugins: ["react", "@typescript-eslint"],
+  plugins: ["react", "@typescript-eslint", "cypress"],
   rules: {
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",

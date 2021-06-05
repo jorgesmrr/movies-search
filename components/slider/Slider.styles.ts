@@ -64,6 +64,7 @@ export const Item = styled.li<{
   paddingRight: number;
 }>`
   flex: 0 0 calc(${(props) => props.sizes.xs} - 2rem);
+  overflow-x: hidden;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
     flex: 0 0 calc(${(props) => props.sizes.sm} - 2rem);

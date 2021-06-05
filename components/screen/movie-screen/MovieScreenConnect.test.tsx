@@ -21,7 +21,7 @@ describe("component renders", () => {
     customRender(<MovieScreenConnect id={fakeMovie.id} />);
     await waitFor(() => expect(mockedUseRequest).toHaveBeenCalledTimes(1));
 
-    expect(screen.getByTestId("movie-details__spinner")).toBeTruthy();
+    expect(screen.getByTestId("movie-details__spinner")).toBeInTheDocument();
   });
 
   test("should show movie information after load movie", async () => {
@@ -38,6 +38,6 @@ describe("component renders", () => {
 
     expect(
       getByRole("heading", { level: 1, name: fakeMovie.title })
-    ).toBeTruthy();
+    ).toBeInTheDocument();
   });
 });

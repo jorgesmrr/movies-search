@@ -1,4 +1,5 @@
 import { useRouter } from "next/dist/client/router";
+import Footer from "../footer/Footer";
 import Navigation from "../navigation/Navigation";
 import * as S from "./Page.styles";
 
@@ -13,6 +14,7 @@ const Page: React.FC = ({ children }) => {
     <S.Container>
       <Navigation onSubmitSearch={onSubmitSearch} />
       <S.Contents>{children}</S.Contents>
+      <Footer />
     </S.Container>
   );
 };
