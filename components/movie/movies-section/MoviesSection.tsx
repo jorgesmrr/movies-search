@@ -2,7 +2,7 @@ import { useState } from "react";
 import Movie from "../../../models/Movie";
 import MovieImageType from "../../../models/MovieImageType";
 import PagedResponse from "../../../models/PagedResponse";
-import { BackdropSizes, PosterSizes } from "../../../network/costants";
+import { BackdropSizes, PosterSizes } from "../../../network/constants";
 import { RequestEndpoint } from "@bit/jorgemoreira.headless-react.hooks";
 import Fetch from "@bit/jorgemoreira.headless-react.network.fetch";
 import ChevronLeftIcon from "../../icon/ChevronLeftIcon";

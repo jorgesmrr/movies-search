@@ -8,7 +8,7 @@ import {
   API_SEARCH_MOVIES,
   API_TRENDING,
   BASE_API_URL,
-} from "../costants";
+} from "../constants";
 import {
   getMovieFixture,
   getMovieListFixture,

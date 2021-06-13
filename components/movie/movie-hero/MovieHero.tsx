@@ -1,5 +1,5 @@
 import React, { useContext, useRef } from "react";
-import { BackdropSizes } from "../../../network/costants";
+import { BackdropSizes } from "../../../network/constants";
 import { ThemeContext } from "styled-components";
 import { useScrollEffect } from "@bit/jorgemoreira.headless-react.hooks";
 import MovieImage from "../movie-image/MovieImage";

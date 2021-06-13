@@ -1,7 +1,7 @@
 import { screen } from "@testing-library/react";
 import MovieImageType from "../../../models/MovieImageType";
 import { fakeMovie } from "../../../models/__fixtures__/Movie";
-import { BackdropSizes, PosterSizes } from "../../../network/costants";
+import { BackdropSizes, PosterSizes } from "../../../network/constants";
 import { customRender } from "../../../utils/testing";
 import MovieList from "./MovieList";
 

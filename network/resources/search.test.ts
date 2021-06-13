@@ -1,4 +1,4 @@
-import { API_SEARCH_MOVIES } from "../costants";
+import { API_SEARCH_MOVIES } from "../constants";
 import apiClient from "../apiClient";
 import { movieTransformer } from "../transformers";
 import { searchMovies } from "./search";

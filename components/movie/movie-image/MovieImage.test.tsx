@@ -1,6 +1,6 @@
 import MovieImage from "./MovieImage";
 import { customRender } from "../../../utils/testing";
-import { BackdropSizes, PosterSizes } from "../../../network/costants";
+import { BackdropSizes, PosterSizes } from "../../../network/constants";
 import { getImagePath } from "../../../network/helpers";
 
 const fileName = "/xGuOF1T3WmPsAcQEQJfnG7Ud9f8.jpg";

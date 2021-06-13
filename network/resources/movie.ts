@@ -8,7 +8,7 @@ import {
   API_MOVIES_POPULAR,
   API_MOVIES_TOP_RATED,
   API_MOVIES_UPCOMING,
-} from "../costants";
+} from "../constants";
 import { RequestEndpoint } from "@bit/jorgemoreira.headless-react.hooks";
 import { movieTransformer } from "../transformers";
 

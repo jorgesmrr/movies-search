@@ -1,7 +1,7 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 import MovieImage, { MovieImageProps } from "./MovieImage";
-import { PosterSizes } from "../../../network/costants";
+import { PosterSizes } from "../../../network/constants";
 import MovieImageType from "../../../models/MovieImageType";
 
 export default {

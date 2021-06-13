@@ -1,6 +1,6 @@
 import React from "react";
 import ResponsiveProperty from "../../../models/ResponsiveProperty";
-import { BackdropSizes, PosterSizes } from "../../../network/costants";
+import { BackdropSizes, PosterSizes } from "../../../network/constants";
 import { getImagePath } from "../../../network/helpers";
 import { ImageSource } from "../../responsive-image/ResponsiveImage";
 import * as S from "./MovieImage.styles";

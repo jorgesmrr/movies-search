@@ -2,7 +2,7 @@ import React from "react";
 import { Story, Meta } from "@storybook/react";
 import MovieListItem, { MovieListItemProps } from "./MovieListItem";
 import { fakeMovie } from "../../../models/__fixtures__/Movie";
-import { PosterSizes } from "../../../network/costants";
+import { PosterSizes } from "../../../network/constants";
 import MovieImageType from "../../../models/MovieImageType";
 
 export default {

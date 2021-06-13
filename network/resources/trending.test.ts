@@ -1,6 +1,6 @@
 import TrendingTimeWindow from "../../models/TrendingTimeWindow";
 import apiClient from "../apiClient";
-import { API_TRENDING } from "../costants";
+import { API_TRENDING } from "../constants";
 import { movieTransformer } from "../transformers";
 import { getTrendingMovies } from "./trending";
 import { getTrendingMoviesFixture } from "./__fixtures__/trending";

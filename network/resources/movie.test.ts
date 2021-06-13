@@ -4,7 +4,7 @@ import {
   API_MOVIES_POPULAR,
   API_MOVIES_TOP_RATED,
   API_MOVIES_UPCOMING,
-} from "../costants";
+} from "../constants";
 import apiClient from "../apiClient";
 import {
   getMovie,

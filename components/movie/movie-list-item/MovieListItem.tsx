@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 import Movie from "../../../models/Movie";
 import MovieImageType from "../../../models/MovieImageType";
-import { BackdropSizes, PosterSizes } from "../../../network/costants";
+import { BackdropSizes, PosterSizes } from "../../../network/constants";
 import MovieImagePlaceholder from "../movie-image-placeholder/MovieImagePlaceholder";
 import { Alert } from "../../style/style";
 import MovieImage from "../movie-image/MovieImage";

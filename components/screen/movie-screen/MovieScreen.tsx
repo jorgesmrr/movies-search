@@ -1,6 +1,6 @@
 import { UseRequestState } from "@bit/jorgemoreira.headless-react.hooks";
 import MovieImageType from "../../../models/MovieImageType";
-import { PosterSizes } from "../../../network/costants";
+import { PosterSizes } from "../../../network/constants";
 import MovieDetails from "../../movie/movie-details/MovieDetails";
 import MovieHero from "../../movie/movie-hero/MovieHero";
 import MovieImagePlaceholder from "../../movie/movie-image-placeholder/MovieImagePlaceholder";

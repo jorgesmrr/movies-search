@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import MovieImageType from "../../../models/MovieImageType";
-import { PosterSizes } from "../../../network/costants";
+import { PosterSizes } from "../../../network/constants";
 import { searchMovies } from "../../../network/resources/search";
 import Fetch from "@bit/jorgemoreira.headless-react.network.fetch";
 import MovieList from "../../movie/movie-list/MovieList";

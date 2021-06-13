@@ -2,7 +2,7 @@ import { DependencyList } from "react";
 import Movie from "../../../models/Movie";
 import MovieImageType from "../../../models/MovieImageType";
 import PagedResponse from "../../../models/PagedResponse";
-import { PosterSizes } from "../../../network/costants";
+import { PosterSizes } from "../../../network/constants";
 import { RequestEndpoint } from "@bit/jorgemoreira.headless-react.hooks";
 import Fetch from "@bit/jorgemoreira.headless-react.network.fetch";
 import MovieList from "../../movie/movie-list/MovieList";
