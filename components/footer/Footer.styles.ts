@@ -3,6 +3,7 @@ import { ListNone } from "../style/style";
 
 export const Footer = styled.footer`
   text-align: center;
+  margin-top: auto;
 
   &:before {
     display: inline-block;
