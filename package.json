@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@bit/jorgemoreira.headless-react.hooks": "^0.0.6",
-    "@bit/jorgemoreira.headless-react.network.fetch": "^0.0.1",
+    "@bit/jorgemoreira.headless-react.network.fetch": "^0.0.3",
     "@bit/jorgemoreira.headless-react.progress.spinner": "^0.0.3",
     "@bit/jorgemoreira.headless-react.surface.drawer": "^0.0.3",
     "@bit/jorgemoreira.headless.styles": "^0.0.8",

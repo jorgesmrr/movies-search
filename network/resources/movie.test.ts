@@ -27,27 +27,35 @@ describe("should call correct URL", () => {
   });
 
   test("to get popular movies", () => {
-    getPopularMovies()();
+    getPopularMovies(2)();
 
-    expect(mockedApiClient.get).toHaveBeenCalledWith(API_MOVIES_POPULAR);
+    expect(mockedApiClient.get).toHaveBeenCalledWith(
+      `${API_MOVIES_POPULAR}?page=2`
+    );
   });
 
   test("to get top rated movies", () => {
-    getTopRatedMovies()();
+    getTopRatedMovies(2)();
 
-    expect(mockedApiClient.get).toHaveBeenCalledWith(API_MOVIES_TOP_RATED);
+    expect(mockedApiClient.get).toHaveBeenCalledWith(
+      `${API_MOVIES_TOP_RATED}?page=2`
+    );
   });
 
   test("to get upcoming movies", () => {
-    getUpcomingMovies()();
+    getUpcomingMovies(2)();
 
-    expect(mockedApiClient.get).toHaveBeenCalledWith(API_MOVIES_UPCOMING);
+    expect(mockedApiClient.get).toHaveBeenCalledWith(
+      `${API_MOVIES_UPCOMING}?page=2`
+    );
   });
 
   test("to get now playing movies", () => {
-    getNowPlayingMovies()();
+    getNowPlayingMovies(2)();
 
-    expect(mockedApiClient.get).toHaveBeenCalledWith(API_MOVIES_NOW_PLAYING);
+    expect(mockedApiClient.get).toHaveBeenCalledWith(
+      `${API_MOVIES_NOW_PLAYING}?page=2`
+    );
   });
 });
 

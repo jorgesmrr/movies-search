@@ -9,10 +9,10 @@ const mockedApiClient = apiClient as jest.Mocked<typeof apiClient>;
 
 describe("should call correct URL", () => {
   test("to search movies", () => {
-    searchMovies("foo bar")();
+    searchMovies("foo bar", 2)();
 
     expect(mockedApiClient.get).toHaveBeenCalledWith(
-      `${API_SEARCH_MOVIES}?query=foo%20bar`
+      `${API_SEARCH_MOVIES}?query=foo%20bar&page=2`
     );
   });
 });

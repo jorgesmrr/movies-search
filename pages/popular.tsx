@@ -8,7 +8,7 @@ const PopularPage: React.FC = () => (
       <title>Popular Movies</title>
     </Head>
 
-    <MoviesResultsScreen title="Popular" endpoint={getPopularMovies()} />
+    <MoviesResultsScreen title="Popular" endpointGetter={getPopularMovies} />
   </div>
 );
 export default PopularPage;

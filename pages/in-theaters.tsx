@@ -8,7 +8,10 @@ const NowPlayingPage: React.FC = () => (
       <title>In Movies In Theaters</title>
     </Head>
 
-    <MoviesResultsScreen title="In Theaters" endpoint={getNowPlayingMovies()} />
+    <MoviesResultsScreen
+      title="In Theaters"
+      endpointGetter={getNowPlayingMovies}
+    />
   </div>
 );
 

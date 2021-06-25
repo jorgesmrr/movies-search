@@ -1,4 +1,4 @@
-import { DependencyList } from "react";
+import { useState } from "react";
 import Movie from "../../../models/Movie";
 import MovieImageType from "../../../models/MovieImageType";
 import PagedResponse from "../../../models/PagedResponse";
@@ -7,42 +7,54 @@ import { RequestEndpoint } from "@bit/jorgemoreira.headless-react.hooks";
 import Fetch from "@bit/jorgemoreira.headless-react.network.fetch";
 import MovieList from "../../movie/movie-list/MovieList";
 import { Heading1, LimitedWidth, RegularPageContent } from "../../style/style";
+import Pagination from "../../pagination/Pagination";
 
 export interface MoviesResultsScreenProps {
   title: string;
-  endpoint: RequestEndpoint<PagedResponse<Movie>>;
-  dependencies?: DependencyList;
+  endpointGetter: (page: number) => RequestEndpoint<PagedResponse<Movie>>;
 }
+
+const sizes = {
+  xs: PosterSizes.Big,
+  md: PosterSizes.Medium,
+  lg: PosterSizes.Regular,
+};
 
 const MoviesResultsScreen: React.FC<MoviesResultsScreenProps> = ({
   title,
-  endpoint,
-  dependencies = [],
+  endpointGetter,
 }) => {
-  const sizes = {
-    xs: PosterSizes.Big,
-    md: PosterSizes.Medium,
-    lg: PosterSizes.Regular,
-  };
+  const [page, setPage] = useState(1);
 
   return (
     <RegularPageContent>
       <LimitedWidth>
         <Heading1>{title}</Heading1>
         <Fetch
-          endpoint={endpoint}
-          dependencies={dependencies}
+          endpoint={endpointGetter(page)}
           render={({ data, isLoading, error }) => (
-            <MovieList
-              isLoading={isLoading}
-              error={error}
-              movies={data?.results}
-              count={20}
-              imageType={MovieImageType.Poster}
-              sizes={sizes}
-            >
-              <MovieList.Grid columns={6} />
-            </MovieList>
+            <>
+              <MovieList
+                isLoading={isLoading}
+                error={error}
+                movies={data?.results}
+                count={20}
+                imageType={MovieImageType.Poster}
+                sizes={sizes}
+              >
+                <MovieList.Grid columns={5} />
+              </MovieList>
+              {data && (
+                <Pagination
+                  disabled={isLoading}
+                  page={data.page}
+                  totalPages={data.total_pages}
+                  totalResults={data.total_results}
+                  onPreviousClick={() => setPage(data.page - 1)}
+                  onNextClick={() => setPage(data.page + 1)}
+                />
+              )}
+            </>
           )}
         />
       </LimitedWidth>
