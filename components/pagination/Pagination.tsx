@@ -28,9 +28,9 @@ const Pagination: React.FC<PaginationProps> = ({
           <S.ButtonText>Previous results</S.ButtonText>
         </Button>
 
-        <div>
+        <S.PageInfo>
           Page {page} of {totalPages}
-        </div>
+        </S.PageInfo>
 
         <Button disabled={disabled || page >= totalPages} onClick={onNextClick}>
           <S.ButtonText>More results</S.ButtonText>
