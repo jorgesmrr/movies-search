@@ -49,6 +49,9 @@ const SearchScreen: React.FC<SearchScreenProps> = ({ search }) => {
           endpoint={searchMovies(search, page)}
           render={({ data, isLoading, error }) => (
             <>
+              {!isLoading && data?.results?.length === 0 && (
+                <p>No movies found.</p>
+              )}
               <MovieList
                 isLoading={isLoading}
                 error={error}
