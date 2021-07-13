@@ -1,6 +1,6 @@
 # movies-search
 
-A React app to search and discover movies. This is a work in progress.
+> A React app to search and discover movies.
 
 ## See it working
 
