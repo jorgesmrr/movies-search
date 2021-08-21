@@ -8,6 +8,7 @@ import {
   API_MOVIES_POPULAR,
   API_MOVIES_TOP_RATED,
   API_MOVIES_UPCOMING,
+  API_RECOMMENDED_MOVIES,
 } from "../constants";
 import { RequestEndpoint } from "@bit/jorgemoreira.headless-react.hooks";
 import { movieTransformer } from "../transformers";
@@ -32,6 +33,11 @@ export const getMovie = (id: number): RequestEndpoint<Movie> => () =>
       .then((response) => resolve(movieTransformer(response.data)))
       .catch(reject);
   });
+
+export const getMovieRecommendations: (
+  id: number
+) => RequestEndpoint<PagedResponse<Movie>> = (id) =>
+  movieListEndpoint(API_RECOMMENDED_MOVIES(id));
 
 export const getPopularMovies: (
   page?: number

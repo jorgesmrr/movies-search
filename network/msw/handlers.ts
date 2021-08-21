@@ -5,6 +5,7 @@ import {
   API_MOVIES_POPULAR,
   API_MOVIES_TOP_RATED,
   API_MOVIES_UPCOMING,
+  API_RECOMMENDED_MOVIES,
   API_SEARCH_MOVIES,
   API_TRENDING,
   BASE_API_URL,
@@ -41,9 +42,13 @@ export const handlers = [
     `${BASE_API_URL}${API_MOVIES}/:id`,
     sucessfulResolver(getMovieFixture())
   ),
+  rest.get(
+    `${BASE_API_URL}${API_RECOMMENDED_MOVIES(":id")}`,
+    sucessfulResolver(getMovieListFixture())
+  ),
 
   rest.get(
-    `${BASE_API_URL}${API_TRENDING}/movie/:timWindow`,
+    `${BASE_API_URL}${API_TRENDING}/movie/:timeWindow`,
     sucessfulResolver(getTrendingMoviesFixture())
   ),
 

@@ -57,6 +57,7 @@ export const Title = styled(Heading1)`
 
 export const DetailsSlot = styled.div`
   grid-area: text;
+  min-width: 0;
 `;
 
 export const MobileMetadataSlot = styled.div`

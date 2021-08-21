@@ -11,6 +11,8 @@ import Movie from "../../../models/Movie";
 import { Alert, LimitedWidth } from "../../style/style";
 import * as S from "./MovieScreen.styles";
 import theme from "../../style/theme";
+import MoviesSection from "../../movie/movies-section/MoviesSection";
+import { getMovieRecommendations } from "../../../network/resources/movie";
 
 export type MovieScreenProps = UseRequestState<Movie>;
 
@@ -41,6 +43,12 @@ const MovieScreen: React.FC<MovieScreenProps> = ({
 
             <S.DetailsSlot>
               <MovieDetails movie={movie} />
+
+              <MoviesSection
+                title="Recommended"
+                imageType={MovieImageType.Poster}
+                endpoint={getMovieRecommendations(movie.id)}
+              />
             </S.DetailsSlot>
 
             <S.PosterSlot>
