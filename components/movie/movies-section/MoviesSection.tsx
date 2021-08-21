@@ -67,7 +67,6 @@ const MoviesSection: React.FC<MoviesSectionProps> = ({
 
       <Fetch
         endpoint={endpoint}
-        dependencies={[]}
         render={({ data, isLoading, error }) => (
           <MovieList
             isLoading={isLoading}

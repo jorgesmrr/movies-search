@@ -33,14 +33,22 @@ export const getMovie = (id: number): RequestEndpoint<Movie> => () =>
       .catch(reject);
   });
 
-export const getPopularMovies = (): RequestEndpoint<PagedResponse<Movie>> =>
-  movieListEndpoint(API_MOVIES_POPULAR);
+export const getPopularMovies: (
+  page?: number
+) => RequestEndpoint<PagedResponse<Movie>> = (page = 1) =>
+  movieListEndpoint(`${API_MOVIES_POPULAR}?page=${page}`);
 
-export const getTopRatedMovies = (): RequestEndpoint<PagedResponse<Movie>> =>
-  movieListEndpoint(API_MOVIES_TOP_RATED);
+export const getTopRatedMovies: (
+  page?: number
+) => RequestEndpoint<PagedResponse<Movie>> = (page = 1) =>
+  movieListEndpoint(`${API_MOVIES_TOP_RATED}?page=${page}`);
 
-export const getUpcomingMovies = (): RequestEndpoint<PagedResponse<Movie>> =>
-  movieListEndpoint(API_MOVIES_UPCOMING);
+export const getUpcomingMovies: (
+  page?: number
+) => RequestEndpoint<PagedResponse<Movie>> = (page = 1) =>
+  movieListEndpoint(`${API_MOVIES_UPCOMING}?page=${page}`);
 
-export const getNowPlayingMovies = (): RequestEndpoint<PagedResponse<Movie>> =>
-  movieListEndpoint(API_MOVIES_NOW_PLAYING);
+export const getNowPlayingMovies: (
+  page?: number
+) => RequestEndpoint<PagedResponse<Movie>> = (page = 1) =>
+  movieListEndpoint(`${API_MOVIES_NOW_PLAYING}?page=${page}`);

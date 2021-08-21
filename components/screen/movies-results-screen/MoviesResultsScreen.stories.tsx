@@ -15,4 +15,4 @@ const Template: Story<MoviesResultsScreenProps> = (args) => (
 );
 
 export const Default = Template.bind({});
-Default.args = { title: "Lorem", endpoint: getTopRatedMovies() };
+Default.args = { title: "Lorem", endpointGetter: getTopRatedMovies };

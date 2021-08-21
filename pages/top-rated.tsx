@@ -8,7 +8,7 @@ const TopRatedPage: React.FC = () => (
       <title>Top Rated Movies</title>
     </Head>
 
-    <MoviesResultsScreen title="Top Rated" endpoint={getTopRatedMovies()} />
+    <MoviesResultsScreen title="Top Rated" endpointGetter={getTopRatedMovies} />
   </div>
 );
 export default TopRatedPage;

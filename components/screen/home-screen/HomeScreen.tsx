@@ -1,5 +1,4 @@
 import MovieImageType from "../../../models/MovieImageType";
-import TrendingTimeWindow from "../../../models/TrendingTimeWindow";
 import { getNowPlayingMovies } from "../../../network/resources/movie";
 import { getTrendingMovies } from "../../../network/resources/trending";
 import MoviesSection from "../../movie/movies-section/MoviesSection";
@@ -11,7 +10,7 @@ const HomeScreen: React.FC = () => {
       <LimitedWidth>
         <MoviesSection
           title="Trending Today"
-          endpoint={getTrendingMovies(TrendingTimeWindow.Day)}
+          endpoint={getTrendingMovies()}
           imageType={MovieImageType.Backdrop}
         />
 

@@ -1,4 +1,3 @@
-import TrendingTimeWindow from "../../models/TrendingTimeWindow";
 import apiClient from "../apiClient";
 import { API_TRENDING } from "../constants";
 import { movieTransformer } from "../transformers";
@@ -10,18 +9,10 @@ const mockedApiClient = apiClient as jest.Mocked<typeof apiClient>;
 
 describe("should call correct URL", () => {
   test("to get day trending movies", () => {
-    getTrendingMovies(TrendingTimeWindow.Day)();
+    getTrendingMovies(2)();
 
     expect(mockedApiClient.get).toHaveBeenCalledWith(
-      `${API_TRENDING}/movie/day`
-    );
-  });
-
-  test("to get week trending movies", () => {
-    getTrendingMovies(TrendingTimeWindow.Week)();
-
-    expect(mockedApiClient.get).toHaveBeenCalledWith(
-      `${API_TRENDING}/movie/week`
+      `${API_TRENDING}/movie/day?page=2`
     );
   });
 });
@@ -33,7 +24,7 @@ describe("should correctly transform received data", () => {
     });
 
     expect.assertions(1);
-    return getTrendingMovies(TrendingTimeWindow.Day)().then((result) => {
+    return getTrendingMovies()().then((result) => {
       const data = getTrendingMoviesFixture();
       expect(JSON.stringify(result)).toEqual(
         JSON.stringify({
