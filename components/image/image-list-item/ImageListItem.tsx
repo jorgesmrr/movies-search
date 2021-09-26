@@ -1,16 +1,15 @@
 import Link from "next/link";
+import ImageDescription from "../../../models/ImageDescription";
 import ImageType from "../../../models/ImageType";
 import ResponsiveProperty from "../../../models/ResponsiveProperty";
 import { ImageSizes } from "../../../network/constants";
-import ImagePlaceholder from "../../image/image-placeholder/ImagePlaceholder";
-import TmdbImage from "../../image/tmdb-image/TmdbImage";
+import ImagePlaceholder from "../image-placeholder/ImagePlaceholder";
+import TmdbImage from "../tmdb-image/TmdbImage";
 import { Alert } from "../../style/style";
 import * as S from "./ImageListItem.styles";
 
-interface ImageListItemProps {
-  title?: string;
-  link?: string;
-  imagePath: string;
+export interface ImageListItemProps {
+  image: ImageDescription;
   isLoading: boolean;
   imageType: ImageType;
   sizes: ResponsiveProperty<ImageSizes>;
@@ -18,13 +17,11 @@ interface ImageListItemProps {
 
 const ImageListItem: React.FC<ImageListItemProps> = ({
   isLoading,
-  title,
-  link,
-  imagePath,
+  image,
   imageType,
   sizes,
 }) => {
-  if (!isLoading && !title) {
+  if (!isLoading && !image) {
     return <Alert>Failed to load</Alert>;
   }
 
@@ -44,20 +41,20 @@ const ImageListItem: React.FC<ImageListItemProps> = ({
   }
 
   return (
-    <Link href={`/movie?id=${link}`}>
+    <Link href={image.link}>
       <a>
         <ImagePlaceholder rounded type={imageType} shadowLevel={2}>
           <S.ImageWrapper>
-            <TmdbImage title={title} path={imagePath} sizes={sizes} />
+            <TmdbImage title={image.title} path={image.path} sizes={sizes} />
             {imageType === ImageType.Backdrop && (
               <>
                 <S.BackdropOverlay />
-                <S.BackdropTitle>{title}</S.BackdropTitle>
+                <S.BackdropTitle>{image.title}</S.BackdropTitle>
               </>
             )}
           </S.ImageWrapper>
         </ImagePlaceholder>
-        {imageType === ImageType.Poster && <S.Title>{title}</S.Title>}
+        {imageType === ImageType.Poster && <S.Title>{image.title}</S.Title>}
       </a>
     </Link>
   );

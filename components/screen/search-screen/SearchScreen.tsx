@@ -5,13 +5,14 @@ import ImageType from "../../../models/ImageType";
 import { PosterSizes } from "../../../network/constants";
 import { searchMovies } from "../../../network/resources/search";
 import Fetch from "@bit/jorgemoreira.headless-react.network.fetch";
-import MovieList from "../../movie/movie-list/MovieList";
+import ImagesList from "../../image/images-list/ImagesList";
 import {
   Heading1,
   LimitedWidth,
   RegularPageContent,
   Subtitle,
 } from "../../style/style";
+import { getMoviePosterDescription } from "../../../network/helpers";
 
 const SearchSubtitle = styled(Subtitle)`
   margin-bottom: 1em;
@@ -52,16 +53,16 @@ const SearchScreen: React.FC<SearchScreenProps> = ({ search }) => {
               {!isLoading && data?.results?.length === 0 && (
                 <p>No movies found.</p>
               )}
-              <MovieList
+              <ImagesList
                 isLoading={isLoading}
                 error={error}
-                movies={data?.results}
+                images={data?.results.map(getMoviePosterDescription)}
                 count={20}
                 imageType={ImageType.Poster}
                 sizes={sizes}
               >
-                <MovieList.Grid columns={5} />
-              </MovieList>
+                <ImagesList.Grid columns={5} />
+              </ImagesList>
               {data && (
                 <Pagination
                   disabled={isLoading}

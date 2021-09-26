@@ -1,6 +1,6 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
-import TmdbImage, { MovieImageProps } from "./TmdbImage";
+import TmdbImage, { TmdbImageProps } from "./TmdbImage";
 import { PosterSizes } from "../../../network/constants";
 import ImageType from "../../../models/ImageType";
 
@@ -9,7 +9,7 @@ export default {
   component: TmdbImage,
 } as Meta;
 
-const Template: Story<MovieImageProps> = (args) => <TmdbImage {...args} />;
+const Template: Story<TmdbImageProps> = (args) => <TmdbImage {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

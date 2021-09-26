@@ -1,18 +1,19 @@
 import React, { useState } from "react";
 import { Story, Meta } from "@storybook/react";
 import { fakeMovies } from "../../../models/__fixtures__/Movie";
-import MovieList, { MovieListProps } from "./MovieList";
+import ImagesList, { ImagesListProps } from "./ImagesList";
 import ImageType from "../../../models/ImageType";
-import { MovieListSliderProps } from "./MovieListSlider";
+import { ImagesListSliderProps } from "./ImagesListSlider";
 import { PosterSizes } from "../../../network/constants";
 import { LimitedWidth } from "../../style/style";
+import { getMoviePosterDescription } from "../../../network/helpers";
 
 export default {
   title: "Movie/MovieList/Slider",
-  component: MovieList,
+  component: ImagesList,
 } as Meta;
 
-const Template: Story<MovieListProps & MovieListSliderProps> = ({
+const Template: Story<ImagesListProps & ImagesListSliderProps> = ({
   itemsPerSlide,
   ...args
 }) => {
@@ -22,12 +23,12 @@ const Template: Story<MovieListProps & MovieListSliderProps> = ({
     <LimitedWidth>
       <button onClick={() => setActiveSlide(activeSlide - 1)}>Previous</button>
       <button onClick={() => setActiveSlide(activeSlide + 1)}>Next</button>
-      <MovieList {...args}>
-        <MovieList.Slider
+      <ImagesList {...args}>
+        <ImagesList.Slider
           activeSlide={activeSlide}
           itemsPerSlide={itemsPerSlide}
         />
-      </MovieList>
+      </ImagesList>
     </LimitedWidth>
   );
 };
@@ -35,7 +36,7 @@ const Template: Story<MovieListProps & MovieListSliderProps> = ({
 export const Loaded = Template.bind({});
 Loaded.args = {
   isLoading: false,
-  movies: fakeMovies,
+  movies: fakeMovies.map(getMoviePosterDescription),
   imageType: ImageType.Poster,
   count: 12,
   itemsPerSlide: { xs: 2, sm: 3, md: 4 },

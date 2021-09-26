@@ -1,39 +1,40 @@
 import { useContext } from "react";
 import ResponsiveProperty from "../../../models/ResponsiveProperty";
 import Slider from "../../slider/Slider";
-import { MovieListContext } from "./MovieList";
-import MovieListError from "./MovieListError";
+import { ImagesListContext } from "./ImagesList";
+import ImagesListError from "./ImagesListError";
 
-export interface MovieListSliderProps {
+export interface ImagesListSliderProps {
   activeSlide: number;
   itemsPerSlide: ResponsiveProperty<number>;
 }
 
-const MovieListSlider: React.FC<MovieListSliderProps> = ({
+const ImagesListSlider: React.FC<ImagesListSliderProps> = ({
   activeSlide,
   itemsPerSlide,
 }) => {
-  const contextValue = useContext(MovieListContext);
+  const contextValue = useContext(ImagesListContext);
 
   if (!contextValue) return null;
 
-  const { isLoading, error, movies, renderChild } = contextValue;
+  const { isLoading, error, images, renderChild } = contextValue;
 
   if (error) {
-    return <MovieListError />;
+    return <ImagesListError />;
   }
 
-  if (!isLoading && !movies) {
+  if (!isLoading && !images) {
     return null;
   }
 
+  // TODO improve aria-label
   return (
     <Slider
-      aria-label="movies list"
+      aria-label="images list"
       itemsPerSlide={itemsPerSlide}
       activeSlide={activeSlide}
       renderChild={renderChild}
-      data={movies}
+      data={images}
       itemLabelGetter={(movie) => movie?.title}
       shadowOverflow={{
         x: ".5rem",
@@ -43,4 +44,4 @@ const MovieListSlider: React.FC<MovieListSliderProps> = ({
   );
 };
 
-export default MovieListSlider;
+export default ImagesListSlider;

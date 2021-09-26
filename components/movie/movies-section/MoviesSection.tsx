@@ -9,8 +9,12 @@ import ChevronLeftIcon from "../../icon/ChevronLeftIcon";
 import ChevronRightIcon from "../../icon/ChevronRightIcon";
 import Button from "../../button/Button";
 import { VisibleMdUp, Heading2 } from "../../style/style";
-import MovieList from "../movie-list/MovieList";
+import ImagesList from "../../image/images-list/ImagesList";
 import * as S from "./MoviesSection.styles";
+import {
+  getMovieBackdropDescription,
+  getMoviePosterDescription,
+} from "../../../network/helpers";
 
 export interface MoviesSectionProps {
   title: string;
@@ -42,6 +46,11 @@ const MoviesSection: React.FC<MoviesSectionProps> = ({
   const count =
     imageType === ImageType.Backdrop ? rowCount.md * 3 : rowCount.md * 2;
 
+  const imageDescriptor =
+    imageType === ImageType.Backdrop
+      ? getMovieBackdropDescription
+      : getMoviePosterDescription;
+
   const onPreviousSlideClick = () =>
     setActiveSlide(Math.max(0, activeSlide - 1));
   const onNextSlideClick = () =>
@@ -68,19 +77,19 @@ const MoviesSection: React.FC<MoviesSectionProps> = ({
       <Fetch
         endpoint={endpoint}
         render={({ data, isLoading, error }) => (
-          <MovieList
+          <ImagesList
             isLoading={isLoading}
             error={error}
-            movies={data?.results}
+            images={data?.results.map(imageDescriptor)}
             count={count}
             imageType={imageType}
             sizes={sizes}
           >
-            <MovieList.Slider
+            <ImagesList.Slider
               activeSlide={activeSlide}
               itemsPerSlide={rowCount}
             />
-          </MovieList>
+          </ImagesList>
         )}
       />
     </section>

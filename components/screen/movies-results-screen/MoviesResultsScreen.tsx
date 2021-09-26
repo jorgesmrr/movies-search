@@ -5,9 +5,10 @@ import PagedResponse from "../../../models/PagedResponse";
 import { PosterSizes } from "../../../network/constants";
 import { RequestEndpoint } from "@bit/jorgemoreira.headless-react.hooks";
 import Fetch from "@bit/jorgemoreira.headless-react.network.fetch";
-import MovieList from "../../movie/movie-list/MovieList";
+import ImagesList from "../../image/images-list/ImagesList";
 import { Heading1, LimitedWidth, RegularPageContent } from "../../style/style";
 import Pagination from "../../pagination/Pagination";
+import { getMoviePosterDescription } from "../../../network/helpers";
 
 export interface MoviesResultsScreenProps {
   title: string;
@@ -34,16 +35,16 @@ const MoviesResultsScreen: React.FC<MoviesResultsScreenProps> = ({
           endpoint={endpointGetter(page)}
           render={({ data, isLoading, error }) => (
             <>
-              <MovieList
+              <ImagesList
                 isLoading={isLoading}
                 error={error}
-                movies={data?.results}
+                images={data?.results.map(getMoviePosterDescription)}
                 count={20}
                 imageType={ImageType.Poster}
                 sizes={sizes}
               >
-                <MovieList.Grid columns={5} />
-              </MovieList>
+                <ImagesList.Grid columns={5} />
+              </ImagesList>
               {data && (
                 <Pagination
                   disabled={isLoading}

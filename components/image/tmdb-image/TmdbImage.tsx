@@ -5,13 +5,13 @@ import { getImagePath } from "../../../network/helpers";
 import { ImageSource } from "../../responsive-image/ResponsiveImage";
 import * as S from "./TmdbImage.styles";
 
-export interface MovieImageProps extends S.ImageProps {
+export interface TmdbImageProps extends S.ImageProps {
   title: string;
   path: string;
   sizes: ResponsiveProperty<ImageSizes>;
 }
 
-const TmdbImage: React.FC<MovieImageProps> = ({
+const TmdbImage: React.FC<TmdbImageProps> = ({
   title,
   path,
   sizes,

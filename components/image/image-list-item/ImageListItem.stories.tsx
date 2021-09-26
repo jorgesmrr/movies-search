@@ -1,22 +1,23 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
-import MovieListItem, { MovieListItemProps } from "./MovieListItem";
+import ImageListItem, { ImageListItemProps } from "./ImageListItem";
 import { fakeMovie } from "../../../models/__fixtures__/Movie";
 import { PosterSizes } from "../../../network/constants";
 import ImageType from "../../../models/ImageType";
+import { getMoviePosterDescription } from "../../../network/helpers";
 
 export default {
-  title: "Movie/MovieListItem",
-  component: MovieListItem,
+  title: "Image/ImageListItem",
+  component: ImageListItem,
 } as Meta;
 
-const Template: Story<MovieListItemProps> = (args) => (
-  <MovieListItem {...args} />
+const Template: Story<ImageListItemProps> = (args) => (
+  <ImageListItem {...args} />
 );
 
 export const Default = Template.bind({});
 Default.args = {
-  movie: fakeMovie,
+  image: getMoviePosterDescription(fakeMovie),
   sizes: { xs: PosterSizes.Tiny },
   imageType: ImageType.Poster,
 };
