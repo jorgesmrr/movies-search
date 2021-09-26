@@ -1,5 +1,5 @@
 import { screen } from "@testing-library/react";
-import MovieImageType from "../../../models/MovieImageType";
+import ImageType from "../../../models/ImageType";
 import { fakeMovie } from "../../../models/__fixtures__/Movie";
 import { BackdropSizes, PosterSizes } from "../../../network/constants";
 import { customRender } from "../../../utils/testing";
@@ -14,7 +14,7 @@ describe("component renders", () => {
         isLoading={true}
         error={false}
         count={1}
-        imageType={MovieImageType.Poster}
+        imageType={ImageType.Poster}
         sizes={{ xs: PosterSizes.Small }}
       >
         <MovieList.Slider activeSlide={0} itemsPerSlide={fakeItemsPerSlide} />
@@ -30,7 +30,7 @@ describe("component renders", () => {
         isLoading={true}
         error={false}
         count={1}
-        imageType={MovieImageType.Backdrop}
+        imageType={ImageType.Backdrop}
         sizes={{ xs: BackdropSizes.Small }}
       >
         <MovieList.Slider activeSlide={0} itemsPerSlide={fakeItemsPerSlide} />
@@ -47,7 +47,7 @@ describe("component renders", () => {
         error={false}
         movies={[fakeMovie]}
         count={6}
-        imageType={MovieImageType.Poster}
+        imageType={ImageType.Poster}
         sizes={{ xs: PosterSizes.Small }}
       >
         <MovieList.Slider activeSlide={0} itemsPerSlide={fakeItemsPerSlide} />

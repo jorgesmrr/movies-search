@@ -1,11 +1,11 @@
-import MovieImageType from "../../../models/MovieImageType";
-import * as S from "./MovieImagePlaceholder.styles";
+import ImageType from "../../../models/ImageType";
+import * as S from "./ImagePlaceholder.styles";
 
-interface MoviePlaceholderProps extends S.PlaceholderProps {
-  type: MovieImageType;
+interface PlaceholderProps extends S.PlaceholderProps {
+  type: ImageType;
 }
 
-const MovieImagePlaceholder: React.FC<MoviePlaceholderProps> = ({
+const ImagePlaceholder: React.FC<PlaceholderProps> = ({
   type,
   rounded,
   shadowLevel,
@@ -15,11 +15,11 @@ const MovieImagePlaceholder: React.FC<MoviePlaceholderProps> = ({
   let testId;
 
   switch (type) {
-    case MovieImageType.Backdrop:
+    case ImageType.Backdrop:
       heightWidthRatio = 9 / 16;
       testId = "backdrop-placeholder";
       break;
-    case MovieImageType.Poster:
+    case ImageType.Poster:
       heightWidthRatio = 1.5;
       testId = "poster-placeholder";
       break;
@@ -39,4 +39,4 @@ const MovieImagePlaceholder: React.FC<MoviePlaceholderProps> = ({
   );
 };
 
-export default MovieImagePlaceholder;
+export default ImagePlaceholder;

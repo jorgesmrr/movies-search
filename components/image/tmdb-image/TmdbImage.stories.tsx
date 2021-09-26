@@ -1,19 +1,19 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
-import MovieImage, { MovieImageProps } from "./MovieImage";
+import TmdbImage, { MovieImageProps } from "./TmdbImage";
 import { PosterSizes } from "../../../network/constants";
-import MovieImageType from "../../../models/MovieImageType";
+import ImageType from "../../../models/ImageType";
 
 export default {
-  title: "Movie/MovieImage",
-  component: MovieImage,
+  title: "Image/TmdbImage",
+  component: TmdbImage,
 } as Meta;
 
-const Template: Story<MovieImageProps> = (args) => <MovieImage {...args} />;
+const Template: Story<MovieImageProps> = (args) => <TmdbImage {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
   path: "/9yBVqNruk6Ykrwc32qrK2TIE5xw.jpg",
   sizes: { xs: PosterSizes.Tiny },
-  type: MovieImageType.Backdrop,
+  type: ImageType.Backdrop,
 };

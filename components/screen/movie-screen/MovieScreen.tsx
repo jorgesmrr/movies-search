@@ -1,10 +1,10 @@
 import { UseRequestState } from "@bit/jorgemoreira.headless-react.hooks";
-import MovieImageType from "../../../models/MovieImageType";
+import ImageType from "../../../models/ImageType";
 import { PosterSizes } from "../../../network/constants";
 import MovieDetails from "../../movie/movie-details/MovieDetails";
 import MovieHero from "../../movie/movie-hero/MovieHero";
-import MovieImagePlaceholder from "../../movie/movie-image-placeholder/MovieImagePlaceholder";
-import MovieImage from "../../movie/movie-image/MovieImage";
+import ImagePlaceholder from "../../image/image-placeholder/ImagePlaceholder";
+import TmdbImage from "../../image/tmdb-image/TmdbImage";
 import MovieMetadata from "../../movie/movie-metadata/MovieMetadata";
 import Spinner from "@bit/jorgemoreira.headless-react.progress.spinner";
 import Movie from "../../../models/Movie";
@@ -46,23 +46,19 @@ const MovieScreen: React.FC<MovieScreenProps> = ({
 
               <MoviesSection
                 title="Recommended"
-                imageType={MovieImageType.Poster}
+                imageType={ImageType.Poster}
                 endpoint={getMovieRecommendations(movie.id)}
               />
             </S.DetailsSlot>
 
             <S.PosterSlot>
-              <MovieImagePlaceholder
-                rounded
-                type={MovieImageType.Poster}
-                shadowLevel={3}
-              >
-                <MovieImage
+              <ImagePlaceholder rounded type={ImageType.Poster} shadowLevel={3}>
+                <TmdbImage
                   title={movie.title}
                   path={movie.poster}
                   sizes={{ xs: PosterSizes.Big }}
                 />
-              </MovieImagePlaceholder>
+              </ImagePlaceholder>
               <S.DesktopMetadataSlot>
                 <MovieMetadata movie={movie} />
               </S.DesktopMetadataSlot>

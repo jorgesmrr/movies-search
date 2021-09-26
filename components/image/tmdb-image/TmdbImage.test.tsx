@@ -1,4 +1,4 @@
-import MovieImage from "./MovieImage";
+import TmdbImage from "./TmdbImage";
 import { customRender } from "../../../utils/testing";
 import { BackdropSizes, PosterSizes } from "../../../network/constants";
 import { getImagePath } from "../../../network/helpers";
@@ -8,7 +8,7 @@ const fileName = "/xGuOF1T3WmPsAcQEQJfnG7Ud9f8.jpg";
 describe("component renders", () => {
   test("should show an image", () => {
     const { getByRole } = customRender(
-      <MovieImage
+      <TmdbImage
         title="Just a test"
         path={fileName}
         sizes={{ xs: PosterSizes.Tiny }}
@@ -21,7 +21,7 @@ describe("component renders", () => {
 describe("should use the correct source", () => {
   test("for backdrop image", () => {
     const { getByRole } = customRender(
-      <MovieImage
+      <TmdbImage
         title="Just a test"
         path={fileName}
         sizes={{ xs: BackdropSizes.Small }}
@@ -35,7 +35,7 @@ describe("should use the correct source", () => {
 
   test("for poster image", () => {
     const { getByRole } = customRender(
-      <MovieImage
+      <TmdbImage
         title="Just a test"
         path={fileName}
         sizes={{ xs: PosterSizes.Tiny }}

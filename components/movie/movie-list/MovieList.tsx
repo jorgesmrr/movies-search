@@ -1,8 +1,8 @@
 import React from "react";
 import Movie from "../../../models/Movie";
-import MovieImageType from "../../../models/MovieImageType";
+import ImageType from "../../../models/ImageType";
 import ResponsiveProperty from "../../../models/ResponsiveProperty";
-import { BackdropSizes, PosterSizes } from "../../../network/constants";
+import { ImageSizes } from "../../../network/constants";
 import MovieListItem from "../movie-list-item/MovieListItem";
 import MovieListGrid, { MovieListGridProps } from "./MovieListGrid";
 import MovieListSlider, { MovieListSliderProps } from "./MovieListSlider";
@@ -10,9 +10,9 @@ import MovieListSlider, { MovieListSliderProps } from "./MovieListSlider";
 export interface MovieListProps {
   isLoading: boolean;
   error: boolean;
-  imageType: MovieImageType;
+  imageType: ImageType;
   count: number;
-  sizes: ResponsiveProperty<BackdropSizes | PosterSizes>;
+  sizes: ResponsiveProperty<ImageSizes>;
   movies?: Movie[];
 }
 

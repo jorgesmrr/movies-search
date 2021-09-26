@@ -1,17 +1,17 @@
 import React from "react";
 import ResponsiveProperty from "../../../models/ResponsiveProperty";
-import { BackdropSizes, PosterSizes } from "../../../network/constants";
+import { ImageSizes } from "../../../network/constants";
 import { getImagePath } from "../../../network/helpers";
 import { ImageSource } from "../../responsive-image/ResponsiveImage";
-import * as S from "./MovieImage.styles";
+import * as S from "./TmdbImage.styles";
 
 export interface MovieImageProps extends S.ImageProps {
   title: string;
   path: string;
-  sizes: ResponsiveProperty<BackdropSizes | PosterSizes>;
+  sizes: ResponsiveProperty<ImageSizes>;
 }
 
-const MovieImage: React.FC<MovieImageProps> = ({
+const TmdbImage: React.FC<MovieImageProps> = ({
   title,
   path,
   sizes,
@@ -46,4 +46,4 @@ const MovieImage: React.FC<MovieImageProps> = ({
   );
 };
 
-export default MovieImage;
+export default TmdbImage;

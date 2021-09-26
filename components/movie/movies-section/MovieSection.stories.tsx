@@ -1,7 +1,7 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 import MoviesSection, { MoviesSectionProps } from "./MoviesSection";
-import MovieImageType from "../../../models/MovieImageType";
+import ImageType from "../../../models/ImageType";
 import { getTrendingMovies } from "../../../network/resources/trending";
 
 export default {
@@ -17,5 +17,5 @@ export const Default = Template.bind({});
 Default.args = {
   title: "Movies",
   endpoint: getTrendingMovies(),
-  imageType: MovieImageType.Poster,
+  imageType: ImageType.Poster,
 };

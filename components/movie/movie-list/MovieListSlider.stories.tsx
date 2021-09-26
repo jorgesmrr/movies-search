@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Story, Meta } from "@storybook/react";
 import { fakeMovies } from "../../../models/__fixtures__/Movie";
 import MovieList, { MovieListProps } from "./MovieList";
-import MovieImageType from "../../../models/MovieImageType";
+import ImageType from "../../../models/ImageType";
 import { MovieListSliderProps } from "./MovieListSlider";
 import { PosterSizes } from "../../../network/constants";
 import { LimitedWidth } from "../../style/style";
@@ -36,7 +36,7 @@ export const Loaded = Template.bind({});
 Loaded.args = {
   isLoading: false,
   movies: fakeMovies,
-  imageType: MovieImageType.Poster,
+  imageType: ImageType.Poster,
   count: 12,
   itemsPerSlide: { xs: 2, sm: 3, md: 4 },
   sizes: { xs: PosterSizes.Tiny },

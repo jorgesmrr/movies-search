@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Movie from "../../../models/Movie";
-import MovieImageType from "../../../models/MovieImageType";
+import ImageType from "../../../models/ImageType";
 import PagedResponse from "../../../models/PagedResponse";
 import { BackdropSizes, PosterSizes } from "../../../network/constants";
 import { RequestEndpoint } from "@bit/jorgemoreira.headless-react.hooks";
@@ -15,7 +15,7 @@ import * as S from "./MoviesSection.styles";
 export interface MoviesSectionProps {
   title: string;
   endpoint: RequestEndpoint<PagedResponse<Movie>>;
-  imageType: MovieImageType;
+  imageType: ImageType;
 }
 
 const MoviesSection: React.FC<MoviesSectionProps> = ({
@@ -26,7 +26,7 @@ const MoviesSection: React.FC<MoviesSectionProps> = ({
   const [activeSlide, setActiveSlide] = useState(0);
 
   const sizes =
-    imageType === MovieImageType.Backdrop
+    imageType === ImageType.Backdrop
       ? { xs: BackdropSizes.Big, sm: BackdropSizes.Regular }
       : {
           xs: PosterSizes.Big,
@@ -35,12 +35,12 @@ const MoviesSection: React.FC<MoviesSectionProps> = ({
         };
 
   const rowCount =
-    imageType === MovieImageType.Backdrop
+    imageType === ImageType.Backdrop
       ? { xs: 1, sm: 2, md: 3 }
       : { xs: 2, sm: 3, md: 6 };
 
   const count =
-    imageType === MovieImageType.Backdrop ? rowCount.md * 3 : rowCount.md * 2;
+    imageType === ImageType.Backdrop ? rowCount.md * 3 : rowCount.md * 2;
 
   const onPreviousSlideClick = () =>
     setActiveSlide(Math.max(0, activeSlide - 1));

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 import Pagination from "../../pagination/Pagination";
-import MovieImageType from "../../../models/MovieImageType";
+import ImageType from "../../../models/ImageType";
 import { PosterSizes } from "../../../network/constants";
 import { searchMovies } from "../../../network/resources/search";
 import Fetch from "@bit/jorgemoreira.headless-react.network.fetch";
@@ -57,7 +57,7 @@ const SearchScreen: React.FC<SearchScreenProps> = ({ search }) => {
                 error={error}
                 movies={data?.results}
                 count={20}
-                imageType={MovieImageType.Poster}
+                imageType={ImageType.Poster}
                 sizes={sizes}
               >
                 <MovieList.Grid columns={5} />

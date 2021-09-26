@@ -1,4 +1,4 @@
-import MovieImageType from "../../../models/MovieImageType";
+import ImageType from "../../../models/ImageType";
 import { getNowPlayingMovies } from "../../../network/resources/movie";
 import { getTrendingMovies } from "../../../network/resources/trending";
 import MoviesSection from "../../movie/movies-section/MoviesSection";
@@ -11,13 +11,13 @@ const HomeScreen: React.FC = () => {
         <MoviesSection
           title="Trending Today"
           endpoint={getTrendingMovies()}
-          imageType={MovieImageType.Backdrop}
+          imageType={ImageType.Backdrop}
         />
 
         <MoviesSection
           title="Now In Theaters"
           endpoint={getNowPlayingMovies()}
-          imageType={MovieImageType.Poster}
+          imageType={ImageType.Poster}
         />
       </LimitedWidth>
     </RegularPageContent>

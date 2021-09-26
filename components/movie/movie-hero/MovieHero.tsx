@@ -2,7 +2,7 @@ import React, { useContext, useRef } from "react";
 import { BackdropSizes } from "../../../network/constants";
 import { ThemeContext } from "styled-components";
 import { useScrollEffect } from "@bit/jorgemoreira.headless-react.hooks";
-import MovieImage from "../movie-image/MovieImage";
+import TmdbImage from "../../image/tmdb-image/TmdbImage";
 import * as S from "./MovieHero.styles";
 
 export interface MovieHeroProps {
@@ -30,7 +30,7 @@ const MovieHero: React.FC<MovieHeroProps> = ({ title, backdrop }) => {
     <S.Wrapper>
       <S.ImageAspect maxWidth={theme.dimensions.pageWidth + 4}>
         <S.ImageWrapper ref={imageRef}>
-          <MovieImage
+          <TmdbImage
             title={title}
             path={backdrop}
             sizes={{ xs: BackdropSizes.Big }}

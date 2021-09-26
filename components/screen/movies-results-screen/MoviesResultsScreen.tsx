@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Movie from "../../../models/Movie";
-import MovieImageType from "../../../models/MovieImageType";
+import ImageType from "../../../models/ImageType";
 import PagedResponse from "../../../models/PagedResponse";
 import { PosterSizes } from "../../../network/constants";
 import { RequestEndpoint } from "@bit/jorgemoreira.headless-react.hooks";
@@ -39,7 +39,7 @@ const MoviesResultsScreen: React.FC<MoviesResultsScreenProps> = ({
                 error={error}
                 movies={data?.results}
                 count={20}
-                imageType={MovieImageType.Poster}
+                imageType={ImageType.Poster}
                 sizes={sizes}
               >
                 <MovieList.Grid columns={5} />

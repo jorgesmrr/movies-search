@@ -800,7 +800,7 @@ to the "plugins" section of your Babel config.
 <s> [webpack.Progress] 48% building 317/349 modules 32 active D:\Dev\GitHub\movie-tv-search\node_modules\babel-loader\lib\index.js??ref--4-0!D:\Dev\GitHub\movie-tv-search\network\resources\movie.ts
 <s> [webpack.Progress] 48% building 317/350 modules 33 active D:\Dev\GitHub\movie-tv-search\node_modules\babel-loader\lib\index.js??ref--4-0!D:\Dev\GitHub\movie-tv-search\network\resources\trending.ts
 <s> [webpack.Progress] 48% building 317/351 modules 34 active D:\Dev\GitHub\movie-tv-search\node_modules\babel-loader\lib\index.js??ref--4-0!D:\Dev\GitHub\movie-tv-search\hooks\useRequest.ts
-<s> [webpack.Progress] 48% building 317/352 modules 35 active D:\Dev\GitHub\movie-tv-search\node_modules\babel-loader\lib\index.js??ref--4-0!D:\Dev\GitHub\movie-tv-search\components\movie\movies-section\MoviesSection.tsx
+<s> [webpack.Progress] 48% building 317/352 modules 35 active D:\Dev\GitHub\movie-tv-search\node_modules\babel-loader\lib\index.js??ref--4-0!D:\Dev\GitHub\movie-tv-search\components\movie\movies-section\ImagesSection.tsx
 <s> [webpack.Progress] 48% building 317/353 modules 36 active D:\Dev\GitHub\movie-tv-search\node_modules\core-js\internals\create-property.js
 <s> [webpack.Progress] 48% building 318/353 modules 35 active D:\Dev\GitHub\movie-tv-search\node_modules\core-js\internals\create-property.js
 <s> [webpack.Progress] 48% building 318/354 modules 36 active D:\Dev\GitHub\movie-tv-search\node_modules\babel-loader\lib\index.js??ref--4-0!D:\Dev\GitHub\movie-tv-search\network\resources\search.ts

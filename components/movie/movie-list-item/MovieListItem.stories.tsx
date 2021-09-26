@@ -3,7 +3,7 @@ import { Story, Meta } from "@storybook/react";
 import MovieListItem, { MovieListItemProps } from "./MovieListItem";
 import { fakeMovie } from "../../../models/__fixtures__/Movie";
 import { PosterSizes } from "../../../network/constants";
-import MovieImageType from "../../../models/MovieImageType";
+import ImageType from "../../../models/ImageType";
 
 export default {
   title: "Movie/MovieListItem",
@@ -18,7 +18,7 @@ export const Default = Template.bind({});
 Default.args = {
   movie: fakeMovie,
   sizes: { xs: PosterSizes.Tiny },
-  imageType: MovieImageType.Poster,
+  imageType: ImageType.Poster,
 };
 
 export const Loading = Template.bind({});
