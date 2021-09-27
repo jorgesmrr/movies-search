@@ -9,7 +9,7 @@ import { LimitedWidth } from "../../style/style";
 import { getMoviePosterDescription } from "../../../network/helpers";
 
 export default {
-  title: "Movie/MovieList/Grid",
+  title: "Image/ImagesList/Grid",
   component: ImagesList,
 } as Meta;
 

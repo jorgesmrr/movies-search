@@ -40,23 +40,29 @@ const ImageListItem: React.FC<ImageListItemProps> = ({
     );
   }
 
-  return (
+  const content = (
+    <>
+      <ImagePlaceholder rounded type={imageType} shadowLevel={2}>
+        <S.ImageWrapper>
+          <TmdbImage title={image.title} path={image.path} sizes={sizes} />
+          {imageType === ImageType.Backdrop && (
+            <>
+              <S.BackdropOverlay />
+              <S.BackdropTitle>{image.title}</S.BackdropTitle>
+            </>
+          )}
+        </S.ImageWrapper>
+      </ImagePlaceholder>
+      {imageType === ImageType.Poster && <S.Title>{image.title}</S.Title>}
+    </>
+  );
+
+  return image.link ? (
     <Link href={image.link}>
-      <a>
-        <ImagePlaceholder rounded type={imageType} shadowLevel={2}>
-          <S.ImageWrapper>
-            <TmdbImage title={image.title} path={image.path} sizes={sizes} />
-            {imageType === ImageType.Backdrop && (
-              <>
-                <S.BackdropOverlay />
-                <S.BackdropTitle>{image.title}</S.BackdropTitle>
-              </>
-            )}
-          </S.ImageWrapper>
-        </ImagePlaceholder>
-        {imageType === ImageType.Poster && <S.Title>{image.title}</S.Title>}
-      </a>
+      <a>{content}</a>
     </Link>
+  ) : (
+    <div>{content}</div>
   );
 };
 
