@@ -8,10 +8,20 @@ import {
   API_MOVIES_POPULAR,
   API_MOVIES_TOP_RATED,
   API_MOVIES_UPCOMING,
-  API_RECOMMENDED_MOVIES,
+  API_MOVIE_CREDITS,
+  API_MOVIE_RECOMMENDED,
 } from "../constants";
 import { RequestEndpoint } from "@bit/jorgemoreira.headless-react.hooks";
 import { movieTransformer } from "../transformers";
+import MovieCredits from "../../models/MovieCredits";
+
+const defaultEndpoint = <T>(url: string): RequestEndpoint<T> => () =>
+  new Promise((resolve, reject) => {
+    apiClient
+      .get(url)
+      .then((response) => resolve(response.data))
+      .catch(reject);
+  });
 
 const movieListEndpoint = (
   url: string
@@ -37,7 +47,11 @@ export const getMovie = (id: number): RequestEndpoint<Movie> => () =>
 export const getMovieRecommendations: (
   id: number
 ) => RequestEndpoint<PagedResponse<Movie>> = (id) =>
-  movieListEndpoint(API_RECOMMENDED_MOVIES(id));
+  movieListEndpoint(API_MOVIE_RECOMMENDED(id));
+
+export const getMovieCredits: (id: number) => RequestEndpoint<MovieCredits> = (
+  id
+) => defaultEndpoint(API_MOVIE_CREDITS(id));
 
 export const getPopularMovies: (
   page?: number

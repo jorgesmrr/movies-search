@@ -13,6 +13,7 @@ import * as S from "./MovieScreen.styles";
 import theme from "../../style/theme";
 import MoviesSection from "../../movie/movies-section/MoviesSection";
 import { getMovieRecommendations } from "../../../network/resources/movie";
+import MovieCreditsSection from "../../movie/movie-credits-section/MovieCreditsSection";
 
 export type MovieScreenProps = UseRequestState<Movie>;
 
@@ -43,6 +44,8 @@ const MovieScreen: React.FC<MovieScreenProps> = ({
 
             <S.DetailsSlot>
               <MovieDetails movie={movie} />
+
+              <MovieCreditsSection movieId={movie.id} />
 
               <MoviesSection
                 title="Recommended"

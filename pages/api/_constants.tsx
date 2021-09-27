@@ -4,6 +4,7 @@ export const TMDB_BASE_API_URL = "https://api.themoviedb.org/3";
 export const TMDB_API_MOVIES = "/movie";
 export const TMDB_API_RECOMMENDED_MOVIES = (id: string): string =>
   `/movie/${id}/recommendations`;
+export const TMDB_API_CREDITS = (id: string): string => `/movie/${id}/credits`;
 export const TMDB_API_MOVIES_POPULAR = `${TMDB_API_MOVIES}/popular`;
 export const TMDB_API_MOVIES_TOP_RATED = `${TMDB_API_MOVIES}/top_rated`;
 export const TMDB_API_MOVIES_UPCOMING = `${TMDB_API_MOVIES}/upcoming`;

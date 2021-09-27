@@ -1,5 +1,6 @@
 import ImageDescription from "../models/ImageDescription";
 import Movie from "../models/Movie";
+import { MovieCredit } from "../models/MovieCredits";
 import { BASE_IMAGE_URL } from "./constants";
 
 export const getImagePath = (fileName: string, size: number): string =>
@@ -21,4 +22,12 @@ export const getMovieBackdropDescription = (
 ): ImageDescription => ({
   ...getPartialMovieImageDescription(movie),
   path: movie.poster,
+});
+
+export const getMovieCreditDescription = (
+  credit: MovieCredit
+): ImageDescription => ({
+  key: credit.id,
+  title: credit.name,
+  path: credit.profile_path,
 });

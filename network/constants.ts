@@ -1,7 +1,9 @@
 export const BASE_API_URL = "/api";
 export const API_MOVIES = "/movie";
-export const API_RECOMMENDED_MOVIES = (id: number | string): string =>
+export const API_MOVIE_RECOMMENDED = (id: number | string): string =>
   `/movie/${id}/recommendations`;
+export const API_MOVIE_CREDITS = (id: number | string): string =>
+  `/movie/${id}/credits`;
 export const API_MOVIES_POPULAR = `${API_MOVIES}/popular`;
 export const API_MOVIES_TOP_RATED = `${API_MOVIES}/top_rated`;
 export const API_MOVIES_UPCOMING = `${API_MOVIES}/upcoming`;
@@ -26,3 +28,11 @@ export enum PosterSizes {
   Big = 500,
   Large = 780,
 }
+
+export enum ProfileSizes {
+  Tiny = 45,
+  Medium = 185,
+  Big = 632,
+}
+
+export type ImageSizes = BackdropSizes | PosterSizes | ProfileSizes;
