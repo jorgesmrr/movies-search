@@ -1,10 +1,9 @@
 import format from "date-fns/format";
 import React from "react";
 import Movie from "../../../models/Movie";
-import { VisibleMdUp, HiddenMdUp } from "../../style/style";
 import * as S from "./MovieMetadata.styles";
 
-interface MovieMetadataProps {
+export interface MovieMetadataProps {
   movie: Movie;
 }
 
@@ -19,43 +18,28 @@ const MovieMetadata: React.FC<MovieMetadataProps> = ({ movie }) => {
   }
 
   return (
-    <div>
-      <S.Container>
-        {movie.releaseDate && (
-          <S.Group>
-            <dt>Year</dt>
-            <dd>{format(movie.releaseDate, "yyyy")}</dd>
-          </S.Group>
-        )}
+    <S.List>
+      {movie.voteAverage > 0 && (
+        <S.Item>
+          <a title="Rating">
+            <S.RatingValue>{movie.voteAverage}</S.RatingValue>
+            <S.RatingRange> / 10</S.RatingRange>
+          </a>
+        </S.Item>
+      )}
 
-        {movie.voteAverage > 0 && (
-          <>
-            <HiddenMdUp>
-              <S.Group>
-                <dt>Rating</dt>
-                <dd>{movie.voteAverage}</dd>
-              </S.Group>
-            </HiddenMdUp>
+      {movie.releaseDate && (
+        <S.Item>
+          <a title="Release Year">{format(movie.releaseDate, "yyyy")}</a>
+        </S.Item>
+      )}
 
-            <VisibleMdUp>
-              <S.RatingBadge as="div">
-                <S.Group>
-                  <dt>Rating</dt>
-                  <dd>{movie.voteAverage}</dd>
-                </S.Group>
-              </S.RatingBadge>
-            </VisibleMdUp>
-          </>
-        )}
-
-        {formattedRuntime && (
-          <S.Group>
-            <dt>Runtime</dt>
-            <dd>{formattedRuntime}</dd>
-          </S.Group>
-        )}
-      </S.Container>
-    </div>
+      {formattedRuntime && (
+        <S.Item>
+          <a title="Runtime">{formattedRuntime}</a>
+        </S.Item>
+      )}
+    </S.List>
   );
 };
 

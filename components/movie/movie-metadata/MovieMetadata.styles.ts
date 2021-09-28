@@ -1,46 +1,35 @@
 import styled from "styled-components";
-import { Badge } from "../../style/style";
+import { ListNone, textSize } from "../../style/style";
 
-export const Container = styled.dl`
+export const List = styled(ListNone)`
   display: flex;
-  align-items: center;
-  gap: 2rem;
-  padding: 1rem;
-  border-top: 1px solid ${({ theme }) => theme.color.neutral.darker};
-  border-bottom: 1px solid ${({ theme }) => theme.color.neutral.darker};
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
-    justify-content: center;
-    text-align: center;
-    padding: 0;
-    border: none;
-  }
-`;
-
-export const Group = styled.div`
-  display: flex;
-  flex-direction: column-reverse;
+  font-weight: bold;
   font-size: ${({ theme }) => theme.fontSize.mobile[1]}rem;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
     font-size: ${({ theme }) => theme.fontSize.desktop[2]}rem;
   }
+`;
 
-  dt {
-    text-transform: uppercase;
-    color: ${({ theme }) => theme.color.neutral.light};
-    font-size: ${({ theme }) => theme.fontSize.mobile[0]}rem;
+export const Item = styled.li`
+  &:not(:last-child):after {
+    content: "\\2022";
+    display: inline-block;
+    padding: 0 0.5rem;
 
     @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
-      font-size: ${({ theme }) => theme.fontSize.desktop[1]}rem;
+      padding: 0 0.75rem;
     }
-  }
-
-  dd {
-    font-weight: 600;
   }
 `;
 
-export const RatingBadge = styled(Badge)`
-  padding: 1rem;
+export const RatingValue = styled.span`
+  &::before {
+    content: "\\2605";
+    padding-right: 0.25rem;
+  }
+`;
+
+export const RatingRange = styled.span`
+  color: ${({ theme }) => theme.color.neutral.lighter};
 `;

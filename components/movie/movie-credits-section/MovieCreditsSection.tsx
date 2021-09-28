@@ -13,7 +13,7 @@ const MovieCreditsSection: React.FC<MovieCreditsSectionProps> = ({
   movieId,
 }) => {
   const sizes = { xs: ProfileSizes.Medium };
-  const rowCount = { xs: 3, sm: 4, md: 5 };
+  const rowCount = { xs: 3, sm: 4, md: 6 };
   const count = rowCount.md * 4;
 
   return (

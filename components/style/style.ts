@@ -57,11 +57,15 @@ export const FixedAspect = styled.div<{ heightWidthRatio: number }>`
   overflow: hidden;
 `;
 
-export const Card = styled.div`
-  padding: 0.5rem 1rem;
+interface CardProps {
+  shadowLevel?: number;
+}
+
+export const Card = styled.div<CardProps>`
   background-color: ${({ theme }) => theme.color.neutral.darker};
-  box-shadow: ${({ theme }) => theme.shadow[0]};
   border-radius: ${({ theme }) => theme.dimensions.radius};
+  box-shadow: ${({ theme, shadowLevel }) =>
+    shadowLevel !== undefined && theme.shadow[shadowLevel]};
 `;
 
 export const Badge = styled.span`
