@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ListNone, textSize } from "../../style/style";
+import { ListNone } from "../../style/style";
 
 export const List = styled(ListNone)`
   display: flex;

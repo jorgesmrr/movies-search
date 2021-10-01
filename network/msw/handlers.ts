@@ -5,12 +5,14 @@ import {
   API_MOVIES_POPULAR,
   API_MOVIES_TOP_RATED,
   API_MOVIES_UPCOMING,
+  API_MOVIE_CREDITS,
   API_MOVIE_RECOMMENDED,
   API_SEARCH_MOVIES,
   API_TRENDING,
   BASE_API_URL,
 } from "../constants";
 import {
+  getMovieCreditsFixture,
   getMovieFixture,
   getMovieListFixture,
 } from "../resources/__fixtures__/movie";
@@ -45,6 +47,10 @@ export const handlers = [
   rest.get(
     `${BASE_API_URL}${API_MOVIE_RECOMMENDED(":id")}`,
     sucessfulResolver(getMovieListFixture())
+  ),
+  rest.get(
+    `${BASE_API_URL}${API_MOVIE_CREDITS(":id")}`,
+    sucessfulResolver(getMovieCreditsFixture())
   ),
 
   rest.get(

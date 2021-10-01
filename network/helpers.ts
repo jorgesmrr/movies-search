@@ -24,10 +24,10 @@ export const getMovieBackdropDescription = (
   path: movie.poster,
 });
 
-export const getMovieCreditDescription = (
+export const getMovieCreditImageDescription = (
   credit: MovieCredit
 ): ImageDescription => ({
   key: credit.id,
   title: credit.name,
-  path: credit.profile_path,
+  path: credit.photo,
 });

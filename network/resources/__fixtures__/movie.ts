@@ -1,3 +1,5 @@
+import faker from "faker";
+
 export const getMovieFixture = () => ({
   adult: false,
   backdrop_path: "/fPGeS6jgdLovQAKunNHX8l0avCy.jpg",
@@ -425,4 +427,39 @@ export const getMovieListFixture = () => ({
   ],
   total_pages: 12,
   total_results: 222,
+});
+
+export const getMovieCreditsFixture = () => ({
+  id: 550,
+  cast: [
+    {
+      adult: false,
+      gender: 2,
+      id: 819,
+      known_for_department: "Acting",
+      name: "Edward Norton",
+      original_name: "Edward Norton",
+      popularity: 7.861,
+      profile_path: "/5XBzD5WuTyVQZeS4VI25z2moMeY.jpg",
+      cast_id: 4,
+      character: "The Narrator",
+      credit_id: "52fe4250c3a36847f80149f3",
+      order: 0,
+    },
+  ],
+  crew: [
+    {
+      adult: false,
+      gender: 2,
+      id: 376,
+      known_for_department: "Production",
+      name: "Arnon Milchan",
+      original_name: "Arnon Milchan",
+      popularity: 1.702,
+      profile_path: "/b2hBExX4NnczNAnLuTBF4kmNhZm.jpg",
+      credit_id: "55731b8192514111610027d7",
+      department: "Production",
+      job: "Executive Producer",
+    },
+  ],
 });
