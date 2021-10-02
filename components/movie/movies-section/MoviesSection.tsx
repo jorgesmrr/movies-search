@@ -14,12 +14,16 @@ export interface MoviesSectionProps {
   title: string;
   endpoint: RequestEndpoint<PagedResponse<Movie>>;
   imageType: ImageType;
+  linkHref?: string;
+  linkLabel?: string;
 }
 
 const MoviesSection: React.FC<MoviesSectionProps> = ({
   title,
   endpoint,
   imageType,
+  linkHref,
+  linkLabel,
 }) => {
   const sizes =
     imageType === ImageType.Backdrop
@@ -56,6 +60,8 @@ const MoviesSection: React.FC<MoviesSectionProps> = ({
           sizes={sizes}
           rowCount={rowCount}
           count={count}
+          linkHref={linkHref}
+          linkLabel={linkLabel}
         />
       )}
     />

@@ -29,6 +29,8 @@ const MovieCreditsSection: React.FC<MovieCreditsSectionProps> = ({
           sizes={sizes}
           rowCount={rowCount}
           count={count}
+          linkLabel="See full cast & crew"
+          linkHref={`/movie/credits?id=${movieId}`}
         />
       )}
     />

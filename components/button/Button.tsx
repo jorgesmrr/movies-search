@@ -3,7 +3,7 @@ import * as S from "./Button.styles";
 interface ButtonProps {
   ariaLabel?: string;
   disabled?: boolean;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const Button: React.FC<ButtonProps> = ({

@@ -2,7 +2,6 @@ import { UseRequestState } from "@bit/jorgemoreira.headless-react.hooks";
 import Spinner from "@bit/jorgemoreira.headless-react.progress.spinner";
 import {
   Alert,
-  Heading1,
   Heading2,
   LimitedWidth,
   RegularPageContent,
@@ -13,14 +12,19 @@ import MovieCredits from "../../../models/MovieCredits";
 import * as S from "./MovieCreditsScreen.styles";
 import MainCrew from "../../movie-credit/main-crew/MainCrew";
 import CrewDepartmentsList from "../../movie-credit/crew-departments-list/CrewDepartmentsList";
+import Movie from "../../../models/Movie";
+import Link from "next/link";
 
-export type MovieCreditsScreenProps = UseRequestState<MovieCredits>;
+export interface MovieCreditsScreenProps {
+  movieState: UseRequestState<Movie>;
+  creditsState: UseRequestState<MovieCredits>;
+}
 
 const MovieCreditsScreen: React.FC<MovieCreditsScreenProps> = ({
-  data: credits,
-  isLoading,
+  movieState: { data: movie },
+  creditsState: { isLoading: isLoadingCredits, data: credits },
 }) => {
-  if (isLoading) {
+  if (isLoadingCredits) {
     return (
       <S.SpinnerWrapper>
         <Spinner
@@ -36,7 +40,16 @@ const MovieCreditsScreen: React.FC<MovieCreditsScreenProps> = ({
       <RegularPageContent>
         <LimitedWidth>
           <section>
-            <Heading1>Cast & Crew</Heading1>
+            {movie && (
+              <Link href={`/movie?id=${movie.id}`}>
+                <a>
+                  <S.LinkText>
+                    {movie.title} ({movie.releaseDate.getFullYear()})
+                  </S.LinkText>
+                </a>
+              </Link>
+            )}
+            <S.Heading>Cast & Crew</S.Heading>
 
             <MainCrew crew={credits.crew} />
 

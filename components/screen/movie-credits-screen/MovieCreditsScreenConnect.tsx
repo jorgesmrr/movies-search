@@ -1,5 +1,5 @@
 import { useRequestEffect } from "@bit/jorgemoreira.headless-react.hooks";
-import { getMovieCredits } from "../../../network/resources/movie";
+import { getMovie, getMovieCredits } from "../../../network/resources/movie";
 import MovieCreditsScreen from "./MovieCreditsScreen";
 
 export interface MovieScreenConnectProps {
@@ -9,9 +9,12 @@ export interface MovieScreenConnectProps {
 const MovieCreditsScreenConnect: React.FC<MovieScreenConnectProps> = ({
   id,
 }) => {
-  const state = useRequestEffect(getMovieCredits(id), [id]);
+  const movieState = useRequestEffect(getMovie(id), [id]);
+  const creditsState = useRequestEffect(getMovieCredits(id), [id]);
 
-  return <MovieCreditsScreen {...state} />;
+  return (
+    <MovieCreditsScreen movieState={movieState} creditsState={creditsState} />
+  );
 };
 
 export default MovieCreditsScreenConnect;

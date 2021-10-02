@@ -9,6 +9,7 @@ import ImagesList from "../../image/images-list/ImagesList";
 import * as S from "./ImagesSection.styles";
 import ResponsiveProperty from "../../../models/ResponsiveProperty";
 import ImageDescription from "../../../models/ImageDescription";
+import Link from "next/link";
 
 export interface ImagesSectionProps {
   title: string;
@@ -19,6 +20,8 @@ export interface ImagesSectionProps {
   sizes: ResponsiveProperty<ImageSizes>;
   rowCount: ResponsiveProperty<number>;
   count: number;
+  linkHref?: string;
+  linkLabel?: string;
 }
 
 const ImagesSection: React.FC<ImagesSectionProps> = ({
@@ -30,6 +33,8 @@ const ImagesSection: React.FC<ImagesSectionProps> = ({
   sizes,
   rowCount,
   count,
+  linkHref,
+  linkLabel,
 }) => {
   const [activeSlide, setActiveSlide] = useState(0);
 
@@ -45,16 +50,24 @@ const ImagesSection: React.FC<ImagesSectionProps> = ({
       <S.Heading>
         <Heading2>{title}</Heading2>
 
+        {linkHref && linkLabel && (
+          <Link href={linkHref}>
+            <a>
+              <Button>{linkLabel}</Button>
+            </a>
+          </Link>
+        )}
+
         <VisibleMdUp>
-          <Button ariaLabel="next images" onClick={onPreviousSlideClick}>
+          <S.IconButton ariaLabel="next images" onClick={onPreviousSlideClick}>
             <ChevronLeftIcon />
-          </Button>
+          </S.IconButton>
         </VisibleMdUp>
 
         <VisibleMdUp>
-          <Button ariaLabel="previous images" onClick={onNextSlideClick}>
+          <S.IconButton ariaLabel="previous images" onClick={onNextSlideClick}>
             <ChevronRightIcon />
-          </Button>
+          </S.IconButton>
         </VisibleMdUp>
       </S.Heading>
 

@@ -11,10 +11,15 @@ const MovieMetadata: React.FC<MovieMetadataProps> = ({ movie }) => {
   let formattedRuntime;
 
   if (movie.runtime > 0) {
+    let minutes = (movie.runtime % 60).toString();
+    if (minutes.length === 1) {
+      minutes = `0${minutes}`;
+    }
+
     formattedRuntime =
       movie.runtime > 60
-        ? `${Math.floor(movie.runtime / 60)}h${movie.runtime % 60}`
-        : `${movie.runtime % 60}m`;
+        ? `${Math.floor(movie.runtime / 60)}h${minutes}`
+        : `${minutes}m`;
   }
 
   return (
