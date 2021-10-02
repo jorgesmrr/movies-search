@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { LimitedWidth } from "../../style/style";
 
-export const Section = styled.section`
+export const Root = styled.main`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -16,7 +16,7 @@ export const ContentsWrapper = styled.div`
     rgba(0, 0, 0, 0.23) 0px -6px 6px;
 `;
 
-export const Contents = styled.div`
+export const ContentsSection = styled.section`
   position: relative;
   top: -3.5rem;
 `;

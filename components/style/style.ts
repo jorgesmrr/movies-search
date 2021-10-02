@@ -28,6 +28,11 @@ export const Heading2 = styled.h2`
   ${({ theme }) => textSize(theme, 3)}
 `;
 
+export const Heading3 = styled.h3`
+  ${headingRules}
+  ${({ theme }) => textSize(theme, 2)}
+`;
+
 export const Subtitle = styled.p`
   font-weight: 600;
   text-transform: uppercase;
@@ -38,7 +43,7 @@ export const TextSmall = styled.span`
   ${({ theme }) => textSize(theme, 0)}
 `;
 
-export const RegularPageContent = styled.div`
+export const RegularPageContent = styled.main`
   margin-top: 7rem;
 `;
 

@@ -37,9 +37,10 @@ export const movieCreditsTransformer: (responseData: any) => MovieCredits = (
     character: person.character,
     photo: person.profile_path,
   })),
-  crew: responseData.cast.map((person) => ({
+  crew: responseData.crew.map((person) => ({
     id: person.id,
     name: person.name,
-    photo: person.profile_path,
+    job: person.job,
+    department: person.department,
   })),
 });

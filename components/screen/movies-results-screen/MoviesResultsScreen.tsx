@@ -29,7 +29,7 @@ const MoviesResultsScreen: React.FC<MoviesResultsScreenProps> = ({
 
   return (
     <RegularPageContent>
-      <LimitedWidth>
+      <LimitedWidth as="section">
         <Heading1>{title}</Heading1>
         <Fetch
           endpoint={endpointGetter(page)}

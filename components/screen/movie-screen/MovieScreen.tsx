@@ -30,10 +30,10 @@ const MovieScreen: React.FC<MovieScreenProps> = ({
 
   if (movie) {
     return (
-      <S.Section>
+      <S.Root>
         <MovieHero title={movie.title} backdrop={movie.backdrop} />
         <S.ContentsWrapper>
-          <S.Contents>
+          <S.ContentsSection>
             <S.OverviewWrapper maxWidth={70}>
               <MovieOverview movie={movie} />
             </S.OverviewWrapper>
@@ -41,15 +41,17 @@ const MovieScreen: React.FC<MovieScreenProps> = ({
             <LimitedWidth maxWidth={70}>
               <MovieCreditsSection movieId={movie.id} />
 
-              <MoviesSection
-                title="Recommended"
-                imageType={ImageType.Poster}
-                endpoint={getMovieRecommendations(movie.id)}
-              />
+              <aside>
+                <MoviesSection
+                  title="Recommended"
+                  imageType={ImageType.Poster}
+                  endpoint={getMovieRecommendations(movie.id)}
+                />
+              </aside>
             </LimitedWidth>
-          </S.Contents>
+          </S.ContentsSection>
         </S.ContentsWrapper>
-      </S.Section>
+      </S.Root>
     );
   }
 

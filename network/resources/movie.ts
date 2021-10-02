@@ -15,14 +15,6 @@ import { RequestEndpoint } from "@bit/jorgemoreira.headless-react.hooks";
 import { movieCreditsTransformer, movieTransformer } from "../transformers";
 import MovieCredits from "../../models/MovieCredits";
 
-const defaultEndpoint = <T>(url: string): RequestEndpoint<T> => () =>
-  new Promise((resolve, reject) => {
-    apiClient
-      .get(url)
-      .then((response) => resolve(response.data))
-      .catch(reject);
-  });
-
 const movieListEndpoint = (
   url: string
 ): RequestEndpoint<PagedResponse<Movie>> => () =>

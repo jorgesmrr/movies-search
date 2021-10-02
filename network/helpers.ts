@@ -1,6 +1,6 @@
 import ImageDescription from "../models/ImageDescription";
 import Movie from "../models/Movie";
-import { MovieCredit } from "../models/MovieCredits";
+import { CastMember } from "../models/MovieCredits";
 import { BASE_IMAGE_URL } from "./constants";
 
 export const getImagePath = (fileName: string, size: number): string =>
@@ -25,7 +25,7 @@ export const getMovieBackdropDescription = (
 });
 
 export const getMovieCreditImageDescription = (
-  credit: MovieCredit
+  credit: CastMember
 ): ImageDescription => ({
   key: credit.id,
   title: credit.name,
