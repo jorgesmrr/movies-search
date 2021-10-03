@@ -1,6 +1,7 @@
 import {
   getMovieCreditsFixture,
   getMovieFixture,
+  getMovieImagesFixture,
   getMovieListFixture,
 } from "../__fixtures__/movie";
 
@@ -11,6 +12,9 @@ export const getRecommendedMovies = () => () =>
 
 export const getMovieCredits = () => () =>
   Promise.resolve(getMovieCreditsFixture);
+
+export const getMovieImages = () => () =>
+  Promise.resolve(getMovieImagesFixture);
 
 export const getPopularMovies = () => () =>
   Promise.resolve(getMovieListFixture);

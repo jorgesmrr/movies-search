@@ -4,6 +4,8 @@ export const API_MOVIE_RECOMMENDED = (id: number | string): string =>
   `/movie/${id}/recommendations`;
 export const API_MOVIE_CREDITS = (id: number | string): string =>
   `/movie/${id}/credits`;
+export const API_MOVIE_IMAGES = (id: number | string): string =>
+  `/movie/${id}/images`;
 export const API_MOVIES_POPULAR = `${API_MOVIES}/popular`;
 export const API_MOVIES_TOP_RATED = `${API_MOVIES}/top_rated`;
 export const API_MOVIES_UPCOMING = `${API_MOVIES}/upcoming`;
