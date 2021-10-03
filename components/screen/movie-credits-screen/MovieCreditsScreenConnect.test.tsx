@@ -20,7 +20,7 @@ describe("component renders", () => {
     });
 
     customRender(<MovieCreditsScreenConnect id={fakeMovie.id} />);
-    await waitFor(() => expect(mockedUseRequest).toHaveBeenCalledTimes(1));
+    await waitFor(() => expect(mockedUseRequest).toHaveBeenCalledTimes(2));
 
     expect(screen.getByTestId("movie-details__spinner")).toBeInTheDocument();
   });
@@ -35,7 +35,6 @@ describe("component renders", () => {
     const { getByRole } = customRender(
       <MovieCreditsScreenConnect id={fakeMovie.id} />
     );
-    await waitFor(() => expect(mockedUseRequest).toHaveBeenCalledTimes(1));
 
     expect(
       getByRole("heading", { level: 1, name: "Cast & Crew" })

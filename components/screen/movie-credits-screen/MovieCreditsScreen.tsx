@@ -44,7 +44,9 @@ const MovieCreditsScreen: React.FC<MovieCreditsScreenProps> = ({
               <Link href={`/movie?id=${movie.id}`}>
                 <a>
                   <S.LinkText>
-                    {movie.title} ({movie.releaseDate.getFullYear()})
+                    {movie.title}
+                    {movie.releaseDate &&
+                      ` (${movie.releaseDate.getFullYear()})`}
                   </S.LinkText>
                 </a>
               </Link>
