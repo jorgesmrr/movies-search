@@ -8,11 +8,11 @@ export interface CastListProps {
 
 const CastList: React.FC<CastListProps> = ({ cast }) => {
   return (
-    <S.List>
+    <S.Grid>
       {cast.map((credit) => (
         <CastListItem key={credit.id} credit={credit} />
       ))}
-    </S.List>
+    </S.Grid>
   );
 };
 

@@ -49,6 +49,10 @@ export const Title = styled(Heading1)`
   margin-top: 0;
 `;
 
+export const Synopsis = styled.p`
+  margin: 1rem 0;
+`;
+
 export const BadgesList = styled(ListNone)`
   display: flex;
   flex-wrap: wrap;

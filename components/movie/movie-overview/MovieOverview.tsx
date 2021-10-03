@@ -31,7 +31,7 @@ const MovieOverview: React.FC<MovieOverviewProps> = ({ movie }) => {
         <hr />
 
         {movie.tagline && <Subtitle>{movie.tagline}</Subtitle>}
-        <p>{movie.overview}</p>
+        <S.Synopsis>{movie.overview}</S.Synopsis>
 
         <S.BadgesList>
           {movie.isAdult && <S.ExplicitBadge>Explicit</S.ExplicitBadge>}

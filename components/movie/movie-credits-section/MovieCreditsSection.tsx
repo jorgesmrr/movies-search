@@ -12,8 +12,8 @@ export interface MovieCreditsSectionProps {
 const MovieCreditsSection: React.FC<MovieCreditsSectionProps> = ({
   movieId,
 }) => {
-  const sizes = { xs: ProfileSizes.Medium };
-  const rowCount = { xs: 3, sm: 4, md: 6 };
+  const sizes = { xs: ProfileSizes.Medium, sm: ProfileSizes.Big };
+  const rowCount = { xs: 2, sm: 3, md: 6 };
   const count = rowCount.md * 4;
 
   return (
