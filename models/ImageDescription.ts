@@ -1,5 +1,5 @@
 export default interface ImageDescription {
-  key: number;
+  key: number | string;
   title: string;
   link?: string;
   path: string;
