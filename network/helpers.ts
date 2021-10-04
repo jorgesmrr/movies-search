@@ -33,9 +33,8 @@ export const getMovieCreditImageDescription = (
   path: credit.photo,
 });
 
-export const getMovieImageDescription = (
-  image: MovieImage,
-  movieName: string
+export const getMovieImageDescription = (movieName: string) => (
+  image: MovieImage
 ): ImageDescription => ({
   key: image.path,
   title: movieName,

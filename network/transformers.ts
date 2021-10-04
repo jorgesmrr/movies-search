@@ -45,9 +45,15 @@ export const movieCreditsTransformer: (responseData) => MovieCredits = (
 
 export const movieImagesTransformer: (responseData) => MovieImages = (
   responseData
-) => ({
-  backdrops: responseData.backdrops.map((backdrop) => ({
+) => {
+  const imageMapper = (backdrop) => ({
     path: backdrop.file_path,
-  })),
-  posters: [],
-});
+    width: backdrop.width,
+    height: backdrop.height,
+  });
+  return {
+    backdrops: responseData.backdrops.map(imageMapper),
+    posters: responseData.posters.map(imageMapper),
+    logos: responseData.logos.map(imageMapper),
+  };
+};
