@@ -1,24 +1,22 @@
 import React from "react";
 import { Meta, Story } from "@storybook/react";
-import MovieCreditsScreen, {
-  MovieCreditsScreenProps,
-} from "./MovieCreditsScreen";
-import { fakeMovieCredits } from "../../../models/__fixtures__/MovieCredit";
+import MovieImagesScreen, { MovieImagesScreenProps } from "./MovieImagesScreen";
+import { fakeMovieImages } from "../../../models/__fixtures__/MovieImage";
 import { fakeMovie } from "../../../models/__fixtures__/Movie";
 
 export default {
-  title: "Screen/MovieCreditsScreen",
-  component: MovieCreditsScreen,
+  title: "Screen/MovieImagesScreen",
+  component: MovieImagesScreen,
 } as Meta;
 
-const Template: Story<MovieCreditsScreenProps> = (args) => (
-  <MovieCreditsScreen {...args} />
+const Template: Story<MovieImagesScreenProps> = (args) => (
+  <MovieImagesScreen {...args} />
 );
 
 export const Default = Template.bind({});
 Default.args = {
   movieState: { data: fakeMovie },
-  creditsState: { data: fakeMovieCredits },
+  imagesState: { data: fakeMovieImages },
 };
 
 export const Loading = Template.bind({});
