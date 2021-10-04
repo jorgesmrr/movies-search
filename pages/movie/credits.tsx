@@ -10,7 +10,7 @@ const MoviePage: React.FC = () => {
     !isNaN(id) && (
       <div>
         <Head>
-          <title>Movie details</title>
+          <title>Movie cast & crew</title>
         </Head>
 
         <MovieCreditsScreenConnect id={id} />
