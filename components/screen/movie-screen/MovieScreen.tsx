@@ -48,6 +48,7 @@ const MovieScreen: React.FC<MovieScreenProps> = ({
                   title="Recommended"
                   imageType={ImageType.Poster}
                   endpoint={getMovieRecommendations(movie.id)}
+                  showImagesTitle
                 />
               </aside>
             </LimitedWidth>

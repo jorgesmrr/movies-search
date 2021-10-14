@@ -60,6 +60,7 @@ const SearchScreen: React.FC<SearchScreenProps> = ({ search }) => {
                 count={20}
                 imageType={ImageType.Poster}
                 sizes={sizes}
+                showTitles
               >
                 <ImagesList.Grid columns={5} />
               </ImagesList>

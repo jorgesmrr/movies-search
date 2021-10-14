@@ -101,7 +101,12 @@ const MovieImagesSlider: React.FC<MovieImagesSliderProps> = ({
                 scroll={false}
               >
                 <a>
-                  <ImagePlaceholder type={type} rounded shadowLevel={2}>
+                  <ImagePlaceholder
+                    type={type}
+                    rounded
+                    shadowLevel={2}
+                    persistentBorder={selectedIndex === index}
+                  >
                     <TmdbImage
                       title={movieTitle}
                       path={image.path}

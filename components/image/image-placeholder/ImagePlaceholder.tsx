@@ -3,12 +3,14 @@ import * as S from "./ImagePlaceholder.styles";
 
 interface PlaceholderProps extends S.PlaceholderProps {
   type: ImageType;
+  persistentBorder?: boolean;
 }
 
 const ImagePlaceholder: React.FC<PlaceholderProps> = ({
   type,
   rounded,
   shadowLevel,
+  persistentBorder,
   children,
 }) => {
   let heightWidthRatio;
@@ -38,6 +40,7 @@ const ImagePlaceholder: React.FC<PlaceholderProps> = ({
       rounded={rounded}
       shadowLevel={shadowLevel}
       objectFit={type == ImageType.Logo ? "contain" : "cover"}
+      persistentBorder={persistentBorder}
     >
       {children}
     </S.Placeholder>

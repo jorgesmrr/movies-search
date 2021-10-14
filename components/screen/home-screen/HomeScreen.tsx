@@ -12,12 +12,14 @@ const HomeScreen: React.FC = () => {
           title="Trending Today"
           endpoint={getTrendingMovies()}
           imageType={ImageType.Backdrop}
+          showImagesTitle
         />
 
         <MoviesSection
           title="Now In Theaters"
           endpoint={getNowPlayingMovies()}
           imageType={ImageType.Poster}
+          showImagesTitle
         />
       </LimitedWidth>
     </RegularPageContent>

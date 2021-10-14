@@ -13,6 +13,7 @@ export interface ImageListItemProps {
   isLoading: boolean;
   imageType: ImageType;
   sizes: ResponsiveProperty<ImageSizes>;
+  showTitle?: boolean;
 }
 
 const ImageListItem: React.FC<ImageListItemProps> = ({
@@ -20,6 +21,7 @@ const ImageListItem: React.FC<ImageListItemProps> = ({
   image,
   imageType,
   sizes,
+  showTitle,
 }) => {
   if (!isLoading && !image) {
     return <Alert>Failed to load</Alert>;
@@ -29,7 +31,7 @@ const ImageListItem: React.FC<ImageListItemProps> = ({
     return (
       <div>
         <ImagePlaceholder rounded type={imageType} shadowLevel={2} />
-        {imageType === ImageType.Poster && (
+        {imageType === ImageType.Poster && showTitle && (
           <S.Title>
             <wbr />
             <br />
@@ -45,7 +47,7 @@ const ImageListItem: React.FC<ImageListItemProps> = ({
       <ImagePlaceholder rounded type={imageType} shadowLevel={2}>
         <S.ImageWrapper>
           <TmdbImage title={image.title} path={image.path} sizes={sizes} />
-          {imageType === ImageType.Backdrop && (
+          {imageType === ImageType.Backdrop && showTitle && (
             <>
               <S.BackdropOverlay />
               <S.BackdropTitle>{image.title}</S.BackdropTitle>
@@ -53,7 +55,9 @@ const ImageListItem: React.FC<ImageListItemProps> = ({
           )}
         </S.ImageWrapper>
       </ImagePlaceholder>
-      {imageType === ImageType.Poster && <S.Title>{image.title}</S.Title>}
+      {imageType === ImageType.Poster && showTitle && (
+        <S.Title>{image.title}</S.Title>
+      )}
     </>
   );
 

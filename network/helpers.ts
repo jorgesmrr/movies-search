@@ -23,7 +23,7 @@ export const getMovieBackdropDescription = (
   movie: Movie
 ): ImageDescription => ({
   ...getPartialMovieImageDescription(movie),
-  path: movie.poster,
+  path: movie.backdrop,
 });
 
 export const getMovieCreditImageDescription = (
