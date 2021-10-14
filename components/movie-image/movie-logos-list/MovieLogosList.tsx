@@ -1,12 +1,16 @@
 import { MovieImage } from "../../../models/MovieImages";
-import { BackdropSizes } from "../../../network/constants";
+import { LogoSizes } from "../../../network/constants";
 import * as S from "./MovieLogosList.styles";
 
 export interface MovieLogosListProps {
+  movieTitle: string;
   images: MovieImage[];
 }
 
-const MovieLogosList: React.FC<MovieLogosListProps> = ({ images }) => {
+const MovieLogosList: React.FC<MovieLogosListProps> = ({
+  movieTitle,
+  images,
+}) => {
   return (
     <S.List>
       {images.map((image) => (
@@ -19,8 +23,8 @@ const MovieLogosList: React.FC<MovieLogosListProps> = ({ images }) => {
           <S.ImageWrapper>
             <S.Image
               path={image.path}
-              sizes={{ xs: BackdropSizes.Regular }}
-              title="teste"
+              sizes={{ xs: LogoSizes.Regular }}
+              title={movieTitle}
             />
           </S.ImageWrapper>
         </S.ListItem>

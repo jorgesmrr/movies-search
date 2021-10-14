@@ -15,6 +15,10 @@ const ImagePlaceholder: React.FC<PlaceholderProps> = ({
   let testId;
 
   switch (type) {
+    case ImageType.Logo:
+      heightWidthRatio = 9 / 16;
+      testId = "logo-placeholder";
+      break;
     case ImageType.Backdrop:
       heightWidthRatio = 9 / 16;
       testId = "backdrop-placeholder";
@@ -33,6 +37,7 @@ const ImagePlaceholder: React.FC<PlaceholderProps> = ({
       heightWidthRatio={heightWidthRatio}
       rounded={rounded}
       shadowLevel={shadowLevel}
+      objectFit={type == ImageType.Logo ? "contain" : "cover"}
     >
       {children}
     </S.Placeholder>

@@ -3,16 +3,14 @@ import Head from "next/head";
 import MovieImagesScreenConnect from "../../components/screen/movie-images-screen/MovieImagesScreenConnect";
 import ImageType from "../../models/ImageType";
 
-const typesMap = {
-  backdrop: ImageType.Backdrop,
-  poster: ImageType.Poster,
-  logo: ImageType.Logo,
-};
-
 const MoviePage: React.FC = () => {
   const router = useRouter();
   const id = parseInt(router.query.id as string);
-  const type = typesMap[(router.query.type as string) || "backdrop"];
+  const type = parseInt(router.query.type as string) as ImageType;
+  const index =
+    router.query.index !== undefined
+      ? parseInt(router.query.index as string)
+      : undefined;
 
   return (
     !isNaN(id) && (
@@ -21,7 +19,11 @@ const MoviePage: React.FC = () => {
           <title>Movie images</title>
         </Head>
 
-        <MovieImagesScreenConnect id={id} type={type} />
+        <MovieImagesScreenConnect
+          id={id}
+          type={type}
+          selectedImageIndex={index}
+        />
       </div>
     )
   );

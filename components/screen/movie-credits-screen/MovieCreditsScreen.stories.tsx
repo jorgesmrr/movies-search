@@ -22,7 +22,13 @@ Default.args = {
 };
 
 export const Loading = Template.bind({});
-Loading.args = { isLoading: true };
+Loading.args = {
+  movieState: { isLoading: true },
+  creditsState: { isLoading: true },
+};
 
 export const Error = Template.bind({});
-Error.args = { error: true };
+Error.args = {
+  movieState: { error: true },
+  creditsState: { error: true },
+};

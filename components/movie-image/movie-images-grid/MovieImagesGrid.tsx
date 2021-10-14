@@ -1,62 +1,56 @@
 import ImageType from "../../../models/ImageType";
-import MovieImages from "../../../models/MovieImages";
-import { BackdropSizes, PosterSizes } from "../../../network/constants";
+import { MovieImage } from "../../../models/MovieImages";
+import {
+  BackdropSizes,
+  LogoSizes,
+  PosterSizes,
+} from "../../../network/constants";
 import { getMovieImageDescription } from "../../../network/helpers";
 import ImagesList from "../../image/images-list/ImagesList";
-import MovieLogosList from "../movie-logos-list/MovieLogosList";
 
 export interface MovieImagesGridProps {
   isLoading: boolean;
-  images?: MovieImages;
+  images?: MovieImage[];
   error: boolean;
   type: ImageType;
+  movieId: number;
   movieTitle: string;
 }
 
-const posterSizes = {
-  xs: PosterSizes.Big,
-  md: PosterSizes.Medium,
-  lg: PosterSizes.Regular,
+const sizesMap = {
+  [ImageType.Backdrop]: {
+    xs: BackdropSizes.Big,
+    md: BackdropSizes.Regular,
+  },
+  [ImageType.Poster]: {
+    xs: PosterSizes.Big,
+    md: PosterSizes.Medium,
+    lg: PosterSizes.Regular,
+  },
+  [ImageType.Logo]: {
+    xs: LogoSizes.Big,
+    md: LogoSizes.Medium,
+    lg: LogoSizes.Regular,
+  },
 };
 
-const backdropsSizes = {
-  xs: BackdropSizes.Big,
-  md: BackdropSizes.Regular,
-};
-
-const MovieImagesGrid = ({ isLoading, images, error, type, movieTitle }) => {
-  switch (type) {
-    case ImageType.Backdrop:
-      return (
-        <ImagesList
-          isLoading={isLoading}
-          error={error}
-          images={images?.backdrops.map(getMovieImageDescription(movieTitle))}
-          count={images ? images.backdrops.length : 20}
-          imageType={ImageType.Backdrop}
-          sizes={backdropsSizes}
-        >
-          <ImagesList.Grid columns={4} />
-        </ImagesList>
-      );
-    case ImageType.Poster:
-      return (
-        <ImagesList
-          isLoading={isLoading}
-          error={error}
-          images={images?.posters.map(getMovieImageDescription(movieTitle))}
-          count={images ? images.posters.length : 20}
-          imageType={ImageType.Poster}
-          sizes={posterSizes}
-        >
-          <ImagesList.Grid columns={5} />
-        </ImagesList>
-      );
-    case ImageType.Logo:
-      return <MovieLogosList images={images?.logos} />;
-  }
-
-  return null;
-};
-
+const MovieImagesGrid: React.FC<MovieImagesGridProps> = ({
+  isLoading,
+  images,
+  error,
+  type,
+  movieId,
+  movieTitle,
+}) => (
+  <ImagesList
+    isLoading={isLoading}
+    error={error}
+    images={images?.map(getMovieImageDescription(movieId, movieTitle, type))}
+    count={images ? images.length : 20}
+    imageType={type}
+    sizes={sizesMap[type]}
+  >
+    <ImagesList.Grid columns={4} />
+  </ImagesList>
+);
 export default MovieImagesGrid;

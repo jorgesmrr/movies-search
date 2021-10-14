@@ -6,11 +6,13 @@ import MovieImagesScreen from "./MovieImagesScreen";
 export interface MovieImagesScreenConnectProps {
   id: number;
   type: ImageType;
+  selectedImageIndex?: number;
 }
 
 const MovieImagesScreenConnect: React.FC<MovieImagesScreenConnectProps> = ({
   id,
   type,
+  selectedImageIndex,
 }) => {
   const movieState = useRequestEffect(getMovie(id), [id]);
   const imagesState = useRequestEffect(getMovieImages(id), [id]);
@@ -20,6 +22,7 @@ const MovieImagesScreenConnect: React.FC<MovieImagesScreenConnectProps> = ({
       movieState={movieState}
       imagesState={imagesState}
       type={type}
+      selectedImageIndex={selectedImageIndex}
     />
   );
 };

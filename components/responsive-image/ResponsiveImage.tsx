@@ -1,5 +1,6 @@
 import ResponsiveProperty from "../../models/ResponsiveProperty";
 import theme from "../style/theme";
+import * as S from "./ResponsiveImage.styles";
 
 export interface ImageSource {
   src: string;
@@ -57,7 +58,7 @@ const ResponsiveImage: React.FC<ImageProps> = ({ sources, ...imgProps }) => {
   const sizes = sizesRules.join(", ");
 
   return (
-    <img src={biggestSrc.src} srcSet={srcSet} sizes={sizes} {...imgProps} />
+    <S.Image src={biggestSrc.src} srcSet={srcSet} sizes={sizes} {...imgProps} />
   );
 };
 

@@ -31,9 +31,17 @@ export enum PosterSizes {
   Large = 780,
 }
 
+export enum LogoSizes {
+  Tiny = 92,
+  Small = 154,
+  Medium = 185,
+  Regular = 300,
+  Big = 500,
+}
+
 export enum ProfileSizes {
   Tiny = 45,
   Medium = 185,
 }
 
-export type ImageSizes = BackdropSizes | PosterSizes | ProfileSizes;
+export type ImageSizes = BackdropSizes | PosterSizes | LogoSizes | ProfileSizes;

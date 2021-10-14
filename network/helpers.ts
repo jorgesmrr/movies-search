@@ -1,4 +1,5 @@
 import ImageDescription from "../models/ImageDescription";
+import ImageType from "../models/ImageType";
 import Movie from "../models/Movie";
 import { CastMember } from "../models/MovieCredits";
 import { MovieImage } from "../models/MovieImages";
@@ -33,10 +34,13 @@ export const getMovieCreditImageDescription = (
   path: credit.photo,
 });
 
-export const getMovieImageDescription = (movieName: string) => (
-  image: MovieImage
-): ImageDescription => ({
+export const getMovieImageDescription = (
+  movieId: number,
+  movieName: string,
+  type: ImageType
+) => (image: MovieImage, index: number): ImageDescription => ({
   key: image.path,
   title: movieName,
   path: image.path,
+  link: `/movie/images?id=${movieId}&type=${type}&index=${index}`,
 });

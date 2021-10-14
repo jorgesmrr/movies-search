@@ -22,13 +22,15 @@ const MovieImagesSection: React.FC<MovieImagesSectionProps> = ({
           title="Gallery"
           isLoading={isLoading}
           error={error}
-          images={data?.backdrops.map(getMovieImageDescription(movieTitle))}
+          images={data?.backdrops.map(
+            getMovieImageDescription(movieId, movieTitle, ImageType.Backdrop)
+          )}
           imageType={ImageType.Backdrop}
           sizes={{ xs: BackdropSizes.Big, sm: BackdropSizes.Regular }}
           rowCount={{ xs: 1, sm: 2, md: 3 }}
           count={9}
           linkLabel="See all images"
-          linkHref={`/movie/images?id=${movieId}`}
+          linkHref={`/movie/images?id=${movieId}&type=${ImageType.Backdrop}`}
         />
       )}
     />

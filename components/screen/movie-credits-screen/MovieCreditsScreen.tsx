@@ -13,7 +13,6 @@ import * as S from "./MovieCreditsScreen.styles";
 import MainCrew from "../../movie-credit/main-crew/MainCrew";
 import CrewDepartmentsList from "../../movie-credit/crew-departments-list/CrewDepartmentsList";
 import Movie from "../../../models/Movie";
-import Link from "next/link";
 import MovieBackLink from "../../movie/movie-back-link/MovieBackLink";
 
 export interface MovieCreditsScreenProps {

@@ -5,6 +5,7 @@ import Movie from "../../../models/Movie";
 import MovieImages from "../../../models/MovieImages";
 import MovieImagesTypeNav from "../../movie-image/movie-image-type-nav/MovieImagesTypeNav";
 import MovieImagesGrid from "../../movie-image/movie-images-grid/MovieImagesGrid";
+import MovieImagesSlider from "../../movie-image/movie-images-slider/MovieImagesSlider";
 import MovieBackLink from "../../movie/movie-back-link/MovieBackLink";
 import { Alert, LimitedWidth, RegularPageContent } from "../../style/style";
 
@@ -15,14 +16,22 @@ export interface MovieImagesScreenProps {
   movieState: UseRequestState<Movie>;
   imagesState: UseRequestState<MovieImages>;
   type: ImageType;
+  selectedImageIndex?: number;
 }
 
+const typeMap = {
+  [ImageType.Backdrop]: "backdrops",
+  [ImageType.Poster]: "posters",
+  [ImageType.Logo]: "logos",
+};
+
 const MovieImagesScreen: React.FC<MovieImagesScreenProps> = ({
-  movieState: { data: movie },
+  movieState: { isLoading: isLoadingMovie, data: movie },
   imagesState: { isLoading: isLoadingImages, data: images, error },
   type,
+  selectedImageIndex,
 }) => {
-  if (isLoadingImages) {
+  if (isLoadingImages || isLoadingMovie) {
     return (
       <S.SpinnerWrapper>
         <Spinner
@@ -33,7 +42,7 @@ const MovieImagesScreen: React.FC<MovieImagesScreenProps> = ({
     );
   }
 
-  if (images) {
+  if (images && movie) {
     return (
       <RegularPageContent as="main">
         <LimitedWidth>
@@ -43,13 +52,24 @@ const MovieImagesScreen: React.FC<MovieImagesScreenProps> = ({
 
             {movie && <MovieImagesTypeNav movieId={movie.id} />}
 
-            <MovieImagesGrid
-              images={images}
-              isLoading={isLoadingImages}
-              error={error}
-              type={type}
-              movieTitle={movie?.title}
-            />
+            {selectedImageIndex !== undefined ? (
+              <MovieImagesSlider
+                selectedIndex={selectedImageIndex}
+                images={images[typeMap[type]]}
+                type={type}
+                movieId={movie.id}
+                movieTitle={movie.title}
+              />
+            ) : (
+              <MovieImagesGrid
+                images={images[typeMap[type]]}
+                isLoading={isLoadingImages}
+                error={error}
+                type={type}
+                movieId={movie.id}
+                movieTitle={movie.title}
+              />
+            )}
           </section>
         </LimitedWidth>
       </RegularPageContent>
