@@ -25,6 +25,7 @@ declare module "styled-components" {
         dark: string;
         darker: string;
         darkest: string;
+        black: string;
       };
       white: string;
     };

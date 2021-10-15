@@ -64,7 +64,7 @@ const MovieImagesSlider: React.FC<MovieImagesSliderProps> = ({
     const item = itemRef.current;
     const itemWidth = item.offsetWidth;
 
-    const itemsPerRow = Math.floor(listWidth / itemWidth);
+    const itemsPerRow = listWidth / itemWidth;
 
     const itemSlotWidth = listWidth / itemsPerRow;
 
@@ -75,6 +75,8 @@ const MovieImagesSlider: React.FC<MovieImagesSliderProps> = ({
 
     const translation = Math.min(0, Math.max(itemTranslation, maxTranslation));
 
+    console.log({ listWidth, itemSlotWidth, itemsPerRow });
+
     setListStyle({
       transform: `translateX(calc(${translation}px))`,
     });
@@ -82,15 +84,13 @@ const MovieImagesSlider: React.FC<MovieImagesSliderProps> = ({
 
   return (
     <div>
-      <S.MainImage>
-        <ImagePlaceholder type={type} rounded shadowLevel={2}>
-          <TmdbImage
-            title={movieTitle}
-            path={selectedImage.path}
-            sizes={bigSizesMap[type]}
-          />
-        </ImagePlaceholder>
-      </S.MainImage>
+      <S.MainImageWrapper>
+        <TmdbImage
+          title={movieTitle}
+          path={selectedImage.path}
+          sizes={bigSizesMap[type]}
+        />
+      </S.MainImageWrapper>
 
       <S.Nav ref={listRef}>
         <S.List style={listStyle}>

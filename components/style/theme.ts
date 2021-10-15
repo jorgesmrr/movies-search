@@ -24,6 +24,7 @@ const theme: DefaultTheme = {
       dark: "#626262",
       darker: "#3B3B3B",
       darkest: "#141414",
+      black: "#0A0A0A",
     },
     white: "white",
   },

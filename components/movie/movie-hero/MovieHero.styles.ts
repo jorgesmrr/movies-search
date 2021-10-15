@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { easedDarkGradient, LimitedWidth } from "../../style/style";
 
 export const Wrapper = styled.div`
-  background: black;
+  background: ${({ theme }) => theme.color.neutral.black};
   margin-top: ${({ theme }) => theme.dimensions.navbarHeight};
 
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
@@ -27,7 +27,7 @@ export const ImageAspect = styled(LimitedWidth)`
       top: 0;
       height: 100%;
       width: 15%;
-      background: black;
+      background: ${({ theme }) => theme.color.neutral.black};
       z-index: 1;
     }
 

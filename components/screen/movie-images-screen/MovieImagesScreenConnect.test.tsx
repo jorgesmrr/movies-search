@@ -8,6 +8,11 @@ import ImageType from "../../../models/ImageType";
 jest.mock("@bit/jorgemoreira.headless-react.hooks", () => ({
   useRequestEffect: jest.fn(),
   useScrollEffect: jest.fn(),
+  useToggle: () => ({
+    setOn: jest.fn(),
+    setOff: jest.fn(),
+    onToggle: jest.fn(),
+  }),
 }));
 const mockedUseRequest = (hooks as jest.Mocked<typeof hooks>).useRequestEffect;
 

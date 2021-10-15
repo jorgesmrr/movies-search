@@ -11,6 +11,7 @@ interface ItemsListProps {
 
 export const ItemsList = styled(ListNone)<ItemsListProps>`
   position: absolute;
+  z-index: 100;
   top: 100%;
   left: 0;
   display: inline-block;

@@ -1,23 +1,34 @@
 import Link from "next/link";
 import ImageType from "../../../models/ImageType";
+import Dropdown from "../../dropdown/Dropdown";
 
 export interface MovieImagesTypeNavProps {
   movieId: number;
+  selectedImageType: ImageType;
 }
 
-const MovieImagesTypeNav: React.FC<MovieImagesTypeNavProps> = ({ movieId }) => {
+const types = [ImageType.Backdrop, ImageType.Poster, ImageType.Logo];
+
+const imageTypeLabels = {
+  [ImageType.Backdrop]: "Backdrops",
+  [ImageType.Poster]: "Posters",
+  [ImageType.Logo]: "Logos",
+};
+
+const MovieImagesTypeNav: React.FC<MovieImagesTypeNavProps> = ({
+  movieId,
+  selectedImageType,
+}) => {
   return (
-    <>
-      <Link href={`/movie/images?id=${movieId}&type=${ImageType.Backdrop}`}>
-        Backdrops
-      </Link>
-      <Link href={`/movie/images?id=${movieId}&type=${ImageType.Poster}`}>
-        Posters
-      </Link>
-      <Link href={`/movie/images?id=${movieId}&type=${ImageType.Logo}`}>
-        Logos
-      </Link>
-    </>
+    <Dropdown initialLabel={imageTypeLabels[selectedImageType]}>
+      {types.map((type) => (
+        <Link key={type} href={`/movie/images?id=${movieId}&type=${type}`}>
+          <a>
+            <Dropdown.Item label={imageTypeLabels[type]} />
+          </a>
+        </Link>
+      ))}
+    </Dropdown>
   );
 };
 

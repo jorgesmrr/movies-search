@@ -3,6 +3,8 @@ import Spinner from "@bit/jorgemoreira.headless-react.progress.spinner";
 import ImageType from "../../../models/ImageType";
 import Movie from "../../../models/Movie";
 import MovieImages from "../../../models/MovieImages";
+import { Button } from "../../button/Button.styles";
+import Link from "next/link";
 import MovieImagesTypeNav from "../../movie-image/movie-image-type-nav/MovieImagesTypeNav";
 import MovieImagesGrid from "../../movie-image/movie-images-grid/MovieImagesGrid";
 import MovieImagesSlider from "../../movie-image/movie-images-slider/MovieImagesSlider";
@@ -48,9 +50,27 @@ const MovieImagesScreen: React.FC<MovieImagesScreenProps> = ({
         <LimitedWidth>
           <section>
             {movie && <MovieBackLink movie={movie} />}
-            <S.Heading>Gallery</S.Heading>
 
-            {movie && <MovieImagesTypeNav movieId={movie.id} />}
+            <S.Head>
+              <S.Heading>Gallery</S.Heading>
+
+              {selectedImageIndex !== undefined && (
+                <div>
+                  <Link href={`/movie/images?id=${movie.id}&type=${type}`}>
+                    <a>
+                      <Button>See grid</Button>
+                    </a>
+                  </Link>
+                </div>
+              )}
+
+              {movie && (
+                <MovieImagesTypeNav
+                  movieId={movie.id}
+                  selectedImageType={type}
+                />
+              )}
+            </S.Head>
 
             {selectedImageIndex !== undefined ? (
               <MovieImagesSlider
