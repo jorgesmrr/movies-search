@@ -9,7 +9,7 @@ export const Button = styled.button`
   border-radius: ${({ theme }) => theme.dimensions.radius};
   box-shadow: ${({ theme }) => theme.shadow[1]};
   border: none;
-  padding: 0.25rem 0.5rem;
+  padding: 0.25rem 0.75rem;
   appearance: none;
   font-size: 1em;
 
