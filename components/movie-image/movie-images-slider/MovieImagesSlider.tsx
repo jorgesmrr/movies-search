@@ -50,7 +50,7 @@ const MovieImagesSlider: React.FC<MovieImagesSliderProps> = ({
   movieId,
   movieTitle,
 }) => {
-  const listRef = useRef(null);
+  const listWrapperRef = useRef(null);
   const itemRef = useRef(null);
   const [listStyle, setListStyle] = useState(null);
 
@@ -59,7 +59,7 @@ const MovieImagesSlider: React.FC<MovieImagesSliderProps> = ({
   useEffect(() => setSelectedImage(images[selectedIndex]), [selectedIndex]);
 
   useEffect(() => {
-    const list = listRef.current;
+    const list = listWrapperRef.current;
     const listWidth = list.offsetWidth;
     const item = itemRef.current;
     const itemWidth = item.offsetWidth;
@@ -92,32 +92,34 @@ const MovieImagesSlider: React.FC<MovieImagesSliderProps> = ({
         />
       </S.MainImageWrapper>
 
-      <S.Nav ref={listRef}>
-        <S.List style={listStyle}>
-          {images.map((image, index) => (
-            <S.ListItem key={image.path} ref={itemRef}>
-              <Link
-                href={`/movie/images?id=${movieId}&type=${type}&index=${index}`}
-                scroll={false}
-              >
-                <a>
-                  <ImagePlaceholder
-                    type={type}
-                    rounded
-                    shadowLevel={2}
-                    persistentBorder={selectedIndex === index}
-                  >
-                    <TmdbImage
-                      title={movieTitle}
-                      path={image.path}
-                      sizes={smallSizesMap[type]}
-                    />
-                  </ImagePlaceholder>
-                </a>
-              </Link>
-            </S.ListItem>
-          ))}
-        </S.List>
+      <S.Nav>
+        <S.ListWrapper ref={listWrapperRef}>
+          <S.List style={listStyle}>
+            {images.map((image, index) => (
+              <S.ListItem key={image.path} ref={itemRef}>
+                <Link
+                  href={`/movie/images?id=${movieId}&type=${type}&index=${index}`}
+                  scroll={false}
+                >
+                  <a>
+                    <ImagePlaceholder
+                      type={type}
+                      rounded
+                      shadowLevel={2}
+                      persistentBorder={selectedIndex === index}
+                    >
+                      <TmdbImage
+                        title={movieTitle}
+                        path={image.path}
+                        sizes={smallSizesMap[type]}
+                      />
+                    </ImagePlaceholder>
+                  </a>
+                </Link>
+              </S.ListItem>
+            ))}
+          </S.List>
+        </S.ListWrapper>
       </S.Nav>
     </div>
   );

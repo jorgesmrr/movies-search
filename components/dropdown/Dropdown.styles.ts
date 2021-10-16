@@ -7,13 +7,13 @@ export const Root = styled.div`
 
 interface ItemsListProps {
   isOpen: boolean;
+  alignment?: "left" | "right";
 }
 
 export const ItemsList = styled(ListNone)<ItemsListProps>`
   position: absolute;
   z-index: 100;
   top: 100%;
-  left: 0;
   display: inline-block;
   min-width: 10rem;
   background-color: ${({ theme }) => theme.color.neutral.light};
@@ -21,7 +21,10 @@ export const ItemsList = styled(ListNone)<ItemsListProps>`
   box-shadow: ${({ theme }) => theme.shadow[1]};
   overflow: hidden;
   color: ${({ theme }) => theme.color.neutral.darker};
-  ${transition("opacity")}
+  text-align: ${({ alignment = "left" }) => alignment};
+  ${({ alignment = "left" }) =>
+    alignment === "left" ? "left: 0" : "right: 0"};
   ${({ isOpen }) =>
-    isOpen ? `opacity: 1` : `opacity: 0; pointer-events: none`}
+    isOpen ? `opacity: 1` : `opacity: 0; pointer-events: none`};
+  ${transition("opacity")}
 `;

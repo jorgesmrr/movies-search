@@ -20,7 +20,10 @@ const MovieImagesTypeNav: React.FC<MovieImagesTypeNavProps> = ({
   selectedImageType,
 }) => {
   return (
-    <Dropdown initialLabel={imageTypeLabels[selectedImageType]}>
+    <Dropdown
+      initialLabel={imageTypeLabels[selectedImageType]}
+      itemsAlignment="right"
+    >
       {types.map((type) => (
         <Link key={type} href={`/movie/images?id=${movieId}&type=${type}`}>
           <a>

@@ -21,11 +21,13 @@ export type DropdownComposition = {
 
 export interface DropdownProps {
   initialLabel: string;
+  itemsAlignment?: "left" | "right";
   onChange?: (label: string) => void;
 }
 
 const Dropdown: DropdownComposition & React.FC<DropdownProps> = ({
   initialLabel,
+  itemsAlignment,
   onChange,
   children,
 }) => {
@@ -50,7 +52,9 @@ const Dropdown: DropdownComposition & React.FC<DropdownProps> = ({
         {isShowingItems ? <ChevronUpIcon /> : <ChevronDownIcon />}
       </Button>
       <DropdownContext.Provider value={{ setLabel: onItemSelected }}>
-        <S.ItemsList isOpen={isShowingItems}>{children}</S.ItemsList>
+        <S.ItemsList alignment={itemsAlignment} isOpen={isShowingItems}>
+          {children}
+        </S.ItemsList>
       </DropdownContext.Provider>
     </S.Root>
   );

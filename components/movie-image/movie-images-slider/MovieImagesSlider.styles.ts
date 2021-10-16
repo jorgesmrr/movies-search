@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ListNone } from "../../style/style";
+import { easedDarkGradient, ListNone } from "../../style/style";
 
 export const MainImageWrapper = styled.div`
   background-color: ${({ theme }) => theme.color.neutral.black};
@@ -12,15 +12,48 @@ export const MainImageWrapper = styled.div`
 `;
 
 export const Nav = styled.nav`
-  width: calc(100% + 1rem);
-  margin: 1rem -0.5rem;
+  position: relative;
+  background-color: ${({ theme }) => theme.color.neutral.black};
+  width: 100%;
+  margin: 1rem 0;
   overflow-x: hidden;
   overflow-y: visible;
+  padding: 1rem;
+  border-radius: ${({ theme }) => theme.dimensions.radius};
+  box-shadow: inset ${({ theme }) => theme.shadow[2]};
+
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 4rem;
+    background: ${({ theme }) => theme.color.neutral.black};
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  &:before {
+    left: 0;
+    background: ${easedDarkGradient("right")};
+  }
+
+  &:after {
+    right: 0;
+    background: ${easedDarkGradient("left")};
+  }
+`;
+
+export const ListWrapper = styled.div`
+  width: calc(100% + 1rem);
+  margin: 0 -0.5rem;
 `;
 
 export const List = styled(ListNone)`
   display: flex;
   overflow-y: visible;
+  transition: transform 250ms ease-in-out;
 `;
 
 export const ListItem = styled.li`
