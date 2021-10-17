@@ -16,6 +16,8 @@ const TmdbImage: React.FC<TmdbImageProps> = ({
   path,
   sizes,
   $imagePosition,
+  $objectFit,
+  $inset,
 }) => {
   const buildSource = (breakpoint: string) =>
     sizes[breakpoint]
@@ -35,6 +37,8 @@ const TmdbImage: React.FC<TmdbImageProps> = ({
   return (
     <S.ResponsiveImage
       $imagePosition={$imagePosition}
+      $objectFit={$objectFit}
+      $inset={$inset}
       alt={title}
       sources={sources}
       loading="lazy"

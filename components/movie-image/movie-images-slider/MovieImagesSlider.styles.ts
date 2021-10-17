@@ -11,6 +11,22 @@ export const MainImageWrapper = styled.div`
   justify-content: center;
 `;
 
+interface MainImageAspect {
+  $mobileAspect?: number;
+}
+
+export const MainImageAspect = styled.div<MainImageAspect>`
+  position: relative;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  padding-bottom: ${({ $mobileAspect }) => `${$mobileAspect}%`};
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding-bottom: 56.25%;
+  }
+`;
+
 export const Nav = styled.nav`
   position: relative;
   background-color: ${({ theme }) => theme.color.neutral.black};

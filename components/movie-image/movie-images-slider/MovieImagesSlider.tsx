@@ -75,8 +75,6 @@ const MovieImagesSlider: React.FC<MovieImagesSliderProps> = ({
 
     const translation = Math.min(0, Math.max(itemTranslation, maxTranslation));
 
-    console.log({ listWidth, itemSlotWidth, itemsPerRow });
-
     setListStyle({
       transform: `translateX(calc(${translation}px))`,
     });
@@ -85,11 +83,17 @@ const MovieImagesSlider: React.FC<MovieImagesSliderProps> = ({
   return (
     <div>
       <S.MainImageWrapper>
-        <TmdbImage
-          title={movieTitle}
-          path={selectedImage.path}
-          sizes={bigSizesMap[type]}
-        />
+        <S.MainImageAspect
+          $mobileAspect={type === ImageType.Poster ? 150 : 56.25}
+        >
+          <TmdbImage
+            title={movieTitle}
+            path={selectedImage.path}
+            sizes={bigSizesMap[type]}
+            $objectFit="contain"
+            $inset
+          />
+        </S.MainImageAspect>
       </S.MainImageWrapper>
 
       <S.Nav>
