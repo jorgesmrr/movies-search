@@ -4,6 +4,7 @@ import MovieCreditsScreen, {
   MovieCreditsScreenProps,
 } from "./MovieCreditsScreen";
 import { fakeMovieCredits } from "../../../models/__fixtures__/MovieCredit";
+import { fakeMovie } from "../../../models/__fixtures__/Movie";
 
 export default {
   title: "Screen/MovieCreditsScreen",
@@ -15,10 +16,19 @@ const Template: Story<MovieCreditsScreenProps> = (args) => (
 );
 
 export const Default = Template.bind({});
-Default.args = { data: fakeMovieCredits };
+Default.args = {
+  movieState: { data: fakeMovie },
+  creditsState: { data: fakeMovieCredits },
+};
 
 export const Loading = Template.bind({});
-Loading.args = { isLoading: true };
+Loading.args = {
+  movieState: { isLoading: true },
+  creditsState: { isLoading: true },
+};
 
 export const Error = Template.bind({});
-Error.args = { error: true };
+Error.args = {
+  movieState: { error: true },
+  creditsState: { error: true },
+};

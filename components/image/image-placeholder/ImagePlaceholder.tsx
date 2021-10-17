@@ -3,18 +3,24 @@ import * as S from "./ImagePlaceholder.styles";
 
 interface PlaceholderProps extends S.PlaceholderProps {
   type: ImageType;
+  persistentBorder?: boolean;
 }
 
 const ImagePlaceholder: React.FC<PlaceholderProps> = ({
   type,
   rounded,
   shadowLevel,
+  persistentBorder,
   children,
 }) => {
   let heightWidthRatio;
   let testId;
 
   switch (type) {
+    case ImageType.Logo:
+      heightWidthRatio = 9 / 16;
+      testId = "logo-placeholder";
+      break;
     case ImageType.Backdrop:
       heightWidthRatio = 9 / 16;
       testId = "backdrop-placeholder";
@@ -33,6 +39,8 @@ const ImagePlaceholder: React.FC<PlaceholderProps> = ({
       heightWidthRatio={heightWidthRatio}
       rounded={rounded}
       shadowLevel={shadowLevel}
+      objectFit={type == ImageType.Logo ? "contain" : "cover"}
+      persistentBorder={persistentBorder}
     >
       {children}
     </S.Placeholder>

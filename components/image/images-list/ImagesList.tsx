@@ -14,6 +14,7 @@ export interface ImagesListProps {
   count: number;
   sizes: ResponsiveProperty<ImageSizes>;
   images?: ImageDescription[];
+  showTitles?: boolean;
 }
 
 interface ImagesListContextValue {
@@ -38,8 +39,9 @@ const ImagesList: ImagesListComposition & React.FC<ImagesListProps> = ({
   count,
   sizes,
   imageType,
-  children,
+  showTitles,
   error,
+  children,
 }) => {
   let adjustedImages: Array<ImageDescription | undefined> = null;
 
@@ -55,6 +57,7 @@ const ImagesList: ImagesListComposition & React.FC<ImagesListProps> = ({
       image={image}
       imageType={imageType}
       sizes={sizes}
+      showTitle={showTitles}
     />
   );
 

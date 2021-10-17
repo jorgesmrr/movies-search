@@ -42,6 +42,7 @@ const MoviesResultsScreen: React.FC<MoviesResultsScreenProps> = ({
                 count={20}
                 imageType={ImageType.Poster}
                 sizes={sizes}
+                showTitles
               >
                 <ImagesList.Grid columns={5} />
               </ImagesList>

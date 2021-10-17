@@ -13,7 +13,7 @@ import * as S from "./MovieCreditsScreen.styles";
 import MainCrew from "../../movie-credit/main-crew/MainCrew";
 import CrewDepartmentsList from "../../movie-credit/crew-departments-list/CrewDepartmentsList";
 import Movie from "../../../models/Movie";
-import Link from "next/link";
+import MovieBackLink from "../../movie/movie-back-link/MovieBackLink";
 
 export interface MovieCreditsScreenProps {
   movieState: UseRequestState<Movie>;
@@ -40,17 +40,7 @@ const MovieCreditsScreen: React.FC<MovieCreditsScreenProps> = ({
       <RegularPageContent>
         <LimitedWidth>
           <section>
-            {movie && (
-              <Link href={`/movie?id=${movie.id}`}>
-                <a>
-                  <S.LinkText>
-                    {movie.title}
-                    {movie.releaseDate &&
-                      ` (${movie.releaseDate.getFullYear()})`}
-                  </S.LinkText>
-                </a>
-              </Link>
-            )}
+            {movie && <MovieBackLink movie={movie} />}
             <S.Heading>Cast & Crew</S.Heading>
 
             <MainCrew crew={credits.crew} />

@@ -22,6 +22,7 @@ export interface ImagesSectionProps {
   count: number;
   linkHref?: string;
   linkLabel?: string;
+  showImagesTitle?: boolean;
 }
 
 const ImagesSection: React.FC<ImagesSectionProps> = ({
@@ -35,6 +36,7 @@ const ImagesSection: React.FC<ImagesSectionProps> = ({
   count,
   linkHref,
   linkLabel,
+  showImagesTitle,
 }) => {
   const [activeSlide, setActiveSlide] = useState(0);
 
@@ -78,6 +80,7 @@ const ImagesSection: React.FC<ImagesSectionProps> = ({
         count={count}
         imageType={imageType}
         sizes={sizes}
+        showTitles={showImagesTitle}
       >
         <ImagesList.Slider activeSlide={activeSlide} itemsPerSlide={rowCount} />
       </ImagesList>

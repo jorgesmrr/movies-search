@@ -1,11 +1,9 @@
 import parse from "date-fns/parse";
-import { response } from "msw";
 import Movie from "../models/Movie";
 import MovieCredits from "../models/MovieCredits";
+import MovieImages from "../models/MovieImages";
 
-export const movieTransformer: (responseData: any) => Movie = (
-  responseData
-) => ({
+export const movieTransformer: (responseData) => Movie = (responseData) => ({
   id: responseData.id,
   title: responseData.title,
 
@@ -27,7 +25,7 @@ export const movieTransformer: (responseData: any) => Movie = (
   imdbId: responseData.imdb_id,
 });
 
-export const movieCreditsTransformer: (responseData: any) => MovieCredits = (
+export const movieCreditsTransformer: (responseData) => MovieCredits = (
   responseData
 ) => ({
   id: responseData.id,
@@ -44,3 +42,18 @@ export const movieCreditsTransformer: (responseData: any) => MovieCredits = (
     department: person.department,
   })),
 });
+
+export const movieImagesTransformer: (responseData) => MovieImages = (
+  responseData
+) => {
+  const imageMapper = (backdrop) => ({
+    path: backdrop.file_path,
+    width: backdrop.width,
+    height: backdrop.height,
+  });
+  return {
+    backdrops: responseData.backdrops.map(imageMapper),
+    posters: responseData.posters.map(imageMapper),
+    logos: responseData.logos.map(imageMapper),
+  };
+};

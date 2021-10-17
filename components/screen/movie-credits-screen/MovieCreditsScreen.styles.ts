@@ -11,7 +11,3 @@ export const SpinnerWrapper = styled.div`
 export const Heading = styled(Heading1)`
   margin-top: 0;
 `;
-
-export const LinkText = styled.span`
-  text-decoration: underline;
-`;

@@ -23,7 +23,7 @@ const CastListItem: React.FC<CastListItemProps> = ({ credit }) => {
       </S.ImageSlot>
       <S.TextSlot>
         <p>{credit.name}</p>
-        <S.Character>as {credit.character}</S.Character>
+        {credit.character && <S.Character>as {credit.character}</S.Character>}
       </S.TextSlot>
     </S.ListItem>
   );

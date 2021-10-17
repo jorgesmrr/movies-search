@@ -9,11 +9,17 @@ import {
   API_MOVIES_TOP_RATED,
   API_MOVIES_UPCOMING,
   API_MOVIE_CREDITS,
+  API_MOVIE_IMAGES,
   API_MOVIE_RECOMMENDED,
 } from "../constants";
 import { RequestEndpoint } from "@bit/jorgemoreira.headless-react.hooks";
-import { movieCreditsTransformer, movieTransformer } from "../transformers";
+import {
+  movieCreditsTransformer,
+  movieImagesTransformer,
+  movieTransformer,
+} from "../transformers";
 import MovieCredits from "../../models/MovieCredits";
+import MovieImages from "../../models/MovieImages";
 
 const movieListEndpoint = (
   url: string
@@ -48,6 +54,16 @@ export const getMovieCredits = (
     apiClient
       .get(API_MOVIE_CREDITS(id))
       .then((response) => resolve(movieCreditsTransformer(response.data)))
+      .catch(reject);
+  });
+
+export const getMovieImages = (
+  id: number
+): RequestEndpoint<MovieImages> => () =>
+  new Promise((resolve, reject) => {
+    apiClient
+      .get(API_MOVIE_IMAGES(id))
+      .then((response) => resolve(movieImagesTransformer(response.data)))
       .catch(reject);
   });
 

@@ -16,6 +16,7 @@ export interface MoviesSectionProps {
   imageType: ImageType;
   linkHref?: string;
   linkLabel?: string;
+  showImagesTitle?: boolean;
 }
 
 const MoviesSection: React.FC<MoviesSectionProps> = ({
@@ -24,6 +25,7 @@ const MoviesSection: React.FC<MoviesSectionProps> = ({
   imageType,
   linkHref,
   linkLabel,
+  showImagesTitle,
 }) => {
   const sizes =
     imageType === ImageType.Backdrop
@@ -62,6 +64,7 @@ const MoviesSection: React.FC<MoviesSectionProps> = ({
           count={count}
           linkHref={linkHref}
           linkLabel={linkLabel}
+          showImagesTitle={showImagesTitle}
         />
       )}
     />

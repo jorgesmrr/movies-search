@@ -10,6 +10,7 @@ import MoviesSection from "../../movie/movies-section/MoviesSection";
 import { getMovieRecommendations } from "../../../network/resources/movie";
 import MovieCreditsSection from "../../movie/movie-credits-section/MovieCreditsSection";
 import MovieOverview from "../../movie/movie-overview/MovieOverview";
+import MovieImagesSection from "../../movie-image/movie-images-section/MovieImagesSection";
 
 export type MovieScreenProps = UseRequestState<Movie>;
 
@@ -40,12 +41,14 @@ const MovieScreen: React.FC<MovieScreenProps> = ({
 
             <LimitedWidth maxWidth={70}>
               <MovieCreditsSection movieId={movie.id} />
+              <MovieImagesSection movieId={movie.id} movieTitle={movie.title} />
 
               <aside>
                 <MoviesSection
                   title="Recommended"
                   imageType={ImageType.Poster}
                   endpoint={getMovieRecommendations(movie.id)}
+                  showImagesTitle
                 />
               </aside>
             </LimitedWidth>
